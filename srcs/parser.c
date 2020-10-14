@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/14 15:48:29 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/14 16:32:36 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ void        init_scene(t_scene *scene)
     scene->amli.color.r = 0;
     scene->amli.color.g = 0;
     scene->amli.color.b = 0;
-    
+    // a finir avec list chaine pour les autres config
 }
 
-int         append_data(t_scene **scene, char *line)
+t_scene         append_data(t_scene **scene, char *line)
 {
-    //fonction d'attribution des donne recuperer avec get next line
+    if (line[1] == 'R')
+        return (get_resolution(scene, line));
+    // ainsi de suite
 }
 
 t_scene     *parsing_config(int fd)
@@ -37,8 +39,8 @@ t_scene     *parsing_config(int fd)
 
     while ((ret = get_next_line(fd, &line)) > 0)
     {
-        if (!(ret = append_data(&scene, line)) == -1)
-            return (NULL);
+        if (ret != -1)
+            append_data(&scene, line);
         free(line);
     }
     return (scene);
