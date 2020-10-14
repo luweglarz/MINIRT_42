@@ -6,11 +6,11 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 12:34:49 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/08/25 13:51:58 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/14 15:16:08 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/get_next_line.h"
 
 char		*ft_strdup(char *s)
 {
