@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:56:38 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/14 15:11:30 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/14 15:35:11 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 #include "scene.h"
 #include "parser.h"
 #include "get_next_line.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 
 #endif
 
