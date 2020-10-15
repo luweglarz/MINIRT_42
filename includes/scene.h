@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/14 14:40:38 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/15 12:41:19 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct      s_camera //parametre de la camera
 {
     t_vector    cordi; //cordonne du point de vue 
     t_vector    orientation; // vecteur de l'orientation 3d dans le range [-1,1] pour chaque axe x,y,z
-    int         fov; // champ de vision horizontal en degres dans le range [0-180]
+    float         fov; // champ de vision horizontal en degres dans le range [0-180]
 }                   t_camera;
 
 typedef struct      s_light
@@ -60,8 +60,8 @@ typedef struct      s_scene
 {
     t_reso      resolution;
     t_amli      amli;
-    t_camera    *camera; // a mettre en liste chaine
-    t_light     *light; //aussi
+    t_camera    camera; // a mettre en liste chaine
+    t_light     light; //aussi
 }                   t_scene;
 
 
