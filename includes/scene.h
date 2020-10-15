@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/15 14:14:48 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/15 16:32:13 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct      s_scene
     t_amli      *amli;
     t_camera    *camera;
     t_light     *light;
+    t_sphere    *sphere;
 }                   t_scene;
 
 
