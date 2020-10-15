@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/15 12:41:19 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/15 14:14:48 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ typedef struct      s_amli //lumiere ambiante
 
 typedef struct      s_camera //parametre de la camera
 {
-    t_vector    cordi; //cordonne du point de vue 
-    t_vector    orientation; // vecteur de l'orientation 3d dans le range [-1,1] pour chaque axe x,y,z
-    float         fov; // champ de vision horizontal en degres dans le range [0-180]
+    t_vector    cordo; //cordonne du point de vue 
+    t_vector    ori; // vecteur de l'orientation 3d dans le range [-1,1] pour chaque axe x,y,z
+    float       fov; // champ de vision horizontal en degres dans le range [0-180]
+    struct      s_camera *next_cam;
 }                   t_camera;
 
 typedef struct      s_light
@@ -56,12 +57,20 @@ typedef struct      s_light
     t_rgb        color; //Couleurs R,G,B dans le range [0-255]
 }                   t_light;
 
+typedef struct       s_sphere
+{
+    t_vector    cordo;
+    float       radius;
+    t_rgb       color;
+
+}                    t_sphere;
+
 typedef struct      s_scene
 {
-    t_reso      resolution;
-    t_amli      amli;
-    t_camera    camera; // a mettre en liste chaine
-    t_light     light; //aussi
+    t_reso      *resolution;
+    t_amli      *amli;
+    t_camera    *camera;
+    t_light     *light;
 }                   t_scene;
 
 

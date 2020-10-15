@@ -6,11 +6,11 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 16:17:29 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/09/08 15:42:01 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/15 14:31:07 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/utils.h"
 
 char		*joinnfree(char *tmp, char *buffer)
 {
