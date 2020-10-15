@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:56:38 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/14 15:35:11 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/15 12:29:52 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
+#include "utils.h"
 
 #endif
 
