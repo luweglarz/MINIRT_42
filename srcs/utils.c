@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:27:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/19 11:23:00 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/19 16:21:45 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,26 @@ void		ft_bzero(void *s, size_t n)
 		ptr[i] = '\0';
 		i++;
 	}
+}
+
+int		ft_atoi(const char *nptr)
+{
+	int	i;
+	int	nbr;
+	int	isnegative;
+
+	nbr = 0;
+	isnegative = 1;
+	i = 0;
+	while ((nptr[i] >= 8 && nptr[i] <= 13) || (nptr[i] == 32))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+		if (nptr[i++] == '-')
+			isnegative = -1;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nbr = nbr * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (isnegative * nbr);
 }
