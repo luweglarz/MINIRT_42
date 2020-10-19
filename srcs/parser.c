@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/19 11:41:42 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/19 15:06:02 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void        init_scene(t_scene **scene)
     (*scene)->resolution = NULL;
     (*scene)->amli = NULL;
     (*scene)->camera = NULL;
+    (*scene)->light = NULL;
     (*scene)->sphere = NULL;
 }
 

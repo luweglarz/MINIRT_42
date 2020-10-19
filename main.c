@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:30:07 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/19 11:51:14 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/19 15:01:29 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int main(int argc, char **argv)
     }
     else
         write(STDERR_FILENO, "error", 5);
+    close(fd);
 }
