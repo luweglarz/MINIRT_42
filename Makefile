@@ -6,7 +6,7 @@
 #    By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 14:17:23 by lweglarz          #+#    #+#              #
-#    Updated: 2020/10/15 15:01:27 by lweglarz         ###   ########.fr        #
+#    Updated: 2020/10/19 15:05:10 by lweglarz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME=minirt.a
 
 FLAGS= -Wall -Wextra -Werror
 
-SRCS= srcs/get_next_line.c  srcs/parser.c srcs/utils.c
+SRCS= srcs/ft_split.c srcs/get_next_line.c srcs/get_scene_elements.c srcs/get_scene_objects.c srcs/parser.c srcs/utils.c
 
-OBJS= get_next_line.o parser.o utils.o
+OBJS= ft_split.o get_next_line.o get_scene_elements.o get_scene_objects.o parser.o utils.o
 
 RM	= rm -f
 
