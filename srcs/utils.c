@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:27:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/19 16:23:12 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/19 17:09:57 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,12 +148,12 @@ int		ft_atoi(const char *nptr)
 	return (isnegative * nbr);
 }
 
-float	ft_atof(char *nptr)
+float	ft_atof2(char *nptr)
 {
-	float dec;
-	float ent;
-	int	  isnegative;
-	int size;
+	float	dec;
+	float	ent;
+	int		isnegative;
+	int		size;
 
 	isnegative = 1;
 	while ((*nptr >= 8 && *nptr <= 13) || (*nptr == 32))
@@ -166,9 +166,7 @@ float	ft_atof(char *nptr)
 		ent = ent * 10 + (*nptr - '0');
 		nptr++;
 	}
-	if (*nptr == '.')
-		nptr++;
-	size = ft_strlen(nptr);
+	size = ft_strlen(nptr++) - 1;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		dec = dec * 10 + (*nptr - '0');
@@ -176,5 +174,5 @@ float	ft_atof(char *nptr)
 	}
 	while (size--)
 		dec /= 10;
-	return((dec + ent) * isnegative);
+	return ((dec + ent) * isnegative);
 }
