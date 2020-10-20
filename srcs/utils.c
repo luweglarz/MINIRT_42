@@ -6,24 +6,20 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:27:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/19 17:09:57 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 11:36:39 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strlen(char *str)
 {
-	size_t i;
+	int i;
 
 	i = 0;
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	while(str[i])
 		i++;
-	}
-	return (0);
+	return(i);
 }
 
 char		*ft_strdup(char *s)
@@ -148,7 +144,7 @@ int		ft_atoi(const char *nptr)
 	return (isnegative * nbr);
 }
 
-float	ft_atof2(char *nptr)
+float	ft_atof(char *nptr)
 {
 	float	dec;
 	float	ent;
@@ -166,7 +162,9 @@ float	ft_atof2(char *nptr)
 		ent = ent * 10 + (*nptr - '0');
 		nptr++;
 	}
-	size = ft_strlen(nptr++) - 1;
+	if(*nptr== '.')
+		nptr++;
+	size = ft_strlen(nptr);
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		dec = dec * 10 + (*nptr - '0');
