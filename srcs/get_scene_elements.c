@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 12:50:57 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 14:56:20 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 
 t_scene *get_resolution(t_scene *scene, char **data)
 {
-    scene->resolution->w = ft_atoi(data[1]);
-    scene->resolution->h = ft_atoi(data[2]);
+    t_reso resolution;
+    
+    resolution.w = ft_atoi(data[1]);
+    resolution.h = ft_atoi(data[2]);
+    scene->resolution = resolution;
     return (scene);
 }
 

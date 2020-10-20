@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 12:33:10 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 15:04:33 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 #define TRIANLGE "tr"
 
 t_scene     *parsing_config(int fd);
-t_scene        *init_scene(t_scene *scene);
-t_scene     *append_data(t_scene **scene, char *line);
+void       *init_scene(t_scene *scene);
+t_scene     *append_data(t_scene *scene, char *line);
 
 t_scene 	*get_resolution(t_scene *scene, char **data);
 t_scene     *get_amlight(t_scene *scene, char **data);

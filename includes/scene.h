@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 12:49:49 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 15:11:33 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ typedef struct       s_sphere
 
 typedef struct      s_scene
 {
-    t_reso      *resolution;
-    t_amli      *amli;
+    int w; //width
+    int h; //height 
+    t_amli      amli;
     t_camera    *camera;
     t_light     *light;
     t_sphere    *sphere;

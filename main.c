@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:30:07 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 12:53:41 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 14:16:17 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ int main(int argc, char **argv)
     }
     else
         write(STDERR_FILENO, "error", 5);
-        printf("%i\n", scene->resolution->h);
 }
