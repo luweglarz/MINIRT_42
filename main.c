@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:30:07 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/19 15:01:29 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 12:53:41 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int main(int argc, char **argv)
     {
         fd = open(argv[1], O_RDONLY); // pareil
         scene = parsing_config(fd);
+        close(fd);
     }
     else
         write(STDERR_FILENO, "error", 5);
-    close(fd);
+        printf("%i\n", scene->resolution->h);
 }
