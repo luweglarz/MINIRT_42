@@ -6,7 +6,7 @@
 #    By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 14:17:23 by lweglarz          #+#    #+#              #
-#    Updated: 2020/10/19 15:05:10 by lweglarz         ###   ########.fr        #
+#    Updated: 2020/10/20 12:57:35 by lweglarz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJS) includes/minirt.h
 	@gcc -Wall -Wextra -Werror -c $(SRCS)
 	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME) 
+	@ranlib $(NAME)
 
 clean:
 	$(RM) $(OBJS)
