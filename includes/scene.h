@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/15 16:32:13 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 12:49:49 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ typedef struct      s_vector
 
 typedef struct      s_rgb  //RGB systeme de codage des couleurs a partir de trois couleurs primaire red, green ,blue, chaque valeur exprime une intervalle de 0 a 100%  par rapport a 255
 {
-    unsigned int r; //red
-    unsigned int g; //green
-    unsigned int b; //blue 
+    int r; //red
+    int g; //green
+    int b; //blue 
 }                  t_rgb;
 
 typedef struct      s_reso //resolution ecran
 {
-    unsigned int w; //width
-    unsigned int h; //height 
+    int w; //width
+    int h; //height 
 }                   t_reso;
 
 typedef struct      s_amli //lumiere ambiante 

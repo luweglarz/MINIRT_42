@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:56:38 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/15 16:30:07 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 12:30:34 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include "parser.h"
 #include "utils.h"
 
+#include <stdio.h>
 
 #endif
 
