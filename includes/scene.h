@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 15:31:34 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 17:26:08 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct      s_light
     t_vector     lightp; //coordonnées x,y,z du point Lumière
     float        ratio; //ratio de lumnosité dans le range [0.0,1.0]
     t_rgb        color; //Couleurs R,G,B dans le range [0-255]
+    struct      s_light *next_light;
 }                   t_light;
 
 typedef struct       s_sphere
@@ -62,8 +63,37 @@ typedef struct       s_sphere
     t_vector    cordo;
     float       radius;
     t_rgb       color;
-
+    struct      s_sphere *next_sphere;
 }                    t_sphere;
+
+typedef struct      s_plane
+{
+    t_vector cordo;
+    t_vector v1;
+    t_vector v2;
+    t_vector v3;
+    t_rgb   color;
+    struct      s_plane *next_plane;
+}                   t_plane;
+
+typedef struct      s_cylinder
+{
+    t_vector cordo;
+    t_vector v1;
+    t_vector v2;
+    t_vector v3;
+    float radios;
+    float height;
+    struct      s_cylinder *next_cylinder;
+}                   t_cylinder;
+
+typedef struct      s_triangle
+{
+    t_vector cordo1;
+    t_vector cordo2;
+    t_vector cordo3;
+    t_rgb    color;
+}                   t_triangle;
 
 typedef struct      s_scene
 {

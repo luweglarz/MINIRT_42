@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 15:04:56 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 16:58:28 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void       *init_scene(t_scene *scene)
     scene->resolution.h = 0;
     scene->resolution.w = 0;
     scene->amli.ratio = 0;
+    scene->amli.color.r = 0;
+    scene->amli.color.g = 0;
+    scene->amli.color.b = 0;  
     scene->camera = NULL;
     scene->light = NULL;
     scene->sphere = NULL;
@@ -48,20 +51,22 @@ t_scene     *append_data(t_scene *scene, char *line)
         data_nb++;
     if (data[0][0] == RES)
         return (get_resolution(scene, data));
-    if (data[0][0] == AMLIGHT)
+    else if (data[0][0] == AMLIGHT)
         return (get_amlight(scene, data));
-    if (data[0][0] == CAMERA)
+    else if (data[0][0] == CAMERA)
         return (get_camera(scene, data));
-    if (data[0][0] == LIGHT)
+    else if (data[0][0] == LIGHT)
         return (get_light(scene, data));
-    if (data[0] == SPHERE)
+    else if (data[0] == SPHERE)
         return (get_sphere(scene, data));
-    if (data[0] == SQUARE)
+    else if (data[0] == SQUARE)
         return (get_square(scene, data));
-    if (data[0] == CYLINDER)
+    else if (data[0] == CYLINDER)
         return (get_cylinder(scene, data));
-    if (data[0] == SQUARE)
+    else if (data[0] == SQUARE)
         return (get_triangle(scene, data));
+    else
+        write(2, "error", 5);
     free_data(data_nb, data);
     return (scene);
 }
@@ -85,6 +90,7 @@ t_scene     *parsing_config(int fd)
         free(line);
         line = NULL;
     }
+     printf("reso: %i\n", scene->resolution.w);
     return (scene);
 }
 
