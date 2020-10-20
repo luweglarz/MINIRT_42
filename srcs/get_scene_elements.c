@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 17:27:45 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/20 17:30:56 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_scene *get_resolution(t_scene *scene, char **data)
 
 t_scene *get_amlight(t_scene *scene, char **data)
 {
-    scene->amli.color.r;
+    //scene->amli.color.r;
 (void)data;
     return(scene);
 }
