@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/22 13:00:28 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:01:45 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct		s_scene
 	t_light		*light;
 	t_sphere	*sphere;
 	t_plane		*plane;
+	t_square	*square;
 	t_cylinder	*cylinder;
 	t_triangle	*triangle;
 }					t_scene;
