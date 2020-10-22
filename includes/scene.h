@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/22 12:45:28 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:00:28 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,15 @@ typedef struct		s_plane
 	struct s_plane		*next_plane;
 }					t_plane;
 
+typedef struct		s_square
+{
+	t_vector			cordo;
+	t_vector			ori;
+	float				height;
+	t_rgb				color;
+	struct s_square		*next_square;
+}					t_square;
+
 typedef struct		s_cylinder
 {
 	t_vector			cordo;
@@ -102,6 +111,9 @@ typedef struct		s_scene
 	t_camera	*camera;
 	t_light		*light;
 	t_sphere	*sphere;
+	t_plane		*plane;
+	t_cylinder	*cylinder;
+	t_triangle	*triangle;
 }					t_scene;
 
 #endif
