@@ -6,36 +6,38 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 12:15:05 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/22 12:49:45 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-t_scene *get_sphere(t_scene *scene, char **data)
+void	get_sphere(t_scene *scene, char **data)
 {
-(void)scene;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
 }
 
-t_scene *get_square(t_scene *scene, char **data)
+void	get_square(t_scene *scene, char **data)
 {
-(void)scene;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
 }
 
-t_scene *get_cylinder(t_scene *scene, char **data)
+void	get_cylinder(t_scene *scene, char **data)
 {
-(void)scene;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
 }
 
-t_scene *get_triangle(t_scene *scene, char **data)
+void	get_triangle(t_scene *scene, char **data)
 {
-(void)scene;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
+}
+
+void	get_plane(t_scene *scene, char **data)
+{
+	(void)scene;
+	(void)data;
 }

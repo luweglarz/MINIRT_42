@@ -6,47 +6,32 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 17:30:56 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/22 12:48:44 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-//fonctions qui vont recuperer les donne en parsant le tableau de data que j'envoie
-
-t_scene *get_resolution(t_scene *scene, char **data)
+void	get_resolution(t_scene *scene, char **data)
 {
-   // t_reso *resolution;
-
-   // printf("%s\n", data[1]);
-    //if (!(resolution = malloc(sizeof(*resolution))))
-	//	write(2, "error", 5);
-    //resolution->w = ft_atoi(data[1]);
-    //resolution->h = ft_atoi(data[1]);
-    scene->resolution.h = ft_atoi(data[1]);
-    scene->resolution.w = ft_atoi(data[2]);
-    printf("reso: %i\n", scene->resolution.h);
-    return (scene);
+	scene->resolution.h = ft_atoi(data[1]);
+	scene->resolution.w = ft_atoi(data[2]);
 }
 
-t_scene *get_amlight(t_scene *scene, char **data)
+void	get_amlight(t_scene *scene, char **data)
 {
-    //scene->amli.color.r;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
 }
 
-t_scene *get_camera(t_scene *scene, char **data)
+void	get_camera(t_scene *scene, char **data)
 {
-(void)scene;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
 }
 
-t_scene *get_light(t_scene *scene, char **data)
+void	get_light(t_scene *scene, char **data)
 {
-(void)scene;
-(void)data;
-    return(scene);
+	(void)scene;
+	(void)data;
 }
-
