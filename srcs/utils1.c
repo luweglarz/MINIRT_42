@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:27:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/22 13:05:20 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/22 16:55:47 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,85 +106,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str[j] = '\0';
 	return (str);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	char	*ptr;
-	size_t	i;
-
-	ptr = s;
-	i = 0;
-	while (i < n)
-	{
-		ptr[i] = '\0';
-		i++;
-	}
-}
-
-int		ft_atoi(const char *nptr)
-{
-	int	i;
-	int	nbr;
-	int	isnegative;
-
-	nbr = 0;
-	isnegative = 1;
-	i = 0;
-	while ((nptr[i] >= 8 && nptr[i] <= 13) || (nptr[i] == 32))
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
-		if (nptr[i++] == '-')
-			isnegative = -1;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		nbr = nbr * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (isnegative * nbr);
-}
-
-float	ft_atof(char *nptr)
-{
-	float	dec;
-	float	ent;
-	int		isnegative;
-	int		size;
-
-	isnegative = 1;
-	while ((*nptr >= 8 && *nptr <= 13) || (*nptr == 32))
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
-		if (*nptr++ == '-')
-			isnegative = -1;
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		ent = ent * 10 + (*nptr - '0');
-		nptr++;
-	}
-	if (*nptr == '.')
-		nptr++;
-	size = ft_strlen(nptr);
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		dec = dec * 10 + (*nptr - '0');
-		nptr++;
-	}
-	while (size--)
-		dec /= 10;
-	return ((dec + ent) * isnegative);
-}
-
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t i;
-
-	i = 0;
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
 }
