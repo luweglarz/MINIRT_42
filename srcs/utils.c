@@ -6,23 +6,23 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:27:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/20 11:36:39 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:05:20 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.h"
 
-int	ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
-	return(i);
+	return (i);
 }
 
-char		*ft_strdup(char *s)
+char	*ft_strdup(char *s)
 {
 	int		i;
 	int		size;
@@ -43,7 +43,7 @@ char		*ft_strdup(char *s)
 	return (str);
 }
 
-char		*ft_substr(char *s, int start, int len)
+char	*ft_substr(char *s, int start, int len)
 {
 	char	*str;
 	int		i;
@@ -63,7 +63,7 @@ char		*ft_substr(char *s, int start, int len)
 	return (str);
 }
 
-int			ft_strlenc(char *str, char c)
+int		ft_strlenc(char *str, char c)
 {
 	int i;
 
@@ -79,7 +79,7 @@ int			ft_strlenc(char *str, char c)
 	return (-1);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -108,7 +108,7 @@ char		*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-void		ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char	*ptr;
 	size_t	i;
@@ -162,7 +162,7 @@ float	ft_atof(char *nptr)
 		ent = ent * 10 + (*nptr - '0');
 		nptr++;
 	}
-	if(*nptr== '.')
+	if (*nptr == '.')
 		nptr++;
 	size = ft_strlen(nptr);
 	while (*nptr >= '0' && *nptr <= '9')
@@ -173,4 +173,18 @@ float	ft_atof(char *nptr)
 	while (size--)
 		dec /= 10;
 	return ((dec + ent) * isnegative);
+}
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }
