@@ -6,11 +6,11 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 15:25:57 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/22 12:47:27 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 14:45:27 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../../includes/minirt.h"
 
 static	void		ft_free_words(int word, char **tabword)
 {

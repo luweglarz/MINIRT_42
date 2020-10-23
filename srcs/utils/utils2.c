@@ -6,11 +6,11 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 16:53:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 10:46:11 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 14:45:45 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.h"
+#include "../../includes/utils.h"
 
 void	ft_bzero(void *s, size_t n)
 {
