@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 14:24:27 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 15:18:11 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	append_data(t_scene *scene, char *line)
 	data = ft_split(line, ' ');
 	i = 0;
 	while ((i < 9) &&
-			(ft_strncmp(g_tab[i].data_type, data[0], g_tab[i].data_len) != 0))
+			(ft_strncmp(g_tab[i].data_type, data[0], g_tab[i].data_len) != 0)) // ft_strncmp a fix car je recupere un cy quand j ai seulement c par exemple
 		i++;
 	if (i <= 9)
 		g_tab[i].func(scene, data);
@@ -59,7 +59,7 @@ void	parsing_config(t_scene *scene, int fd)
 		write(2, "error", 5);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		if (ret != 0)
+		if (ret != 0 && ft_strlen(line) != 0)
 			append_data(scene, line);
 		free(line);
 		line = NULL;
