@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:01:27 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 13:03:24 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 13:07:52 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ typedef struct		s_list
 }					t_list;
 
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_camera **alst, t_list *new);
+void	ft_lstadd_front(t_list **alst, t_list *new);
 
 #endif
