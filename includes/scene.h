@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 13:35:57 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 14:33:06 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,15 @@ typedef struct		s_triangle
 
 typedef struct		s_scene
 {
-	t_reso		resolution;
-	t_amli		amli;
-	t_list		*camera;
-	t_list		*light;
-	t_list		*sphere;
-	t_list		*plane;
-	t_list		*square;
-	t_list		*cylinder;
-	t_list		*triangle;
+	t_reso				resolution;
+	t_amli				amli;
+	t_list				*camera;
+	t_list				*light;
+	t_list				*sphere;
+	t_list				*plane;
+	t_list				*square;
+	t_list				*cylinder;
+	t_list				*triangle;
 }					t_scene;
 
 #endif
