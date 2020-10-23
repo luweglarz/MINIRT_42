@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:00:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 14:38:10 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 14:48:09 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	ft_lstadd_front(t_list **alst, t_list *new)
 	if (!*alst)
 	{
 		*alst = new;
-		return (NULL);
+		return ;
 	}
 	if (!new)
-		return (NULL);
+		return ;
 	new->next = *alst;
 	*alst = new;
 }
