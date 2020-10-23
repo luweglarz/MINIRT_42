@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 16:53:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/22 16:55:59 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 10:46:11 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ float	ft_atof(char *nptr)
 	float	ent;
 	float	dec;
 	int		size;
-	int		isnegative;
 
 	ent = (float)ft_atoi(nptr);
 	while (*nptr && *nptr != '.')

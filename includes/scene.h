@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/22 13:01:45 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 10:53:41 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct		s_camera
 {
 	t_vector			cordo;
 	t_vector			ori;
-	float				fov;
+	unsigned int		fov;
 	struct s_camera		*next_cam;
 }					t_camera;
 
