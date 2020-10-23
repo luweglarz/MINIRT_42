@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 11:06:42 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/23 14:22:00 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,22 @@ void	get_amlight(t_scene *scene, char **data)
 
 void	get_camera(t_scene *scene, char **data)
 {
+	t_camera	*new_cam;
 	char	**cordo;
 	char	**ori;
 
 	cordo = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
-	scene->camera->cordo.x = ft_atof(cordo[0]);
-	scene->camera->cordo.y = ft_atof(cordo[1]);
-	scene->camera->cordo.z = ft_atof(cordo[2]);
-	scene->camera->ori.x = ft_atof(ori[0]);
-	scene->camera->ori.y = ft_atof(ori[0]);
-	scene->camera->ori.z = ft_atof(ori[0]);
-	scene->camera->fov = ft_atoi(data[3]);
-	printf("%f\n");
+	if (!(new_cam = malloc(sizeof(t_camera))))
+		write(2, "error", 5);
+	new_cam->cordo.x = ft_atof(cordo[0]);
+	new_cam->cordo.y = ft_atof(cordo[1]);
+	new_cam->cordo.z = ft_atof(cordo[2]);
+	new_cam->ori.x = ft_atof(ori[0]);
+	new_cam->ori.y = ft_atof(ori[0]);
+	new_cam->ori.z = ft_atof(ori[0]);
+	new_cam->fov = ft_atoi(data[3]);
+	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }
 
 void	get_light(t_scene *scene, char **data)
