@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 15:06:00 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 15:08:08 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	get_sphere(t_scene *scene, char **data)
 {
-	t_sphere 	*new_sphere;
+	t_sphere	*new_sphere;
 	char		**cordo;
 	char		**rgb;
 
 	if (!(new_sphere = malloc(sizeof(t_sphere))))
 		write(2, "error", 5);
 	cordo = ft_split(data[1], ',');
-	rgb	= ft_split(data[3], ',');
+	rgb = ft_split(data[3], ',');
 	new_sphere->cordo.x = ft_atof(cordo[0]);
 	new_sphere->cordo.y = ft_atof(cordo[1]);
 	new_sphere->cordo.z = ft_atof(cordo[2]);
@@ -63,7 +63,7 @@ void	get_cylinder(t_scene *scene, char **data)
 	char		**cordo;
 	char		**ori;
 	char		**rgb;
-	
+
 	if (!(new_cylinder = malloc(sizeof(t_cylinder))))
 		write(2, "error", 5);
 	cordo = ft_split(data[1], ',');
@@ -90,14 +90,13 @@ void	get_triangle(t_scene *scene, char **data)
 	char		**cordo2;
 	char		**cordo3;
 	char		**rgb;
-	
+
 	if (!(new_triangle = malloc(sizeof(t_triangle))))
 		write(2, "error", 5);
 	cordo1 = ft_split(data[1], ',');
 	cordo2 = ft_split(data[2], ',');
 	cordo3 = ft_split(data[3], ',');
 	rgb = ft_split(data[4], ',');
-
 	new_triangle->cordo1.x = ft_atof(cordo1[0]);
 	new_triangle->cordo1.y = ft_atof(cordo1[1]);
 	new_triangle->cordo1.z = ft_atof(cordo1[2]);
