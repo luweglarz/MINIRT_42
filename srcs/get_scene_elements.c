@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 14:09:15 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 14:16:53 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	get_camera(t_scene *scene, char **data)
 	new_cam->cordo.y = ft_atof(cordo[1]);
 	new_cam->cordo.z = ft_atof(cordo[2]);
 	new_cam->ori.x = ft_atof(ori[0]);
-	new_cam->ori.y = ft_atof(ori[0]);
-	new_cam->ori.z = ft_atof(ori[0]);
+	new_cam->ori.y = ft_atof(ori[1]);
+	new_cam->ori.z = ft_atof(ori[2]);
 	new_cam->fov = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }

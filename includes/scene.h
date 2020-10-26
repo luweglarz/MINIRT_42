@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 13:51:41 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 14:53:48 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,14 @@ typedef struct		s_light
 typedef struct		s_sphere
 {
 	t_vector			cordo;
-	float				radius;
+	float				diameter;
 	t_rgb				color;
 }					t_sphere;
 
 typedef struct		s_plane
 {
 	t_vector			cordo;
-	t_vector			v1;
-	t_vector			v2;
-	t_vector			v3;
+	t_vector			ori;
 	t_rgb				color;
 }					t_plane;
 
@@ -82,11 +80,10 @@ typedef struct		s_square
 typedef struct		s_cylinder
 {
 	t_vector			cordo;
-	t_vector			v1;
-	t_vector			v2;
-	t_vector			v3;
-	float				ratios;
+	t_vector			ori;
+	float				diameter;
 	float				height;
+	t_rgb				color;
 }					t_cylinder;
 
 typedef struct		s_triangle
