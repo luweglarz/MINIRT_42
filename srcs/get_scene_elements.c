@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 14:01:53 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 14:09:15 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	get_amlight(t_scene *scene, char **data)
 void	get_camera(t_scene *scene, char **data)
 {
 	t_camera	*new_cam;
-	char	**cordo;
-	char	**ori;
-	
+	char		**cordo;
+	char		**ori;
+
 	if (!(new_cam = malloc(sizeof(t_camera))))
 		write(2, "error", 5);
 	cordo = ft_split(data[1], ',');
