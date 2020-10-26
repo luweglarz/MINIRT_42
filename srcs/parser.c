@@ -6,16 +6,18 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 10:46:55 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 15:16:25 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
 t_tab		g_tab[9] = {
-	{SPHERE, 2, &get_sphere}, {PLANE, 2, &get_plane},{SQUARE, 2, &get_square}, 
-	{CYLINDER, 2, &get_cylinder}, {TRIANLGE, 2, &get_triangle}, {RES, 1, &get_resolution}, 
-	{AMLIGHT, 1, &get_amlight}, {CAMERA, 1, &get_camera}, {LIGHT, 1, &get_light}
+	{SPHERE, 2, &get_sphere}, {PLANE, 2, &get_plane},
+	{SQUARE, 2, &get_square}, {CYLINDER, 2, &get_cylinder},
+	{TRIANLGE, 2, &get_triangle}, {RES, 1, &get_resolution},
+	{AMLIGHT, 1, &get_amlight}, {CAMERA, 1, &get_camera},
+	{LIGHT, 1, &get_light}
 };
 
 void	free_data(char **data)
