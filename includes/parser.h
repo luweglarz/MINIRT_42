@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 14:21:20 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 10:45:24 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define SPHERE "sp"
 # define PLANE "pl"
 # define SQUARE "sq"
-# define CYLINDER "cl"
+# define CYLINDER "cy"
 # define TRIANLGE "tr"
 
 typedef	void	(*t_get_elem)(t_scene *scene, char **data);
