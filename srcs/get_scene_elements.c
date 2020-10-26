@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 15:17:10 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 14:01:53 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ void	get_amlight(t_scene *scene, char **data)
 	scene->amli.color.r = ft_atoi(rgb[0]);
 	scene->amli.color.g = ft_atoi(rgb[1]);
 	scene->amli.color.b = ft_atoi(rgb[2]);
-	printf("AMLIGHT\n");
-	printf("rgb r : %d\n", scene->amli.color.r);
-	printf("rgb g : %d\n", scene->amli.color.g);
-	printf("rgb b : %d\n", scene->amli.color.b);
-	printf("ratio : %f\n", scene->amli.ratio);
 }
 
 void	get_camera(t_scene *scene, char **data)
@@ -42,11 +37,11 @@ void	get_camera(t_scene *scene, char **data)
 	t_camera	*new_cam;
 	char	**cordo;
 	char	**ori;
-
-	cordo = ft_split(data[1], ',');
-	ori = ft_split(data[2], ',');
+	
 	if (!(new_cam = malloc(sizeof(t_camera))))
 		write(2, "error", 5);
+	cordo = ft_split(data[1], ',');
+	ori = ft_split(data[2], ',');
 	new_cam->cordo.x = ft_atof(cordo[0]);
 	new_cam->cordo.y = ft_atof(cordo[1]);
 	new_cam->cordo.z = ft_atof(cordo[2]);
@@ -54,15 +49,25 @@ void	get_camera(t_scene *scene, char **data)
 	new_cam->ori.y = ft_atof(ori[0]);
 	new_cam->ori.z = ft_atof(ori[0]);
 	new_cam->fov = ft_atoi(data[3]);
-	printf("CAMERA\n");
-	printf("cordo x : %f\n", new_cam->cordo.x);
-	printf("cordo y : %f\n", new_cam->cordo.y);
-	printf("cordo z : %f\n", new_cam->cordo.z);
 	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }
 
 void	get_light(t_scene *scene, char **data)
 {
-	(void)scene;
-	(void)data;
+	t_light		*new_light;
+	char		**cordo;
+	char		**rgb;
+
+	if (!(new_light = malloc(sizeof(t_light))))
+		write(2, "error", 5);
+	cordo = ft_split(data[1], ',');
+	rgb = ft_split(data[3], ',');
+	new_light->cordo.x = ft_atof(cordo[0]);
+	new_light->cordo.x = ft_atof(cordo[1]);
+	new_light->cordo.x = ft_atof(cordo[2]);
+	new_light->color.r = ft_atoi(rgb[0]);
+	new_light->color.g = ft_atoi(rgb[1]);
+	new_light->color.b = ft_atoi(rgb[2]);
+	new_light->ratio = ft_atof(data[2]);
+	ft_lstadd_front(&scene->light, ft_lstnew(new_light));
 }

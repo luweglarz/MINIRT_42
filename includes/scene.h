@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 14:33:06 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/26 13:51:41 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct		s_camera
 
 typedef struct		s_light
 {
-	t_vector			lightp;
+	t_vector			cordo;
 	float				ratio;
 	t_rgb				color;
 }					t_light;
