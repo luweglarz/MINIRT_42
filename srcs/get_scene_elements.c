@@ -63,8 +63,8 @@ void	get_light(t_scene *scene, char **data)
 	cordo = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
 	new_light->cordo.x = ft_atof(cordo[0]);
-	new_light->cordo.x = ft_atof(cordo[1]);
-	new_light->cordo.x = ft_atof(cordo[2]);
+	new_light->cordo.y = ft_atof(cordo[1]);
+	new_light->cordo.z = ft_atof(cordo[2]);
 	new_light->color.r = ft_atoi(rgb[0]);
 	new_light->color.g = ft_atoi(rgb[1]);
 	new_light->color.b = ft_atoi(rgb[2]);
