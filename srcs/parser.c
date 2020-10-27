@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 15:16:25 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 10:52:13 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	append_data(t_scene *scene, char *line)
 		i++;
 	printf("i :%d\n", i);
 	if (i <= 9)
-		g_tab[i].func(scene, data);
+		g_tab[i].tab_elem(scene, data);
 	free_data(data);
 }
 

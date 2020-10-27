@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 10:45:24 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 10:53:29 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@
 # define CYLINDER "cy"
 # define TRIANLGE "tr"
 
-typedef	void	(*t_get_elem)(t_scene *scene, char **data);
-
 typedef struct	s_tab
 {
 	char			*data_type;
 	int				data_len;
-	t_get_elem		func;
+	void			(*tab_elem)(t_scene *scene, char **data);
 }				t_tab;
 
 void			parsing_config(t_scene *scene, int fd);
