@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 10:53:29 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 14:49:42 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct	s_tab
 	void			(*tab_elem)(t_scene *scene, char **data);
 }				t_tab;
 
-void			parsing_config(t_scene *scene, int fd);
-void			init_scene(t_scene *scene);
+t_scene			*parsing_config(int fd);
+void	*init_scene(t_scene *scene);
 void			free_data(char **data);
 void			append_data(t_scene *scene, char *line);
 
