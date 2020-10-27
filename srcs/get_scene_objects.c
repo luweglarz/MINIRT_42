@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 15:08:08 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:12:21 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	get_plane(t_scene *scene, char **data)
 {
 	t_plane		*new_plane;
 	char		**cordo;
-	char		*ori;
+	char		**ori;
 	char		**rgb;
 
 	if (!(new_plane = malloc(sizeof(t_plane))))

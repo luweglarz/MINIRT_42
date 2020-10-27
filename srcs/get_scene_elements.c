@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/26 14:16:53 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:12:52 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	get_resolution(t_scene *scene, char **data)
 {
 	scene->resolution.h = ft_atoi(data[1]);
 	scene->resolution.w = ft_atoi(data[2]);
-	printf("RESOLUTION\n");
-	printf("res height : %d\n", scene->resolution.h);
-	printf("res width : %d\n", scene->resolution.w);
 }
 
 void	get_amlight(t_scene *scene, char **data)

@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 10:52:13 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:13:29 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ void	append_data(t_scene *scene, char *line)
 
 	data = ft_split(line, ' ');
 	i = 0;
-	printf("data  : %s\n", data[0]);
 	while ((i < 9) &&
 			(ft_strncmp(g_tab[i].data_type, data[0], g_tab[i].data_len) != 0))
 		i++;
-	printf("i :%d\n", i);
 	if (i <= 9)
 		g_tab[i].tab_elem(scene, data);
 	free_data(data);
