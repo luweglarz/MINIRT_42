@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 15:15:39 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:14:11 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,25 @@ void	get_resolution(t_scene *scene, char **data)
 {
 	scene->resolution.h = ft_atoi(data[1]);
 	scene->resolution.w = ft_atoi(data[2]);
+	if (scene->resolution.h <= 0 || scene->resolution.w <= 0)
+		write(2, "error", 5);
 }
 
 void	get_amlight(t_scene *scene, char **data)
 {
 	char	**rgb;
+	t_amli *amlight;
 
+	if (!(amlight = malloc(sizeof(t_rgb))))
+		write(2, "error", 5);
 	rgb = ft_split(data[2], ',');
+	amlight->color = *get_color(rgb);
 	scene->amli.ratio = ft_atof(data[1]);
-	scene->amli.color.r = ft_atoi(rgb[0]);
-	scene->amli.color.g = ft_atoi(rgb[1]);
-	scene->amli.color.b = ft_atoi(rgb[2]);
+	scene->amli = *amlight;
+	//scene->amli.color.r = ft_atoi(rgb[0]);
+	//scene->amli.color.g = ft_atoi(rgb[1]);
+	//scene->amli.color.b = ft_atoi(rgb[2]);
+	printf("color : %d\n", scene->amli.color.r);
 }
 
 void	get_camera(t_scene *scene, char **data)

@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 15:20:02 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 15:54:08 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ void			get_square(t_scene *scene, char **data);
 void			get_cylinder(t_scene *scene, char **data);
 void			get_triangle(t_scene *scene, char **data);
 void			get_plane(t_scene *scene, char **data);
+
+t_rgb   		*get_color(char **rgbtab);
 
 #endif
