@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 13:12:21 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:24:50 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void	get_sphere(t_scene *scene, char **data)
 	new_sphere->cordo.x = ft_atof(cordo[0]);
 	new_sphere->cordo.y = ft_atof(cordo[1]);
 	new_sphere->cordo.z = ft_atof(cordo[2]);
-	new_sphere->color.r = ft_atoi(rgb[0]);
-	new_sphere->color.g = ft_atoi(rgb[1]);
-	new_sphere->color.b = ft_atoi(rgb[2]);
+	new_sphere->color = *get_color(rgb);
 	new_sphere->diameter = ft_atof(data[2]);
 	ft_lstadd_front(&scene->sphere, ft_lstnew(new_sphere));
 }
@@ -50,9 +48,7 @@ void	get_square(t_scene *scene, char **data)
 	new_square->ori.x = ft_atof(ori[0]);
 	new_square->ori.y = ft_atof(ori[1]);
 	new_square->ori.z = ft_atof(ori[2]);
-	new_square->color.r = ft_atoi(rgb[0]);
-	new_square->color.g = ft_atoi(rgb[1]);
-	new_square->color.b = ft_atoi(rgb[2]);
+	new_square->color = *get_color(rgb);
 	new_square->height = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->square, ft_lstnew(new_square));
 }
@@ -75,9 +71,7 @@ void	get_cylinder(t_scene *scene, char **data)
 	new_cylinder->ori.x = ft_atof(ori[0]);
 	new_cylinder->ori.y = ft_atof(ori[1]);
 	new_cylinder->ori.z = ft_atof(ori[2]);
-	new_cylinder->color.r = ft_atoi(rgb[0]);
-	new_cylinder->color.g = ft_atoi(rgb[1]);
-	new_cylinder->color.b = ft_atoi(rgb[2]);
+	new_cylinder->color = *get_color(rgb);
 	new_cylinder->diameter = ft_atoi(data[3]);
 	new_cylinder->height = ft_atoi(data[4]);
 	ft_lstadd_front(&scene->cylinder, ft_lstnew(new_cylinder));
@@ -106,9 +100,7 @@ void	get_triangle(t_scene *scene, char **data)
 	new_triangle->cordo3.x = ft_atof(cordo3[0]);
 	new_triangle->cordo3.y = ft_atof(cordo3[1]);
 	new_triangle->cordo3.z = ft_atof(cordo3[2]);
-	new_triangle->color.r = ft_atof(rgb[0]);
-	new_triangle->color.g = ft_atof(rgb[1]);
-	new_triangle->color.b = ft_atof(rgb[2]);
+	new_triangle->color = *get_color(rgb);
 	ft_lstadd_front(&scene->triangle, ft_lstnew(new_triangle));
 }
 
@@ -130,8 +122,6 @@ void	get_plane(t_scene *scene, char **data)
 	new_plane->ori.x = ft_atof(ori[0]);
 	new_plane->ori.y = ft_atof(ori[1]);
 	new_plane->ori.z = ft_atof(ori[2]);
-	new_plane->color.r = ft_atoi(rgb[0]);
-	new_plane->color.g = ft_atoi(rgb[1]);
-	new_plane->color.b = ft_atoi(rgb[2]);
+	new_plane->color = *get_color(rgb);
 	ft_lstadd_front(&scene->plane, ft_lstnew(new_plane));
 }

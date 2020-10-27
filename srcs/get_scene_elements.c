@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 16:14:11 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:23:45 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ void	get_amlight(t_scene *scene, char **data)
 	amlight->color = *get_color(rgb);
 	scene->amli.ratio = ft_atof(data[1]);
 	scene->amli = *amlight;
-	//scene->amli.color.r = ft_atoi(rgb[0]);
-	//scene->amli.color.g = ft_atoi(rgb[1]);
-	//scene->amli.color.b = ft_atoi(rgb[2]);
-	printf("color : %d\n", scene->amli.color.r);
 }
 
 void	get_camera(t_scene *scene, char **data)
@@ -70,9 +66,7 @@ void	get_light(t_scene *scene, char **data)
 	new_light->cordo.x = ft_atof(cordo[0]);
 	new_light->cordo.y = ft_atof(cordo[1]);
 	new_light->cordo.z = ft_atof(cordo[2]);
-	new_light->color.r = ft_atoi(rgb[0]);
-	new_light->color.g = ft_atoi(rgb[1]);
-	new_light->color.b = ft_atoi(rgb[2]);
+	new_light->color = *get_color(rgb);
 	new_light->ratio = ft_atof(data[2]);
 	ft_lstadd_front(&scene->light, ft_lstnew(new_light));
 }
