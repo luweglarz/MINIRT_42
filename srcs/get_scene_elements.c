@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 11:25:22 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:29:13 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	get_light(t_scene *scene, char **data)
 		write(2, "error", 5);
 	cord = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
-	new_light->cord.x = ft_atof(cord[0]);
-	new_light->cord.y = ft_atof(cord[1]);
-	new_light->cord.z = ft_atof(cord[2]);
+	new_light->cord = *get_cord(cord);
 	new_light->color = *get_color(rgb);
 	new_light->ratio = ft_atof(data[2]);
 	ft_lstadd_front(&scene->light, ft_lstnew(new_light));
