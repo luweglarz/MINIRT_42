@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 16:24:50 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:08:31 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ void	get_square(t_scene *scene, char **data)
 	new_square->cordo.x = ft_atof(cordo[0]);
 	new_square->cordo.y = ft_atof(cordo[1]);
 	new_square->cordo.z = ft_atof(cordo[2]);
-	new_square->ori.x = ft_atof(ori[0]);
-	new_square->ori.y = ft_atof(ori[1]);
-	new_square->ori.z = ft_atof(ori[2]);
+	new_square->ori = *get_orientation(ori);
 	new_square->color = *get_color(rgb);
 	new_square->height = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->square, ft_lstnew(new_square));
@@ -68,9 +66,7 @@ void	get_cylinder(t_scene *scene, char **data)
 	new_cylinder->cordo.x = ft_atof(cordo[0]);
 	new_cylinder->cordo.y = ft_atof(cordo[1]);
 	new_cylinder->cordo.z = ft_atof(cordo[2]);
-	new_cylinder->ori.x = ft_atof(ori[0]);
-	new_cylinder->ori.y = ft_atof(ori[1]);
-	new_cylinder->ori.z = ft_atof(ori[2]);
+	new_cylinder->ori = *get_orientation(ori);
 	new_cylinder->color = *get_color(rgb);
 	new_cylinder->diameter = ft_atoi(data[3]);
 	new_cylinder->height = ft_atoi(data[4]);
@@ -119,9 +115,7 @@ void	get_plane(t_scene *scene, char **data)
 	new_plane->cordo.x = ft_atof(cordo[0]);
 	new_plane->cordo.y = ft_atof(cordo[1]);
 	new_plane->cordo.z = ft_atof(cordo[2]);
-	new_plane->ori.x = ft_atof(ori[0]);
-	new_plane->ori.y = ft_atof(ori[1]);
-	new_plane->ori.z = ft_atof(ori[2]);
+	new_plane->ori = *get_orientation(ori);
 	new_plane->color = *get_color(rgb);
 	ft_lstadd_front(&scene->plane, ft_lstnew(new_plane));
 }
