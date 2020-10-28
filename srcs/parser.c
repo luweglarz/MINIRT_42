@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 16:25:08 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:06:07 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_scene	*parsing_config(int fd)
 	char	*line;
 	int		ret;
 	t_scene	*scene;
-	t_light *light;
+
 	if (!(scene = malloc(sizeof(*scene))))
 		write(2, "error", 5);
 	init_scene(scene);
@@ -86,6 +86,5 @@ t_scene	*parsing_config(int fd)
 		free(line);
 		line = NULL;
 	}
-	light = scene->light->content;
 	return (scene);
 }

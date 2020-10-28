@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/27 16:23:45 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:06:43 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_resolution(t_scene *scene, char **data)
 void	get_amlight(t_scene *scene, char **data)
 {
 	char	**rgb;
-	t_amli *amlight;
+	t_amli	*amlight;
 
 	if (!(amlight = malloc(sizeof(t_rgb))))
 		write(2, "error", 5);
@@ -46,9 +46,7 @@ void	get_camera(t_scene *scene, char **data)
 	new_cam->cordo.x = ft_atof(cordo[0]);
 	new_cam->cordo.y = ft_atof(cordo[1]);
 	new_cam->cordo.z = ft_atof(cordo[2]);
-	new_cam->ori.x = ft_atof(ori[0]);
-	new_cam->ori.y = ft_atof(ori[1]);
-	new_cam->ori.z = ft_atof(ori[2]);
+	new_cam->ori = *get_orientation(ori);
 	new_cam->fov = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }
