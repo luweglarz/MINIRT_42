@@ -6,11 +6,11 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:25:05 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 13:20:06 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:23:49 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../../includes/minirt.h"
 
 t_rgb		*get_color(char **rgbtab)
 {
