@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 12:17:04 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:37:55 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_amlight(t_scene *scene, char **data)
 	char	**rgb;
 	t_amli	*amlight;
 
-	if (!(amlight = malloc(sizeof(t_rgb))))
+	if (!(amlight = malloc(sizeof(t_amli))))
 		error(ERR_MALLOC);
 	rgb = ft_split(data[2], ',');
 	amlight->color = *get_color(rgb);
@@ -62,5 +62,7 @@ void	get_light(t_scene *scene, char **data)
 	new_light->cord = *get_cord(cord);
 	new_light->color = *get_color(rgb);
 	new_light->ratio = ft_atof(data[2]);
+	if (new_light->ratio < 0.0 || new_light->ratio > 1.0)
+		error(ERR_ELEMENT);
 	ft_lstadd_front(&scene->light, ft_lstnew(new_light));
 }
