@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 10:59:38 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:27:01 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void			get_plane(t_scene *scene, char **data);
 
 t_rgb   		*get_color(char **rgbtab);
 t_vector		*get_orientation(char **ori);
+t_vector		*get_cord(char	**cord);
 #endif

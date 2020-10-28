@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:25:05 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 11:06:36 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:28:08 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,19 @@ t_vector	*get_orientation(char **ori)
 		write(2, "error", 5);
 	if (vector->y < -1.0 || vector->y > 1.0)
 		write(2, "error", 5);
-	if (vector->y < -1.0 || vector->y > 1.0)
+	if (vector->z < -1.0 || vector->y > 1.0)
 		write(2, "error", 5);
+	return (vector);
+}
+
+t_vector	*get_cord(char	**cord)
+{
+	t_vector	*vector;
+	
+	if (!(vector = malloc(sizeof(t_vector))))
+		write(2, "error", 5);
+	vector->x = ft_atof(cord[0]);
+	vector->y = ft_atof(cord[1]);
+	vector->z = ft_atof(cord[2]);
 	return (vector);
 }
