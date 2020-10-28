@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:25:05 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 12:16:20 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:20:06 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_vector	*get_orientation(char **ori)
 t_vector	*get_cord(char **cord)
 {
 	t_vector	*vector;
-	
+
 	if (!(vector = malloc(sizeof(t_vector))))
 		error(ERR_MALLOC);
 	vector->x = ft_atof(cord[0]);

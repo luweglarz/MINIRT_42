@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 12:15:01 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:21:08 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void			get_cylinder(t_scene *scene, char **data);
 void			get_triangle(t_scene *scene, char **data);
 void			get_plane(t_scene *scene, char **data);
 
-t_rgb   		*get_color(char **rgbtab);
+t_rgb			*get_color(char **rgbtab);
 t_vector		*get_orientation(char **ori);
 t_vector		*get_cord(char	**cord);
 
-void    error(int errorcode);
+void			error(int errorcode);
 #endif

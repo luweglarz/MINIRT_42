@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 12:22:31 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:20:36 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_strlenc(char *str, char c);
 int			ft_atoi(const char *nptr);
 int			ft_strlen(char *str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
-int	        ft_strcmp(char *s1, char *s2);
+int			ft_strcmp(char *s1, char *s2);
 
 float		ft_atof(char *nptr);
 
