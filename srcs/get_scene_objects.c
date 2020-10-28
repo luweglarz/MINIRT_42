@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 11:31:34 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:16:51 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_sphere(t_scene *scene, char **data)
 	char		**rgb;
 
 	if (!(new_sphere = malloc(sizeof(t_sphere))))
-		write(2, "error", 5);
+		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
 	new_sphere->cord = *get_cord(cord);
@@ -36,7 +36,7 @@ void	get_square(t_scene *scene, char **data)
 	char		**rgb;
 
 	if (!(new_square = malloc(sizeof(t_square))))
-		write(2, "error", 5);
+		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[4], ',');
@@ -55,7 +55,7 @@ void	get_cylinder(t_scene *scene, char **data)
 	char		**rgb;
 
 	if (!(new_cylinder = malloc(sizeof(t_cylinder))))
-		write(2, "error", 5);
+		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[5], ',');
@@ -76,7 +76,7 @@ void	get_triangle(t_scene *scene, char **data)
 	char		**rgb;
 
 	if (!(new_triangle = malloc(sizeof(t_triangle))))
-		write(2, "error", 5);
+		error(ERR_MALLOC);
 	cord1 = ft_split(data[1], ',');
 	cord2 = ft_split(data[2], ',');
 	cord3 = ft_split(data[3], ',');
@@ -96,7 +96,7 @@ void	get_plane(t_scene *scene, char **data)
 	char		**rgb;
 
 	if (!(new_plane = malloc(sizeof(t_plane))))
-		write(2, "error", 5);
+		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[3], ',');

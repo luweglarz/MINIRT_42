@@ -6,7 +6,7 @@
 #    By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 14:17:23 by lweglarz          #+#    #+#              #
-#    Updated: 2020/10/27 15:41:34 by lweglarz         ###   ########.fr        #
+#    Updated: 2020/10/28 11:51:14 by lweglarz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS= -Wall -Wextra -Werror
 
 SRCS=   srcs/get_scene_elements.c srcs/get_scene_objects.c srcs/parser.c srcs/lst_func.c \
 		srcs/utils/utils1.c srcs/utils/utils2.c srcs/utils/get_next_line.c srcs/utils/ft_split.c \
-		srcs/utilsdata.c
+		srcs/utilsdata.c srcs/parsing_error.c
 
 RM	= rm -f
 

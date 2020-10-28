@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 11:27:01 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:15:01 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define SQUARE "sq"
 # define CYLINDER "cy"
 # define TRIANLGE "tr"
+
+# define ERR_NBFILE -1
+# define ERR_FEWFILE -2
+# define ERR_SAVE -3
+# define ERR_MALLOC -4
+# define ERR_ELEMENT -5
 
 typedef struct	s_tab
 {
@@ -51,4 +57,6 @@ void			get_plane(t_scene *scene, char **data);
 t_rgb   		*get_color(char **rgbtab);
 t_vector		*get_orientation(char **ori);
 t_vector		*get_cord(char	**cord);
+
+void    error(int errorcode);
 #endif

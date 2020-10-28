@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:00:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 14:48:09 by lweglarz         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:16:34 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 	t_list	*new_elem;
 
 	if (!(new_elem = malloc(sizeof(t_list))))
-		return (NULL);
+		error(ERR_MALLOC);
 	new_elem->content = content;
 	new_elem->next = NULL;
 	return (new_elem);
