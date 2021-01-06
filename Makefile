@@ -6,9 +6,11 @@
 #    By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 14:17:23 by lweglarz          #+#    #+#              #
-#    Updated: 2020/10/28 13:23:35 by lweglarz         ###   ########.fr        #
+#    Updated: 2021/01/06 14:08:25 by lweglarz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+CC = clang
 
 NAME=minirt.a
 
@@ -23,14 +25,14 @@ RM	= rm -f
 OBJS = $(SRCS:.c=.o)
 
 .c.o:
-	cc $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 all: $(NAME)
 
 $(NAME): $(OBJS) includes/minirt.h
 
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@gcc main.c minirt.a
+	@$(CC) main.c minirt.a
 
 clean:
 	$(RM) $(OBJS)
