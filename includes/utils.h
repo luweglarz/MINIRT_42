@@ -17,6 +17,13 @@
 
 # define BUFFER_SIZE 128
 
+typedef struct	s_ray
+{
+	t_vector	origin;
+	t_vector	direction;
+	float		tmax;
+}			t_ray;
+
 void		ft_bzero(void *s, size_t n);
 
 char		*ft_strdup(char *s);
@@ -24,13 +31,13 @@ char		*ft_substr(char *s, int start, int len);
 char		*ft_strjoin(char *s1, char *s2);
 char		**ft_split(char const *s, char c);
 
-int			get_next_line(int fd, char **line);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-int			ft_strlenc(char *str, char c);
-int			ft_atoi(const char *nptr);
-int			ft_strlen(char *str);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-int			ft_strcmp(char *s1, char *s2);
+int		get_next_line(int fd, char **line);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strlenc(char *str, char c);
+int		ft_atoi(const char *nptr);
+int		ft_strlen(char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
 
 float		ft_atof(char *nptr);
 
