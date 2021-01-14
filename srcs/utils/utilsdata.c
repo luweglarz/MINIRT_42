@@ -15,7 +15,7 @@
 t_rgb		*get_color(char **rgbtab)
 {
 	t_rgb		*rgb;
-
+	
 	if (!(rgb = malloc(sizeof(t_rgb))))
 		error(ERR_MALLOC);
 	rgb->r = ft_atoi(rgbtab[0]);
