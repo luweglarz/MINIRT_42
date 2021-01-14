@@ -31,8 +31,8 @@ typedef struct		s_rgb
 
 typedef struct		s_reso
 {
-	int		w;
-	int		h;
+	unsigned int		w;
+	unsigned int		h;
 }					t_reso;
 
 typedef struct		s_amli
@@ -58,7 +58,7 @@ typedef struct		s_light
 typedef struct		s_sphere
 {
 	t_vector			cord;
-	float				diameter;
+	float				radius;
 	t_rgb				color;
 }					t_sphere;
 
@@ -96,7 +96,7 @@ typedef struct		s_triangle
 
 typedef struct		s_scene
 {
-	t_reso				resolution;
+	t_reso				reso;
 	t_amli				amli;
 	t_list				*camera;
 	t_list				*light;

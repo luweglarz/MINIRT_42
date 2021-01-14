@@ -20,7 +20,7 @@
 typedef struct	s_ray
 {
 	t_vector	origin;
-	t_vector	direction;
+	t_vector	dir;
 	float		tmax;
 }			t_ray;
 
@@ -34,7 +34,7 @@ typedef struct	s_img_data
 }				t_img_data;
 
 void		ft_bzero(void *s, size_t n);
-void    	my_pixel_put(t_img_data *data, int x, int y, int color);
+void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb);
 
 char		*ft_strdup(char *s);
 char		*ft_substr(char *s, int start, int len);
