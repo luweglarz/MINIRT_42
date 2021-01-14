@@ -24,7 +24,7 @@ void	get_sphere(t_scene *scene, char **data)
 	rgb = ft_split(data[3], ',');
 	new_sphere->cord = *get_cord(cord);
 	new_sphere->color = *get_color(rgb);
-	new_sphere->diameter = ft_atof(data[2]);
+	new_sphere->radius = ft_atof(data[2]);
 	ft_lstadd_front(&scene->sphere, ft_lstnew(new_sphere));
 }
 
