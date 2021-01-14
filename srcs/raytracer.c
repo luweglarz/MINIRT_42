@@ -43,7 +43,7 @@ void	sphereintersec(t_ray *ray, t_sphere *sph, double *t1, double *t2)
 	*t2 = (-B - discsqrt) / (2 * A);
 }
 
-void    raytosphere(t_ray ray, t_scene *scene, int t_min, int t_max)
+int    raytosphere(t_ray *ray, t_scene *scene, int t_min, int t_max)
 {
     t_list      *sphere_list;
     t_sphere    *sphere;
@@ -55,6 +55,7 @@ void    raytosphere(t_ray ray, t_scene *scene, int t_min, int t_max)
         // itere intersec sphere a tout les sphere
 
     }
+    // on va retourner la couleur ou alors 1 ou 0 si on a sphere ou pas 
 } 
 
 void    ray_init(t_ray *ray)
@@ -67,10 +68,11 @@ void    ray_init(t_ray *ray)
 	ray->dir.z = 1;
 }
 
-t_rgb   trace_ray()
+t_rgb   trace_ray(t_ray ray, t_scene *scene, int t_min, int t_max)
 {
     //grace au intersection et le .rt on va detecter quel ray lancer
-
+ //   if  (raytosphere(&ray, &scene, t_min, t_max) == 1)
+        //return (//color de la sphere);
 }
 void     ray_tracer(t_scene *scene)
 {
