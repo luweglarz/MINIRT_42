@@ -12,12 +12,15 @@
 
 #include "../../includes/minirt.h"
 
-void    my_pixel_put(t_img_data *data, int x, int y, int color)
+void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb)
 {
     char    *dst;
     int     offset = (y * data->line_length + x * 4);
-    
+    int     color;
+
+    offset = (y * data->line_length + x * 4);
     dst = data->addr + offset;
+    color = (rgb->r * 1000 + rgb->g) * 1000 + rgb->b;
     *(unsigned int*)dst = color;
 }
 
