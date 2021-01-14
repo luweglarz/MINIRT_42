@@ -24,7 +24,17 @@ typedef struct	s_ray
 	float		tmax;
 }			t_ray;
 
+typedef struct	s_img_data
+{
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_length;
+	int			endian;
+}				t_img_data;
+
 void		ft_bzero(void *s, size_t n);
+void    	my_pixel_put(t_img_data *data, int x, int y, int color);
 
 char		*ft_strdup(char *s);
 char		*ft_substr(char *s, int start, int len);
@@ -40,5 +50,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(char *s1, char *s2);
 
 float		ft_atof(char *nptr);
+double  	vec_dot(t_vector *v1, t_vector *v2);
 
+t_vector  vec_diff(t_vector *v1, t_vector *v2);
 #endif
