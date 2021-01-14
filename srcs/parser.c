@@ -22,8 +22,8 @@ t_tab		g_tab[9] = {
 
 void	*init_scene(t_scene *scene)
 {
-	scene->resolution.h = 0;
-	scene->resolution.w = 0;
+	scene->reso.h = 0;
+	scene->reso.w = 0;
 	scene->amli.ratio = 0;
 	scene->amli.color.r = 0;
 	scene->amli.color.g = 0;
