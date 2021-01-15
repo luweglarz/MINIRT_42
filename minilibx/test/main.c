@@ -1,5 +1,5 @@
 
-#include	"mlx.h"
+#include	"../../includes/mlx.h"
 #include	"mlx_int.h"
 
 #define	WIN1_SX		242

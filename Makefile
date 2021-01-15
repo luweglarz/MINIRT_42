@@ -18,7 +18,7 @@ FLAGS= -Wall -Wextra -Werror
 
 SRCS=   srcs/parser/get_scene_elements.c srcs/parser/get_scene_objects.c srcs/parser/parser.c srcs/utils/lst_func.c \
 		srcs/utils/utils1.c srcs/utils/utils2.c srcs/utils/get_next_line.c srcs/utils/ft_split.c \
-		srcs/utils/utilsdata.c srcs/parser/parsing_error.c srcs/raytracer/raytracer.c
+		srcs/utils/utilsdata.c srcs/utils/utilsmath.c srcs/parser/parsing_error.c srcs/raytracer/raytracer.c main.c
 
 RM	= rm -f
 
@@ -32,7 +32,6 @@ $(NAME): $(OBJS) includes/minirt.h
 
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@$(CC) main.c -o miniRT minirt.a -lm -lXext -lX11
 
 clean:
 	$(RM) $(OBJS)

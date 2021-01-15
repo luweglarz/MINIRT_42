@@ -20,7 +20,9 @@ void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb)
 
     offset = (y * data->line_length + x * 4);
     dst = data->addr + offset;
-    color = (rgb->r * 1000 + rgb->g) * 1000 + rgb->b;
+    color = (rgb->r * 1000 + rgb->g) * 1000 + rgb->b;//naze
+ //a convertir en hexa
+    printf("color : %i\n", color);
     *(unsigned int*)dst = color;
 }
 
@@ -35,4 +37,5 @@ t_vector  vec_diff(t_vector *v1, t_vector *v2)
     v3.x = v1->x - v2->x;
     v3.y = v1->y - v2->y;
     v3.z = v1->z - v2->z;
+    return (v3);
 }

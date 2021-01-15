@@ -31,8 +31,8 @@ typedef struct		s_rgb
 
 typedef struct		s_reso
 {
-	unsigned int		w;
-	unsigned int		h;
+	int		w;
+	int		h;
 }					t_reso;
 
 typedef struct		s_amli

@@ -53,4 +53,5 @@ float		ft_atof(char *nptr);
 double  	vec_dot(t_vector *v1, t_vector *v2);
 
 t_vector  vec_diff(t_vector *v1, t_vector *v2);
+
 #endif
