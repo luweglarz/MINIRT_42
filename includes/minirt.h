@@ -20,11 +20,13 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+
 # include "lst_func.h"
 # include "mlx.h"
 # include "scene.h"
-# include "parser.h"
 # include "utils.h"
+# include "parser.h"
+# include "raytracer.h"
 
 # include <stdio.h>
 
