@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 	{
 		fd = open(argv[1], O_RDONLY);
 		scene = parsing_config(fd);
+		ray_tracer(scene);
 		close(fd);
 	}
 	if ((argc == 3) && (ft_strcmp(argv[2], "-save") == 0))

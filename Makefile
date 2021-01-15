@@ -16,9 +16,9 @@ NAME=minirt.a
 
 FLAGS= -Wall -Wextra -Werror
 
-SRCS=   srcs/get_scene_elements.c srcs/get_scene_objects.c srcs/parser.c srcs/lst_func.c \
+SRCS=   srcs/parser/get_scene_elements.c srcs/parser/get_scene_objects.c srcs/parser/parser.c srcs/utils/lst_func.c \
 		srcs/utils/utils1.c srcs/utils/utils2.c srcs/utils/get_next_line.c srcs/utils/ft_split.c \
-		srcs/utils/utilsdata.c srcs/parsing_error.c
+		srcs/utils/utilsdata.c srcs/parser/parsing_error.c srcs/raytracer/raytracer.c
 
 RM	= rm -f
 
@@ -32,7 +32,7 @@ $(NAME): $(OBJS) includes/minirt.h
 
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@$(CC) main.c minirt.a
+	@$(CC) main.c -o miniRT minirt.a -lm -lXext -lX11
 
 clean:
 	$(RM) $(OBJS)
