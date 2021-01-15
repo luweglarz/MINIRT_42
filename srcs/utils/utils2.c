@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
+#include "../../includes/minirt.h"
 
 void	ft_bzero(void *s, size_t n)
 {
