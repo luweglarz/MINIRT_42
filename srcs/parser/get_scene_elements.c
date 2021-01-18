@@ -14,8 +14,8 @@
 
 void	get_resolution(t_scene *scene, char **data)
 {
-	scene->reso.h = ft_atoi(data[1]);
-	scene->reso.w = ft_atoi(data[2]);
+	scene->reso.w = ft_atoi(data[1]);
+	scene->reso.h = ft_atoi(data[2]);
 	if (scene->reso.h <= 0 || scene->reso.w <= 0)
 		error(ERR_ELEMENT);
 }
