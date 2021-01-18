@@ -17,9 +17,9 @@
 
 typedef struct		s_vector
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }					t_vector;
 
 typedef struct		s_rgb
