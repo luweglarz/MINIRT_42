@@ -27,11 +27,4 @@
 # include "raytracer.h"
 # include <stdio.h>
 
-typedef struct	s_mlx
-{
-	void		*mlx;
-	void		*mlx_win;
-	t_img_data	img;
-}				t_mlx;
-
 #endif

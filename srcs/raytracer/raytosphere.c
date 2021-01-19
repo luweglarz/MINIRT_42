@@ -27,7 +27,7 @@ int		sphereintersec(t_ray *ray, t_sphere *sphere, double *t1, double *t2)
 	discriminant = (b * b) - 4 * (a * c);
 	if (discriminant < 0)
 	{
-		*t1 = 2000000.0;
+		*t1 = 20000.0;
 		*t2 = 1.0;
 		return (0);
 	}
@@ -50,14 +50,19 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 	{
 		sphere = sphere_list->content;
 		sphereintersec(ray, sphere, &t1, &t2);
-		if (t1 > 1.0 && t1 < INFINITY)
+		if (t1 > 1.0 && t1 < 20000.0)
+		{
 			closest_sphere = 1;
-		if (t2 > 1.0 && t1 < INFINITY)
+		    *obj_color = sphere->color;
+		}
+		if (t2 > 1.0 && t1 < 20000.0)
+		{
 			closest_sphere = 1;
+		    *obj_color = sphere->color;
+		}
 		sphere_list = sphere_list->next;
 	}
 	if (closest_sphere == -1)
 		return (0);
-	*obj_color = sphere->color;
 	return (1);
 }
