@@ -28,31 +28,30 @@ int	sphereintersec(t_ray *ray, t_sphere *sphere, double *t1, double *t2)
 	double	discsqrt = sqrt(discriminant);
 	*t1 = (-B + discsqrt) / (2 * A);
 	*t2 = (-B - discsqrt) / (2 * A);
-	//printf("discri %f\n", discriminant);
 	return (1);
 }
 
-int    raytosphere(t_ray *ray, t_scene *scene, double t_min, double t_max)
+int	raytosphere(t_ray *ray, t_scene *scene,
+	double t_min, double t_max)
 {
-   	t_list      *sphere_list;
-	t_sphere    *sphere;
+   	t_list      	*sphere_list;
+	t_sphere    	*sphere;
 	double		t1;
 	double		t2;
-	int			closest_sphere;
-	int i =0;
+	int		closest_sphere;
+
   	sphere_list = scene->sphere;
 	closest_sphere = -1;
-    while(sphere_list->next)
-    {
-        sphere = sphere_list->content;
+    	while(sphere_list->next)
+    	{
+       		sphere = sphere_list->content;
 		sphereintersec(ray, sphere, &t1, &t2);
 		if (t1 > t_min && t1 < t_max)
 			closest_sphere = 1;
 		if (t2 > t_min && t1 < t_max) 
 			closest_sphere = 1;
 		sphere_list = sphere_list->next;
-		i++;
-    }
+    	}
 	if (closest_sphere == -1)
 		return (0); //pas d'intersec de sphere
 	return (1); // intersec de sphere
@@ -60,7 +59,7 @@ int    raytosphere(t_ray *ray, t_scene *scene, double t_min, double t_max)
 
 void    ray_init(t_ray *ray)
 {
-    ray->origin.x = 0.0;
+		ray->origin.x = 0.0;
 	ray->origin.y = 0.0;
 	ray->origin.z = 0.0;
 	ray->dir.x = 0.0;
@@ -71,18 +70,13 @@ void    ray_init(t_ray *ray)
 
 t_rgb   trace_ray(t_ray ray, t_scene *scene, double t_min, double t_max)
 {
-	t_sphere	*sphere;
 	t_rgb		background;
-
-	background.r = 73;
-	background.g = 255;
-	background.b = 48;
-	sphere = scene->sphere->content;
+	t_rgb		obj_color;
+	background.r = 0;
+	background.g = 0;
+	background.b = 0;
 	if(raytosphere(&ray, scene, t_min, t_max) == 1)
 		return (sphere->color);
-    //grace au intersection et le .rt on va detecter quel ray lancer
- //   if  (raytosphere(&ray, &scene, t_min, t_max) == 1)
-        //return (//color de la sphere);
 	return (background);
 }
 void     ray_tracer(t_scene *scene)
@@ -100,7 +94,6 @@ void     ray_tracer(t_scene *scene)
     img.img = mlx_new_image(mlx, scene->reso.w, scene->reso.h);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_length, &img.endian);
     x = -scene->reso.w/2;
-    //y = -scene->reso.h/2;
 	y = 0;
     ray_init(&ray);
 	printf("le x = %i\n",x );
@@ -112,15 +105,15 @@ void     ray_tracer(t_scene *scene)
 			 y = -scene->reso.h/2;
 		    while (y < scene->reso.h/2)
 		    {
-			    ray.dir.x = x * 1.0 / scene->reso.w;
-			    ray.dir.y = y * 1.0 / scene->reso.h;
+			    ray.dir.x = x * 1920.0 / scene->reso.w;
+			    ray.dir.y = y * 1080.0 / scene->reso.h;
 			    color = trace_ray(ray, scene, 1.0, 2000000.0);
-			    my_pixel_put(&img, scene->reso.w/2 + x, scene->reso.h/2 - y - 1, &color); 
-
+				my_pixel_put(&img, scene->reso.w / 2 + x,
+				scene->reso.h / 2 - y - 1, &color);
 			    y++;
-		    }
-        	x++;
-    	}
+			}
+			x++;
+		}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
