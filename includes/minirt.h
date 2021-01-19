@@ -6,7 +6,7 @@
 /*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:56:38 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/28 11:49:44 by lweglarz         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:56:12 by lweglarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-
-
 # include "lst_func.h"
-# include "mlx.h"
+# include "../minilibx/mlx.h"
 # include "scene.h"
 # include "utils.h"
 # include "parser.h"
 # include "raytracer.h"
-
 # include <stdio.h>
+
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*mlx_win;
+	t_img_data	img;
+}				t_mlx;
 
 #endif

@@ -14,7 +14,6 @@
 
 void	error(int errorcode)
 {
-    // a voir fonction perror et strerror
 	if (errorcode == ERR_NBFILE)
 		write(STDERR_FILENO, "Too much arguments", 18);
 	if (errorcode == ERR_FEWFILE)
