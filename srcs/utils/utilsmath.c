@@ -21,7 +21,6 @@ void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb)
     offset = (y * data->line_length + x * 4);
     dst = data->addr + offset;
     color = (rgb->r << 16 | rgb->g << 8 | rgb->b);
-   // printf("color : %i\n", color);
    *(unsigned int*)dst = color;
 }
 
