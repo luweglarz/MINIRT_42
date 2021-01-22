@@ -57,21 +57,19 @@ void	ray_tracer(t_scene *scene)
 	t_rgb		color;
 	t_ray		ray;
 
-	x = -scene->reso.w / 2;
-	y = 0;
+	x = -scene->reso.w / 2 - 1;
+	y = -1;
 	init_mlx(&mlx_session, scene);
 	ray_init(&ray);
-	while (x < scene->reso.w / 2)
+	while (++x < scene->reso.w / 2)
 	{
 		y = -scene->reso.h / 2;
-		while (y < scene->reso.h / 2)
+		while (++y < scene->reso.h / 2)
 		{
 			color = trace_ray(ray, scene, x, y);
 			my_pixel_put(&mlx_session.img, scene->reso.w / 2 + x,
 			scene->reso.h / 2 - y - 1, &color);
-			y++;
 		}
-		x++;
 	}
 	mlx_put_image_to_window(mlx_session.mlx,
 	mlx_session.mlx_win, mlx_session.img.img, 0, 0);

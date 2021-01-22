@@ -55,7 +55,7 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 			closest_sphere = 1;
 		    *obj_color = sphere->color;
 		}
-		if (t2 > 1.0 && t1 < INFNITY)
+		if (t2 > 1.0 && t1 < INFINITY)
 		{
 			closest_sphere = 1;
 		    *obj_color = sphere->color;
