@@ -42,27 +42,27 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 	t_sphere		*sphere;
 	double			t1;
 	double			t2;
-	int				closest_sphere;
+	int				ray_t;
 
 	sphere_list = scene->sphere;
-	closest_sphere = -1;
+	ray_t = -1;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
 		sphereintersec(ray, sphere, &t1, &t2);
 		if (t1 > 1.0 && t1 < INFINITY)
 		{
-			closest_sphere = 1;
+			ray_t = t1;
 		    *obj_color = sphere->color;
 		}
-		if (t2 > 1.0 && t1 < INFINITY)
+		if (t2 > 1.0 && t2 < INFINITY)   //trouver un moyen de de mettre ca dans la fonction au dessus
 		{
-			closest_sphere = 1;
+			ray_t = t2;
 		    *obj_color = sphere->color;
 		}
 		sphere_list = sphere_list->next;
 	}
-	if (closest_sphere == -1)
+	if (ray_t == -1)
 		return (0);
 	return (1);
 }

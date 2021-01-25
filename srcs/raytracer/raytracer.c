@@ -57,8 +57,8 @@ void	ray_tracer(t_scene *scene)
 	t_rgb		color;
 	t_ray		ray;
 
-	x = -scene->reso.w / 2 - 1;
-	y = -1;
+	x = -scene->reso.w / 2;
+	y = 0;
 	init_mlx(&mlx_session, scene);
 	ray_init(&ray);
 	while (++x < scene->reso.w / 2)
