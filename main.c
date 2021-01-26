@@ -24,9 +24,7 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		scene = parsing_config(fd);
 		close(fd);
-		printf("test1\n");
 		ray_tracer(scene);
-		printf("test2\n");
 	}
 	if ((argc == 3) && (ft_strcmp(argv[2], "-save") == 0))
 		write(1, "screenshot", 11);

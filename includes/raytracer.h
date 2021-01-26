@@ -22,7 +22,8 @@ typedef struct	s_mlx
 	t_img_data	img;
 }				t_mlx;
 
-int		sphereintersec(t_ray *ray, t_sphere *sphere, double *t1, double *t2);
+void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t);
+void	sphere_intersec_color(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_color);
 int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color);
 void	ray_init(t_ray *ray);
 void	init_mlx(t_mlx *mlx_session, t_scene *scene);

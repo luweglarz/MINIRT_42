@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-int		sphereintersec(t_ray *ray, t_sphere *sphere, double *t1, double *t2)
+void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 {
 	t_vector	dist;
 	double		a;
@@ -27,42 +27,45 @@ int		sphereintersec(t_ray *ray, t_sphere *sphere, double *t1, double *t2)
 	discriminant = (b * b) - 4 * (a * c);
 	if (discriminant < 0)
 	{
-		*t1 = INFINITY;
-		*t2 = 1.0;
-		return (0);
+		t[0] = INFINITY;
+		t[1] = 1.0;
+		return ;
 	}
-	*t1 = (-b + sqrt(discriminant)) / (2 * a);
-	*t2 = (-b - sqrt(discriminant)) / (2 * a);
-	return (1);
+	t[0] = (-b + sqrt(discriminant)) / (2 * a);
+	t[1] = (-b - sqrt(discriminant)) / (2 * a);
+}
+
+void	sphere_intersec_color(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_color)
+{
+			if (t[0] > 1.0 && t[0] < INFINITY && t[0] < *ray_t)
+		{
+			*ray_t = t[0];
+		    *obj_color = sphere->color;
+		}
+		if (t[1] > 1.0 && t[1] < INFINITY && t[1] < *ray_t)   //trouver un moyen de de mettre ca dans la fonction au dessus
+		{
+			*ray_t = t[1];
+		    *obj_color = sphere->color;
+		}
 }
 
 int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;
-	double			t1;
-	double			t2;
-	int				ray_t;
+	double			t[2];
+	double			ray_t;
 
 	sphere_list = scene->sphere;
-	ray_t = -1;
+	ray_t = INFINITY;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-		sphereintersec(ray, sphere, &t1, &t2);
-		if (t1 > 1.0 && t1 < INFINITY)
-		{
-			ray_t = t1;
-		    *obj_color = sphere->color;
-		}
-		if (t2 > 1.0 && t2 < INFINITY)   //trouver un moyen de de mettre ca dans la fonction au dessus
-		{
-			ray_t = t2;
-		    *obj_color = sphere->color;
-		}
+		sphere_intersec_equation(ray, sphere, t);
+		sphere_intersec_color(t, &ray_t,sphere, obj_color);
 		sphere_list = sphere_list->next;
 	}
-	if (ray_t == -1)
+	if (ray_t == INFINITY)
 		return (0);
 	return (1);
 }
