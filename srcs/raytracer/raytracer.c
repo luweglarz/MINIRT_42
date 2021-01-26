@@ -67,6 +67,7 @@ void	ray_tracer(t_scene *scene)
 		while (++y < scene->reso.h / 2)
 		{
 			color = trace_ray(ray, scene, x, y);
+			//printf("color %i\n", color.r);
 			my_pixel_put(&mlx_session.img, scene->reso.w / 2 + x,
 			scene->reso.h / 2 - y - 1, &color);
 		}

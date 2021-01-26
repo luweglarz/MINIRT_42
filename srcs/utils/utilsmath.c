@@ -29,54 +29,54 @@ double  vec_dot(t_vector *v1, t_vector *v2)
     return (v1->x * v2->x +  v1->y * v2->y + v1->z * v2->z);
 }
 
-t_vector  vec_diff(t_vector *v1, t_vector *v2)
+t_vector  vec_diff(t_vector v1, t_vector v2)
 {
     t_vector    v3;
-    v3.x = v1->x - v2->x;
-    v3.y = v1->y - v2->y;
-    v3.z = v1->z - v2->z;
+    v3.x = v1.x - v2.x;
+    v3.y = v1.y - v2.y;
+    v3.z = v1.z - v2.z;
     return (v3);
 }
 
-t_vector  vec_multipli_coeff(t_vector *v1, double coeff)
+t_vector  vec_multipli_coeff(t_vector v1, double coeff)
 {
     t_vector    v3;
-    v3.x = v1->x * coeff;
-    v3.y = v1->x * coeff;
-    v3.z = v1->z * coeff;
+    v3.x = v1.x * coeff;
+    v3.y = v1.y * coeff;
+    v3.z = v1.z * coeff;
     return (v3);
 }
 
-t_rgb   rgb_multipli(t_rgb *color, double coeff)
+t_rgb   rgb_multipli(t_rgb color, double coeff)
 {
     t_rgb    rgb;
-    rgb.r = color->r * coeff;
-    rgb.g = color->g * coeff;
-    rgb.b = color->b * coeff;
-    return (color);
+    rgb.r = color.r * coeff;
+    rgb.g = color.g * coeff;
+    rgb.b = color.b * coeff;
+    return (rgb);
 }
 
-t_vector  vec_add(t_vector *v1, t_vector *v2)
+t_vector  vec_add(t_vector v1, t_vector v2)
 {    
     t_vector    v3;
-    v3.x = v1->x + v2->x;
-    v3.y = v1->y + v2->y;
-    v3.z = v1->z + v2->z;
+    v3.x = v1.x + v2.x;
+    v3.y = v1.y + v2.y;
+    v3.z = v1.z + v2.z;
     return (v3);
 }
 
-t_vector   vec_div(t_vector *v1, double nb)
+t_vector   vec_div(t_vector v1, double nb)
 {    
     t_vector    v3;
-    v3.x = v1->x / nb;
-    v3.y = v1->y / nb;
-    v3.z = v1->z / nb;
+    v3.x = v1.x / nb;
+    v3.y = v1.y / nb;
+    v3.z = v1.z / nb;
     return (v3);
 }
 
-double      vec_length(t_vector *v1)
+double      vec_length(t_vector v1)
 {
     double  power;
-    power = pow(v1->x, 2) + pow(v1->y, 2) + pow(v1->z, 2);
+    power = pow(v1.x, 2) + pow(v1.y, 2) + pow(v1.z, 2);
     return (sqrt(power));
 }
