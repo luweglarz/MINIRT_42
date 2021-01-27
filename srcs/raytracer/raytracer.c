@@ -27,9 +27,9 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
 	t_rgb	background;
 	t_rgb	obj_color;
 
-	background.r = 0;
-	background.g = 0;
-	background.b = 0;
+	background.r = 255;
+	background.g = 255;
+	background.b = 255;
     ray.dir.x = x * 1.0 / scene->reso.w;
     ray.dir.y = y * 1.0 / scene->reso.h;
 	if (raytosphere(&ray, scene, &obj_color) == 1)

@@ -24,9 +24,9 @@ void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb)
    *(unsigned int*)dst = color;
 }
 
-double  vec_dot(t_vector *v1, t_vector *v2)
+double  vec_dot(t_vector v1, t_vector v2)
 {
-    return (v1->x * v2->x +  v1->y * v2->y + v1->z * v2->z);
+    return (v1.x * v2.x +  v1.y * v2.y + v1.z * v2.z);
 }
 
 t_vector  vec_diff(t_vector v1, t_vector v2)
@@ -47,21 +47,23 @@ t_vector  vec_multipli_coeff(t_vector v1, double coeff)
     return (v3);
 }
 
-t_rgb   rgb_multipli(t_rgb color, double coeff)
+void   rgb_multipli(t_rgb *color, double coeff)
 {
-    t_rgb    rgb;
-    rgb.r = color.r * coeff;
-    rgb.g = color.g * coeff;
-    rgb.b = color.b * coeff;
-    return (rgb);
+    //t_rgb    rgb;
+   // rgb.r = color.r * coeff;
+   // rgb.g = color.g * coeff;
+   // rgb.b = color.b * coeff;
+   color->r *= coeff;
+   color->g *= coeff;
+   color->b *= coeff;
 }
 
 t_vector  vec_add(t_vector v1, t_vector v2)
 {    
     t_vector    v3;
     v3.x = v1.x + v2.x;
-    v3.y = v1.y + v2.y;
-    v3.z = v1.z + v2.z;
+    v3.x = v1.y + v2.y;
+    v3.x = v1.y + v2.y;
     return (v3);
 }
 

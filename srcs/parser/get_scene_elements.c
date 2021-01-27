@@ -62,6 +62,7 @@ void	get_light(t_scene *scene, char **data)
 	new_light->cord = *get_cord(cord);
 	new_light->color = *get_color(rgb);
 	new_light->ratio = ft_atof(data[2]);
+	printf("la lumiere : %f\n", new_light->cord.y);
 	if (new_light->ratio < 0.0 || new_light->ratio > 1.0)
 		error(ERR_ELEMENT);
 	ft_lstadd_front(&scene->light, ft_lstnew(new_light));
