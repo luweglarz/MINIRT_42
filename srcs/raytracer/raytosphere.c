@@ -77,11 +77,8 @@ void	sphere_intersec_t(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_co
 t_vector	ray_equation(t_ray *ray, double ray_t)
 {
 	t_vector	equa_ray;
-	t_vector	multipli;
 
-
-	multipli = vec_multipli_coeff(ray->dir, ray_t);
-	equa_ray = vec_add(ray->origin, multipli);
+	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
 	return(equa_ray);
 }
 
@@ -102,7 +99,7 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 		sphere_intersec_t(t, &ray_t, sphere, obj_color);
 		normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
 		normal = vec_div(normal, vec_length(normal));
-		//compute_light(ray_equation(ray, ray_t), normal, scene);
+		compute_light(ray_equation(ray, ray_t), normal, scene);
 		sphere_list = sphere_list->next;
 	}
 	if (ray_t == INFINITY)
