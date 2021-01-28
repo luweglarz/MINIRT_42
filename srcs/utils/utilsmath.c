@@ -20,7 +20,7 @@ void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb)
 
     offset = (y * data->line_length + x * 4);
     dst = data->addr + offset;
-    color = (rgb->r << 16 | rgb->g << 8 | rgb->b);
+   color = (rgb->r << 16 | rgb->g << 8 | rgb->b);
    *(unsigned int*)dst = color;
 }
 
@@ -47,15 +47,16 @@ t_vector  vec_multipli_coeff(t_vector v1, double coeff)
     return (v3);
 }
 
-void   rgb_multipli(t_rgb *color, double coeff)
+t_rgb   rgb_multipli(t_rgb *color, double coeff)
 {
-    //t_rgb    rgb;
-   // rgb.r = color.r * coeff;
-   // rgb.g = color.g * coeff;
-   // rgb.b = color.b * coeff;
-   color->r *= coeff;
-   color->g *= coeff;
-   color->b *= coeff;
+    t_rgb    rgb;
+    rgb.r = color->r * coeff;
+    rgb.g = color->g * coeff;
+    rgb.b = color->b * coeff;
+  // color->r *= coeff;
+   //color->g *= coeff;
+  // color->b *= coeff;
+  return (rgb);
 }
 
 t_vector  vec_add(t_vector v1, t_vector v2)

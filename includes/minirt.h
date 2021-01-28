@@ -13,6 +13,7 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include <stdint.h>
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>

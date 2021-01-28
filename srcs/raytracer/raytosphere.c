@@ -38,24 +38,26 @@ void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 double	compute_light(t_ray *ray, t_vector normal, t_scene *scene)
 {
 	double i;
-	double n_dot;
+	double normal_dot;
 	t_vector L;
 	t_list	*lights;
 	t_light	*light;
-
+	//(void)ray;
+	//(void)normal;
 	i = 0.0;
 	lights = scene->light;
 	while (lights->next)
 	{
-		i = 0.0;
+
 		light = lights->content;
 		i += scene->amli.ratio;
 		L = vec_diff(light->cord, ray->dir);
-		n_dot = vec_dot(normal, L); // marche pas
-		if (n_dot > 0)
-			i += light->ratio * n_dot / vec_length(normal) * vec_length(L);
+		normal_dot = vec_dot(normal, L);
+		if (normal_dot > 0)
+			i += light->ratio * normal_dot / vec_length(normal) * vec_length(L);
 		lights = lights->next;
 	}
+	//printf("%f\n", i);
 	return (i);
 }
 
@@ -102,7 +104,7 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)// mettre variable
 		normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
 		normal = vec_div(normal, vec_length(normal));
 		if (ray_t != INFINITY)
-			rgb_multipli(obj_color,compute_light(ray, normal, scene));
+			*obj_color = rgb_multipli(obj_color,compute_light(ray, normal, scene));
 		sphere_list = sphere_list->next;
 	}
 	if (ray_t == INFINITY)

@@ -30,7 +30,7 @@ void	get_amlight(t_scene *scene, char **data)
 	rgb = ft_split(data[2], ',');
 	amlight->color = *get_color(rgb);
 	scene->amli.ratio = ft_atof(data[1]);
-	scene->amli = *amlight;
+	//scene->amli = *amlight;
 }
 
 void	get_camera(t_scene *scene, char **data)

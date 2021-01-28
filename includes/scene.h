@@ -25,8 +25,8 @@ typedef struct		s_vector
 typedef struct		s_rgb
 {
 	int		r;
-	int		g;
-	int		b;
+	int 	g;
+	int 	b;
 }					t_rgb;
 
 typedef struct		s_reso
