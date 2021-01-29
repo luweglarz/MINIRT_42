@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../../includes/minirt.h"
 
 void    my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb)
 {
@@ -84,4 +84,16 @@ double      vec_length(t_vector v1)
     //printf("vector\n x: %f\n y: %f\n z: %f\n", v1.x, v1.y, v1.z);
    // power = pow(v1.x, 2) + pow(v1.y, 2) + pow(v1.z, 2);
     return (sqrt(vec_dot(v1, v1)));
+}
+
+t_vector	normalize(t_ray	*ray, double ray_t, t_sphere *sphere)
+{
+	t_vector	normal;
+
+	normal.x = 0;
+	normal.y = 0;
+	normal.z = 0;
+	normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
+	normal = vec_multipli_coeff(normal, 1.0 / vec_length(normal));
+	return (normal);
 }
