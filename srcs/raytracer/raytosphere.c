@@ -35,32 +35,32 @@ void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
 }
 
-double	compute_light(t_vector ray_equa, t_vector normal, t_scene *scene)
+double		compute_light(t_vector ray_equa, t_vector normal, t_scene *scene)
 {
-	double i;
-	double normal_dot;
-	t_vector L;
-	t_list	*lights;
-	t_light	*light;
-	i = 0.0;
+	double		intensity;
+	double		normal_dot;
+	t_vector	light_vec;
+	t_list		*lights;
+	t_light		*light;
+
+	intensity = 0.0;
 	lights = scene->light;
 	while (lights->next)
 	{
 		light = lights->content;
-		i += scene->amli.ratio;
-		L = vec_diff(light->cord, ray_equa);
-		normal_dot = vec_dot(normal, L);
+		intensity += scene->amli.ratio;
+		light_vec = vec_diff(light->cord, ray_equa);
+		normal_dot = vec_dot(normal, light_vec);
 		if (normal_dot > 0) // la normal dot est toujours negatif
-			i += light->ratio * normal_dot / (vec_length(normal) * vec_length(L));
-			//printf("second i: %f\n", i);
+			intensity += light->ratio * normal_dot /
+			(vec_length(normal) * vec_length(light_vec));
 		lights = lights->next;
 	}
-	printf("last i: %f\n", i);
-	return (i);
+	return (intensity);
 }
 
-
-void	sphere_intersec_t(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_color)
+void		sphere_intersec_t(double *t,
+double *ray_t, t_sphere *sphere, t_rgb *obj_color)
 {
 	if (t[0] > 1.0 && t[0] < INFINITY && t[0] < *ray_t)
 	{
@@ -70,42 +70,36 @@ void	sphere_intersec_t(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_co
 	if (t[1] > 1.0 && t[1] < INFINITY && t[1] < *ray_t)
 	{
 		*ray_t = t[1];
-		 *obj_color = sphere->color;
+		*obj_color = sphere->color;
 	}
 }
 
 t_vector	ray_equation(t_ray *ray, double ray_t)
 {
 	t_vector	equa_ray;
-	printf("x %f\n y %f\n z %f\n",ray->dir.x , ray->dir.y, ray->dir.z);
+
 	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
-	return(equa_ray);
+	return (equa_ray);
 }
 
-int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)// mettre variable obj color dans struct scen ??
+int			raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;
 	double			t[2];
 	double			ray_t;
-	t_vector		normal;
 
 	sphere_list = scene->sphere;
 	ray_t = INFINITY;
-	normal.x = 0;
-	normal.y = 0;
-	normal.z = 0;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
 		sphere_intersec_equation(ray, sphere, t);
 		sphere_intersec_t(t, &ray_t, sphere, obj_color);
 		if (ray_t != INFINITY)
-		{
-			normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
-			normal = vec_multipli_coeff(normal, 1.0 / vec_length(normal));
-			*obj_color = rgb_multipli(obj_color,compute_light(ray_equation(ray, ray_t), normal, scene));
-		}
+			*obj_color = rgb_multipli(obj_color,
+			compute_light(ray_equation(ray, ray_t),
+			normalize(ray, ray_t, sphere), scene));
 		sphere_list = sphere_list->next;
 	}
 	if (ray_t == INFINITY)

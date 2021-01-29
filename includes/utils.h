@@ -52,10 +52,10 @@ int				ft_strcmp(char *s1, char *s2);
 float			ft_atof(char *nptr);
 double			vec_dot(t_vector v1, t_vector v2);
 
-t_vector  vec_diff(t_vector v1, t_vector v2);
-t_vector  vec_multipli_coeff(t_vector v1, double coeff);
-t_vector  vec_add(t_vector v1, t_vector v2);
-t_vector   vec_div(t_vector v1, double nb);
-double      vec_length(t_vector v1);
-t_rgb   rgb_multipli(t_rgb *color, double coeff);
+t_vector  		vec_diff(t_vector v1, t_vector v2);
+t_vector  		vec_multipli_coeff(t_vector v1, double coeff);
+t_vector 	 	vec_add(t_vector v1, t_vector v2);
+t_vector   		vec_div(t_vector v1, double nb);
+double      	vec_length(t_vector v1);
+t_rgb   		rgb_multipli(t_rgb *color, double coeff);
 #endif

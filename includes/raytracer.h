@@ -30,4 +30,5 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene);
 t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y);
 void	ray_tracer(t_scene *scene);
 double	compute_light(t_vector ray_equa, t_vector normal, t_scene *scene);
+t_vector	normalize(t_ray	*ray, double ray_t, t_sphere *sphere);
 #endif
