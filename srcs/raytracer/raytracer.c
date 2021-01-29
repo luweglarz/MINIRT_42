@@ -30,8 +30,8 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
 	background.r = 0;
 	background.g = 0;
 	background.b = 0;
-    ray.dir.x = x * 1.0 / scene->reso.w;
-    ray.dir.y = y * 1.0 / scene->reso.h;
+	ray.dir.x = x * 1.0 / scene->reso.w;
+	ray.dir.y = y * 1.0 / scene->reso.h;
 	if (raytosphere(&ray, scene, &obj_color) == 1)
 		return (obj_color);
 	return (background);
@@ -45,7 +45,7 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 	mlx_session->img.img =
 	mlx_new_image(mlx_session->mlx, scene->reso.w, scene->reso.h);
 	mlx_session->img.addr =
-	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp, 
+	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp,
 	&mlx_session->img.line_length, &mlx_session->img.endian);
 }
 
@@ -67,7 +67,6 @@ void	ray_tracer(t_scene *scene)
 		while (++y < scene->reso.h / 2)
 		{
 			color = trace_ray(ray, scene, x, y);
-			//printf("color : %d\n", color.r);
 			my_pixel_put(&mlx_session.img, scene->reso.w / 2 + x,
 			scene->reso.h / 2 - y - 1, &color);
 		}
