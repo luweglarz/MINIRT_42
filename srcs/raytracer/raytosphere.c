@@ -35,29 +35,27 @@ void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
 }
 
-double	compute_light(t_ray *ray, t_vector normal, t_scene *scene)
+double	compute_light(t_vector ray_equa, t_vector normal, t_scene *scene)
 {
 	double i;
 	double normal_dot;
 	t_vector L;
 	t_list	*lights;
 	t_light	*light;
-	//(void)ray;
-	//(void)normal;
 	i = 0.0;
 	lights = scene->light;
 	while (lights->next)
 	{
-
 		light = lights->content;
 		i += scene->amli.ratio;
-		L = vec_diff(light->cord, ray->dir);
+		L = vec_diff(light->cord, ray_equa);
 		normal_dot = vec_dot(normal, L);
-		if (normal_dot > 0)
-			i += light->ratio * normal_dot / vec_length(normal) * vec_length(L);
+		if (normal_dot > 0) // la normal dot est toujours negatif
+			i += light->ratio * normal_dot / (vec_length(normal) * vec_length(L));
+			//printf("second i: %f\n", i);
 		lights = lights->next;
 	}
-	//printf("%f\n", i);
+	printf("last i: %f\n", i);
 	return (i);
 }
 
@@ -79,6 +77,7 @@ void	sphere_intersec_t(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_co
 t_vector	ray_equation(t_ray *ray, double ray_t)
 {
 	t_vector	equa_ray;
+	printf("x %f\n y %f\n z %f\n",ray->dir.x , ray->dir.y, ray->dir.z);
 	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
 	return(equa_ray);
 }
@@ -101,10 +100,12 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)// mettre variable
 		sphere = sphere_list->content;
 		sphere_intersec_equation(ray, sphere, t);
 		sphere_intersec_t(t, &ray_t, sphere, obj_color);
-		normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
-		normal = vec_div(normal, vec_length(normal));
 		if (ray_t != INFINITY)
-			*obj_color = rgb_multipli(obj_color,compute_light(ray, normal, scene));
+		{
+			normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
+			normal = vec_multipli_coeff(normal, 1.0 / vec_length(normal));
+			*obj_color = rgb_multipli(obj_color,compute_light(ray_equation(ray, ray_t), normal, scene));
+		}
 		sphere_list = sphere_list->next;
 	}
 	if (ray_t == INFINITY)

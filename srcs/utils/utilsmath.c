@@ -50,6 +50,7 @@ t_vector  vec_multipli_coeff(t_vector v1, double coeff)
 t_rgb   rgb_multipli(t_rgb *color, double coeff)
 {
     t_rgb    rgb;
+
     rgb.r = color->r * coeff;
     rgb.g = color->g * coeff;
     rgb.b = color->b * coeff;
@@ -79,7 +80,8 @@ t_vector   vec_div(t_vector v1, double nb)
 
 double      vec_length(t_vector v1)
 {
-    double  power;
-    power = pow(v1.x, 2) + pow(v1.y, 2) + pow(v1.z, 2);
-    return (sqrt(power));
+    //double  power;
+    //printf("vector\n x: %f\n y: %f\n z: %f\n", v1.x, v1.y, v1.z);
+   // power = pow(v1.x, 2) + pow(v1.y, 2) + pow(v1.z, 2);
+    return (sqrt(vec_dot(v1, v1)));
 }
