@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lweglarz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/01/19 15:54:56 by lweglarz         ###   ########.fr       */
+/*   Updated: 2021/02/01 19:50:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ typedef struct	s_mlx
 	t_img_data	img;
 }				t_mlx;
 
-void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t);
-void	sphere_intersec_t(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_color);
-int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color);
-void	ray_init(t_ray *ray);
-void	init_mlx(t_mlx *mlx_session, t_scene *scene);
-t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y);
-void	ray_tracer(t_scene *scene);
-double	compute_light(t_vector ray_equa, t_vector normal, t_scene *scene);
-t_vector	normalize(t_ray	*ray, double ray_t, t_sphere *sphere);
+void			init_mlx(t_mlx *mlx_session, t_scene *scene);
+
+void			ray_tracer(t_scene *scene);
+void			ray_init(t_ray *ray);
+t_rgb			trace_ray(t_ray ray, t_scene *scene, int x, int y);
+
+int				raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color);
+void			sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t);
+void			sphere_intersec_t(double *t, double *ray_t, t_sphere *sphere, t_rgb *obj_color);
+
+double			compute_light(t_vector ray_equa, t_vector normal, t_scene *scene);
+
 #endif

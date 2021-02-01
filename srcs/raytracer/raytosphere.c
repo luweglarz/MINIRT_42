@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytosphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lweglarz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/01/19 15:48:14 by lweglarz         ###   ########.fr       */
+/*   Updated: 2021/02/01 20:15:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,11 @@ void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 	if (discriminant < 0)
 	{
 		t[0] = INFINITY;
-		t[1] = 1.0;
+		t[1] = INFINITY;
 		return ;
 	}
 	t[0] = (-b + sqrt(discriminant)) / (2 * a);
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
-}
-
-double		compute_light(t_vector ray_equa, t_vector normal, t_scene *scene)
-{
-	double		intensity;
-	double		normal_dot;
-	t_vector	light_vec;
-	t_list		*lights;
-	t_light		*light;
-
-	intensity = 0.0;
-	lights = scene->light;
-	while (lights->next)
-	{
-		light = lights->content;
-		intensity += scene->amli.ratio;
-		light_vec = vec_diff(light->cord, ray_equa);
-		normal_dot = vec_dot(normal, light_vec);
-		if (normal_dot > 0) // la normal dot est toujours negatif
-			intensity += light->ratio * normal_dot /
-			(vec_length(normal) * vec_length(light_vec));
-		lights = lights->next;
-	}
-	return (intensity);
 }
 
 void		sphere_intersec_t(double *t,
@@ -74,14 +50,6 @@ double *ray_t, t_sphere *sphere, t_rgb *obj_color)
 	}
 }
 
-t_vector	ray_equation(t_ray *ray, double ray_t)
-{
-	t_vector	equa_ray;
-
-	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
-	return (equa_ray);
-}
-
 int			raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 {
 	t_list			*sphere_list;
@@ -95,11 +63,13 @@ int			raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 	{
 		sphere = sphere_list->content;
 		sphere_intersec_equation(ray, sphere, t);
-		sphere_intersec_t(t, &ray_t, sphere, obj_color);
+		sphere_intersec_t(t, &ray_t, sphere, obj_color);   
 		if (ray_t != INFINITY)
-			*obj_color = rgb_multipli(obj_color,
+		{
+			*obj_color = rgb_multipli(*obj_color, 
 			compute_light(ray_equation(ray, ray_t),
 			normalize(ray, ray_t, sphere), scene));
+		}
 		sphere_list = sphere_list->next;
 	}
 	if (ray_t == INFINITY)
