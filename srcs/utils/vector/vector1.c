@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:44:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/01 17:40:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/02 17:28:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ t_vector  vec_diff(t_vector v1, t_vector v2)
 t_vector  vec_multipli_coeff(t_vector v1, double coeff)
 {
     t_vector    v3;
+   // printf("vector 1:\n x: %f\n y: %f\n z: %f\n", v1.x, v1.y, v1.z);
     v3.x = v1.x * coeff;
+    //printf("printf y%f\n", v3.y = v1.y * coeff);
     v3.y = v1.y * coeff;
+   // printf("v3.y%f\n", v3.y);
     v3.z = v1.z * coeff;
     return (v3);
 }
@@ -34,8 +37,8 @@ t_vector  vec_add(t_vector v1, t_vector v2)
 {    
     t_vector    v3;
     v3.x = v1.x + v2.x;
-    v3.x = v1.y + v2.y;
-    v3.x = v1.y + v2.y;
+    v3.y = v1.y + v2.y;
+    v3.z = v1.z + v2.z;
     return (v3);
 }
 

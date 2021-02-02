@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:15:55 by user42            #+#    #+#             */
-/*   Updated: 2021/02/01 18:09:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/02 17:28:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_vector	ray_equation(t_ray *ray, double ray_t)
 {
 	t_vector	equa_ray;
 
-//	printf("ray: x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
-//	printf("ray_t : %f\n", ray_t);
+	//printf("ray:\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	//printf("ray_t : %f\n", ray_t);
 	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
-//	printf("equa_ray: x: %f\n y: %f\n z: %f\n", equa_ray.x, equa_ray.y, equa_ray.z);
+	//printf("equa_ray:\n x: %f\n y: %f\n z: %f\n", equa_ray.x, equa_ray.y, equa_ray.z);
 	return (equa_ray);
 }
