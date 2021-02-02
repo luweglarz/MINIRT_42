@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/01 20:15:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/02 20:49:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 		{
 			*obj_color = rgb_multipli(*obj_color, 
 			compute_light(ray_equation(ray, ray_t),
-			normalize(ray, ray_t, sphere), scene));
+			normalize(ray_equation(ray, ray_t), sphere->cord), scene));
 		}
 		sphere_list = sphere_list->next;
 	}

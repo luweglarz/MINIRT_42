@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/01 19:50:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/02 20:47:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ t_vector   		vec_div(t_vector v1, double nb);
 t_rgb   		rgb_multipli(t_rgb color, double coeff);
 void			my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb);
 int 			color_to_int(t_rgb rgb);
-t_vector		normalize(t_ray	*ray, double ray_t, t_sphere *sphere);
+t_vector		normalize(t_vector vec, t_vector sphere);
 t_vector		ray_equation(t_ray *ray, double ray_t);
 #endif

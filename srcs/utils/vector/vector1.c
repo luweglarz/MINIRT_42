@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:44:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/02 17:28:45 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/02 20:48:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,11 @@ t_vector   vec_div(t_vector v1, double nb)
     return (v3);
 }
 
-t_vector	normalize(t_ray	*ray, double ray_t, t_sphere *sphere)
+t_vector	normalize(t_vector vec, t_vector obj)
 {
 	t_vector	normal;
 
-	normal.x = 0;
-	normal.y = 0;
-	normal.z = 0;
-	normal = vec_diff(ray_equation(ray, ray_t), sphere->cord);
+	normal = vec_diff(vec, obj);
     normal = vec_multipli_coeff(normal, 1.0 / vec_length(normal));
 	return (normal);
 }
