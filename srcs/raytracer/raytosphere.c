@@ -64,7 +64,7 @@ int			raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 	t_list			*sphere_list;
 	t_sphere		*sphere;
 	double			ray_t; // en fait en envoi une fois la fonction qui va donner un ray_t temporaire  
-
+			// mettre ray_t dans la struct ray
 	sphere_list = scene->sphere;
 	ray_t = INFINITY;
 	while (sphere_list->next)
