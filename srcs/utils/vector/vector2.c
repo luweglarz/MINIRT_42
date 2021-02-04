@@ -6,20 +6,20 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:15:55 by user42            #+#    #+#             */
-/*   Updated: 2021/02/02 20:40:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 15:51:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minirt.h"
 
-double  vec_dot(t_vector v1, t_vector v2)
+double		vec_dot(t_vector v1, t_vector v2)
 {
-    return (v1.x * v2.x +  v1.y * v2.y + v1.z * v2.z);
+	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
-double      vec_length(t_vector v1)
+double		vec_length(t_vector v1)
 {
-    return (sqrt(vec_dot(v1, v1)));
+	return (sqrt(vec_dot(v1, v1)));
 }
 
 t_vector	ray_equation(t_ray *ray, double ray_t)
