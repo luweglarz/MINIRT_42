@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 16:59:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 17:17:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ t_rgb		trace_ray(t_ray ray, t_scene *scene, int x, int y);
 int			raytosphere(t_ray *ray, t_scene *scene);
 void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t);
 void		sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene);
-double		compute_light(t_vector ray_equa, t_vector normal, t_scene *scene);
+double		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene);
 
 #endif
