@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/03 19:26:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 11:53:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
+void	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 {
 	t_vector	dist;
 	double		a;
@@ -35,45 +35,44 @@ void		sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
 }
 
-void		sphere_intersec_color(double *ray_t, t_sphere *sphere, t_rgb *obj_color, t_ray *ray, t_scene *scene)
-{	
+void	sphere_intersec_color
+	(t_sphere *sphere, t_rgb *obj_color, t_ray *ray, t_scene *scene)
+{
 	double			t[2];
+
 	sphere_intersec_equation(ray, sphere, t);
-	if (t[0] > 1.0 && t[0] < INFINITY && t[0] < *ray_t)// ray_t temporaire blablabla
+	if (t[0] > 1.0 && t[0] < INFINITY && t[0] < ray->ray_t)
 	{
-		printf("1\n");
-		*ray_t = t[0];
+		ray->ray_t = t[0];
 		*obj_color = sphere->color;
-		*obj_color = rgb_multipli(*obj_color, 
-			compute_light(ray_equation(ray, *ray_t),// mettre la normal et ray equation en une seul fonction pour avoir un parameetre en moins idk
-			normalize(ray_equation(ray, *ray_t), sphere->cord), scene));
+		*obj_color = rgb_multipli(*obj_color,
+			compute_light(ray_equation(ray, ray->ray_t),
+			normalize(ray_equation(ray, ray->ray_t), sphere->cord), scene));
 	}
-	if (t[1] > 1.0 && t[1] < INFINITY)
+	if (t[1] > 1.0 && t[1] < INFINITY && t[1] < ray->ray_t)
 	{
-		printf("2\n");
-		*ray_t = t[1];
+		ray->ray_t = t[1];
 		*obj_color = sphere->color;
-		*obj_color = rgb_multipli(*obj_color, 
-			compute_light(ray_equation(ray, *ray_t),
-			normalize(ray_equation(ray, *ray_t), sphere->cord), scene));
+		*obj_color = rgb_multipli(*obj_color,
+			compute_light(ray_equation(ray, ray->ray_t),
+			normalize(ray_equation(ray, ray->ray_t), sphere->cord), scene));
 	}
 }
 
-int			raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
+int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;
-	double			ray_t; // en fait en envoi une fois la fonction qui va donner un ray_t temporaire  
 
 	sphere_list = scene->sphere;
-	ray_t = INFINITY;
+	ray->ray_t = INFINITY;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-		sphere_intersec_color(&ray_t, sphere, obj_color, ray, scene);
+		sphere_intersec_color(sphere, obj_color, ray, scene);
 		sphere_list = sphere_list->next;
 	}
-	if (ray_t == INFINITY)
+	if (ray->ray_t == INFINITY)
 		return (0);
 	return (1);
 }

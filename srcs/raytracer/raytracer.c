@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/03 14:53:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 11:55:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ray_init(t_ray *ray)
 t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
 {
 	t_rgb	obj_color;
-	t_rgb background;
+	t_rgb	background;
 
 	background.r = 0;
 	background.g = 0;

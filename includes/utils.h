@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/02 20:47:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 11:34:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef struct	s_ray
 {
 	t_vector	origin;
 	t_vector	dir;
-	float		tmax;
+	double		tmax;
+	double		ray_t;
 }				t_ray;
 
 typedef struct	s_img_data
