@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 11:34:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 16:24:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,16 @@ int				ft_strcmp(char *s1, char *s2);
 float			ft_atof(char *nptr);
 
 double			vec_dot(t_vector v1, t_vector v2);
-double      	vec_length(t_vector v1);
-t_vector  		vec_diff(t_vector v1, t_vector v2);
-t_vector  		vec_multipli_coeff(t_vector v1, double coeff);
-t_vector 	 	vec_add(t_vector v1, t_vector v2);
-t_vector   		vec_div(t_vector v1, double nb);
+double			vec_length(t_vector v1);
+t_vector		vec_diff(t_vector v1, t_vector v2);
+t_vector		vec_multipli_coeff(t_vector v1, double coeff);
+t_vector		vec_add(t_vector v1, t_vector v2);
+t_vector		vec_div(t_vector v1, double nb);
 
 t_rgb   		rgb_multipli(t_rgb color, double coeff);
 void			my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb);
 int 			color_to_int(t_rgb rgb);
 t_vector		normalize(t_vector vec, t_vector sphere);
 t_vector		ray_equation(t_ray *ray, double ray_t);
+
 #endif
