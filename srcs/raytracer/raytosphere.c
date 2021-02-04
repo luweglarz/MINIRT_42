@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 11:57:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 14:45:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 }
 
 void	sphere_intersec_color
-	(t_sphere *sphere, t_rgb *obj_color, t_ray *ray, t_scene *scene)
+	(t_sphere *sphere, t_rgb *ray_color, t_ray *ray, t_scene *scene)
 {
 	double			t[2];
 
@@ -44,22 +44,22 @@ void	sphere_intersec_color
 	if (t[0] > 1.0 && t[0] < INFINITY && t[0] < ray->ray_t)
 	{
 		ray->ray_t = t[0];
-		*obj_color = sphere->color;
-		*obj_color = rgb_multipli(*obj_color,
+		*ray_color = sphere->color;
+		*ray_color = rgb_multipli(*ray_color,
 			compute_light(ray_equation(ray, ray->ray_t),
 			normalize(ray_equation(ray, ray->ray_t), sphere->cord), scene));
 	}
 	if (t[1] > 1.0 && t[1] < INFINITY && t[1] < ray->ray_t)
 	{
 		ray->ray_t = t[1];
-		*obj_color = sphere->color;
-		*obj_color = rgb_multipli(*obj_color,
+		*ray_color = sphere->color;
+		*ray_color = rgb_multipli(*ray_color,
 			compute_light(ray_equation(ray, ray->ray_t),
 			normalize(ray_equation(ray, ray->ray_t), sphere->cord), scene));
 	}
 }
 
-int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
+int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *ray_color)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;
@@ -69,7 +69,7 @@ int		raytosphere(t_ray *ray, t_scene *scene, t_rgb *obj_color)
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-		sphere_intersec_color(sphere, obj_color, ray, scene);
+		sphere_intersec_color(sphere, ray_color, ray, scene);
 		sphere_list = sphere_list->next;
 	}
 	if (ray->ray_t == INFINITY)

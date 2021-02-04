@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/02/04 11:50:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 14:44:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ double		compute_light(t_vector ray_equa, t_vector normal, t_scene *scene)
 		light_dir = normalize(light->cord, ray_equa);
 		cos = vec_dot(normal, light_dir);
 		if (cos > 0)
-			intensity += light->ratio * cos /
-			(vec_length(normal) * vec_length(light_dir));
+			intensity += light->ratio * cos;
 		lights = lights->next;
 	}
 	return (intensity);
