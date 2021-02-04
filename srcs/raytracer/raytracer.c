@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 15:27:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/04 16:53:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
 	background.r = 0;
 	background.g = 0;
 	background.b = 0;
+	ray.ray_color.r = 0;
+	ray.ray_color.g = 0;
+	ray.ray_color.b = 0;
 	ray.dir.x = x * 1.0 / scene->reso.w;
 	ray.dir.y = y * 1.0 / scene->reso.h;
 	if (raytosphere(&ray, scene, &obj_color) == 1)
-		return (obj_color);
-	return (background);
+		return (ray.ray_color);
+	return (ray.ray_color);
 }
 
 void	init_mlx(t_mlx *mlx_session, t_scene *scene)
