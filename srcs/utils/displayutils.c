@@ -45,9 +45,31 @@ t_rgb   color_range2(t_frgb frgb)
     t_rgb   rgb1;
 
     rgb1.r = frgb.r * 255;
+    if (rgb1.r > 255)
+        rgb1.r = 255;
     rgb1.g = frgb.g * 255;
+    if (rgb1.g > 255)
+        rgb1.g = 255;
     rgb1.b = frgb.b * 255;
+    if (rgb1.b > 255)
+        rgb1.b = 255;
     return (rgb1);
+}
+
+t_rgb		rgb_add(t_rgb rgb1, t_rgb rgb2)
+{
+	t_rgb	rgb3;
+
+	rgb3.r = rgb1.r + rgb2.r;
+	if (rgb3.r > 255)
+        rgb3.r = 255;
+	rgb3.g = rgb1.g + rgb2.g;
+	if (rgb3.g > 255)
+        rgb3.g = 255;
+	rgb3.b = rgb1.b + rgb2.b;
+	if (rgb3.b > 255)
+        rgb3.b = 255;
+	return (rgb3);
 }
 
 t_rgb   rgb_multipli(t_rgb color, double coeff)

@@ -38,12 +38,15 @@ t_frgb		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 	lights = scene->light;
 	while (lights->next)
 	{
+		//ne prend pas differente light
 		light = lights->content;
 		intensity = get_intensity(*scene, ray_pos, normal, *light);
-		light_color = rgb_multipli(light->color,intensity);
-	//	printf("frgb3\n r: %d\n g: %d\n, b; %d\n", light_color.r, light_color.g , light_color.b);
+		//if (intensity != scene->amli.ratio)
+		light_color = rgb_add(rgb_multipli(light->color,intensity),
+		rgb_multipli(scene->amli.color, scene->amli.ratio));
+		//else
+		//	light_color = rgb_multipli(scene->amli.color, scene->amli.ratio);
 		lights = lights->next;
 	}
-	//printf("%f\n", intensity);
 	return (color_range1(light_color));
 }

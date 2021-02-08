@@ -28,7 +28,7 @@ void	get_amlight(t_scene *scene, char **data)
 	if (!(amlight = malloc(sizeof(t_amli))))
 		error(ERR_MALLOC);
 	rgb = ft_split(data[2], ',');
-	amlight->color = *get_color(rgb);
+	scene->amli.color = *get_color(rgb);
 	scene->amli.ratio = ft_atof(data[1]);
 }
 

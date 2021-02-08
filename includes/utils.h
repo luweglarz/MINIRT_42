@@ -60,5 +60,6 @@ int 			color_to_int(t_rgb rgb);
 t_vector		normalize(t_vector vec, t_vector sphere);
 t_vector		ray_equation(t_ray *ray, double ray_t);
 t_frgb   		color_range1(t_rgb rgb);
-t_rgb   color_range2(t_frgb frgb);
+t_rgb   		color_range2(t_frgb frgb);
+t_rgb			rgb_add(t_rgb rgb1, t_rgb rgb2);
 #endif
