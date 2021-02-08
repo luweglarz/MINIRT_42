@@ -59,5 +59,6 @@ void			my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb);
 int 			color_to_int(t_rgb rgb);
 t_vector		normalize(t_vector vec, t_vector sphere);
 t_vector		ray_equation(t_ray *ray, double ray_t);
-
+t_frgb   		color_range1(t_rgb rgb);
+t_rgb   color_range2(t_frgb frgb);
 #endif

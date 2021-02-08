@@ -27,9 +27,10 @@ double	get_intensity(t_scene scene, t_vector ray_pos, t_vector normal, t_light l
 	return (intensity);
 }
 
-double		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
+t_frgb		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 {
 	double		intensity;
+	t_rgb		light_color;
 	t_list		*lights;
 	t_light		*light;
 
@@ -39,7 +40,10 @@ double		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 	{
 		light = lights->content;
 		intensity = get_intensity(*scene, ray_pos, normal, *light);
+		light_color = rgb_multipli(light->color,intensity);
+	//	printf("frgb3\n r: %d\n g: %d\n, b; %d\n", light_color.r, light_color.g , light_color.b);
 		lights = lights->next;
 	}
-	return (intensity);
+	//printf("%f\n", intensity);
+	return (color_range1(light_color));
 }

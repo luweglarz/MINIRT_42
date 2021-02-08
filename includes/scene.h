@@ -29,6 +29,14 @@ typedef struct		s_rgb
 	int		b;
 }					t_rgb;
 
+typedef struct s_frgb
+{
+    float   r;
+    float   g;
+    float   b;
+
+}               t_frgb;
+
 typedef struct		s_reso
 {
 	int		w;
