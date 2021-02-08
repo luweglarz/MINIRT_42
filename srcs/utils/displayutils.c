@@ -87,3 +87,15 @@ t_rgb   rgb_multipli(t_rgb color, double coeff)
         rgb.b = 255;
     return (rgb);
 }
+
+t_rgb	color_multipli(t_frgb frgb1, t_frgb frgb2)
+{
+	t_frgb	frgb3;
+
+	frgb3.r = frgb1.r * frgb2.r;
+	frgb3.g = frgb1.g * frgb2.g;
+	frgb3.b = frgb1.b * frgb2.b;
+	//printf("frgb1\n r: %f\n g: %f\n, b; %f\n", frgb1.r, frgb1.g, frgb1.b);
+	//printf("frgb2\n r: %f\n g: %f\n, b; %f\n", frgb2.r, frgb2.g, frgb2.b);
+	return (color_range2(frgb3));
+}

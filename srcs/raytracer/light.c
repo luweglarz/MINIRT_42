@@ -35,18 +35,17 @@ t_frgb		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 	t_light		*light;
 
 	intensity = 0.0;
+	light_color.r = 0;
+	light_color.g = 0;
+	light_color.b = 0;
 	lights = scene->light;
 	while (lights->next)
 	{
-		//ne prend pas differente light
 		light = lights->content;
-		intensity = get_intensity(*scene, ray_pos, normal, *light);
-		//if (intensity != scene->amli.ratio)
-		light_color = rgb_add(rgb_multipli(light->color,intensity),
-		rgb_multipli(scene->amli.color, scene->amli.ratio));
-		//else
-		//	light_color = rgb_multipli(scene->amli.color, scene->amli.ratio);
+		intensity += get_intensity(*scene, ray_pos, normal, *light);
+		light_color = rgb_add(light_color, rgb_multipli(light->color,intensity)); // la premiere lumiere prend tout 
 		lights = lights->next;
 	}
+	light_color = rgb_add(light_color, rgb_multipli(scene->amli.color, scene->amli.ratio));  // il ne faut pas add mais multiplier 
 	return (color_range1(light_color));
 }

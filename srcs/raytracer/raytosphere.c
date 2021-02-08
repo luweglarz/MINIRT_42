@@ -35,18 +35,6 @@ void	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
 }
 
-t_rgb	color_multipli(t_frgb frgb1, t_frgb frgb2)
-{
-	t_frgb	frgb3;
-
-	frgb3.r = frgb1.r * frgb2.r;
-	frgb3.g = frgb1.g * frgb2.g;
-	frgb3.b = frgb1.b * frgb2.b;
-	//printf("frgb1\n r: %f\n g: %f\n, b; %f\n", frgb1.r, frgb1.g, frgb1.b);
-	//printf("frgb2\n r: %f\n g: %f\n, b; %f\n", frgb2.r, frgb2.g, frgb2.b);
-	return (color_range2(frgb3));
-}
-
 void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 {
 	double			t[2];
