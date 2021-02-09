@@ -24,11 +24,6 @@ void	ray_init(t_ray *ray)
 
 t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
 {
-	t_rgb	background;
-
-	background.r = 0;
-	background.g = 0;
-	background.b = 0;
 	ray.ray_color.r = 0;
 	ray.ray_color.g = 0;
 	ray.ray_color.b = 0;

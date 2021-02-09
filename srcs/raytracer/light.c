@@ -12,7 +12,8 @@
 
 #include "../../includes/minirt.h"
 
-double	get_intensity(t_scene scene, t_vector ray_pos, t_vector normal, t_light light)
+double	get_intensity
+	(t_scene scene, t_vector ray_pos, t_vector normal, t_light light)
 {
 	double		intensity;
 	double		cos;
@@ -24,10 +25,11 @@ double	get_intensity(t_scene scene, t_vector ray_pos, t_vector normal, t_light l
 	cos = vec_dot(normal, light_dir);
 	if (cos > 0)
 		intensity += light.ratio * cos;
+	//specular lighting a faire
 	return (intensity);
 }
 
-t_frgb		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
+t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 {
 	double		intensity;
 	t_rgb		light_color;
@@ -42,10 +44,12 @@ t_frgb		compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 	while (lights->next)
 	{
 		light = lights->content;
-		intensity += get_intensity(*scene, ray_pos, normal, *light);
-		light_color = rgb_add(light_color, rgb_multipli(light->color,intensity)); // la premiere lumiere prend tout 
+		intensity = get_intensity(*scene, ray_pos, normal, *light);
+		light_color = rgb_add(light_color,
+		rgb_multipli(light->color, intensity));
 		lights = lights->next;
 	}
-	light_color = rgb_add(light_color, rgb_multipli(scene->amli.color, scene->amli.ratio));  // il ne faut pas add mais multiplier 
+	light_color = rgb_add(light_color,
+	rgb_multipli(scene->amli.color, scene->amli.ratio));
 	return (color_range1(light_color));
 }
