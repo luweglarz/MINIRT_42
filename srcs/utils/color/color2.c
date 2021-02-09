@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 12:13:38 by user42            #+#    #+#             */
-/*   Updated: 2021/02/09 12:20:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/09 13:10:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../../includes/minirt.h"
 
 t_frgb	color_range1(t_rgb rgb)
 {

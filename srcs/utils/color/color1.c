@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 12:12:29 by user42            #+#    #+#             */
-/*   Updated: 2021/02/09 12:18:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/09 13:10:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../../includes/minirt.h"
 
 int		color_to_int(t_rgb rgb)
 {

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 16:24:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/09 13:09:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ typedef struct		s_rgb
 	int		b;
 }					t_rgb;
 
-typedef struct s_frgb
+typedef struct		s_frgb
 {
-    float   r;
-    float   g;
-    float   b;
+	float	r;
+	float	g;
+	float	b;
 
-}               t_frgb;
+}					t_frgb;
 
 typedef struct		s_reso
 {
