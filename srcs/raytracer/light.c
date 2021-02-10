@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/02/05 16:45:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/10 17:14:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ double	get_intensity
 
 	intensity = 0.0;
 	intensity += scene.amli.ratio;
-	light_dir = normalize(light.cord, ray_pos);
+	light_dir = vec_diff(light.cord, ray_pos);
+	light_dir = normalize(light_dir);
 	cos = vec_dot(normal, light_dir);
 	if (cos > 0)
 		intensity += light.ratio * cos;

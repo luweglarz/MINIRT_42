@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:44:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 15:49:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/10 17:09:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,10 @@ t_vector	vec_div(t_vector v1, double nb)
 	return (v3);
 }
 
-t_vector	normalize(t_vector vec, t_vector obj)
+t_vector	normalize(t_vector vec)
 {
 	t_vector	normal;
 
-	normal = vec_diff(vec, obj);
-	normal = vec_multipli_coeff(normal, 1.0 / vec_length(normal));
+	normal = vec_multipli_coeff(vec, 1.0 / vec_length(vec));
 	return (normal);
 }

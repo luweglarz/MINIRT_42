@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/04 17:23:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/10 15:56:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
 	ray.dir.x = x * 1.0 / scene->reso.w;
 	ray.dir.y = y * 1.0 / scene->reso.h;
 	if (raytosphere(&ray, scene) == 1)
+		return (ray.ray_color);
+	if (raytoplane(&ray, scene) == 1)
 		return (ray.ray_color);
 	return (ray.ray_color);
 }
