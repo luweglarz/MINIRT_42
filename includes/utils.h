@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/10 17:04:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/11 14:27:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_ray
 	t_vector	origin;
 	t_vector	dir;
 	double		ray_t;
+	double		ray_t_temp;
 	t_rgb		ray_color;
 }				t_ray;
 

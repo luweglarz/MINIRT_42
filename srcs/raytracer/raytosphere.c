@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/10 17:05:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/11 15:07:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,17 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 	}
 }
 
-int		raytosphere(t_ray *ray, t_scene *scene)
+void		raytosphere(t_ray *ray, t_scene *scene)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;
 
 	sphere_list = scene->sphere;
-	ray->ray_t = INFINITY;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
 		sphere_intersec_color(sphere, ray, scene);
 		sphere_list = sphere_list->next;
 	}
-	if (ray->ray_t == INFINITY)
-		return (0);
-	return (1);
+
 }
