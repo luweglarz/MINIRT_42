@@ -6,21 +6,19 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/02/12 17:55:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/14 20:36:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-double	get_intensity
-	(t_scene scene, t_vector ray_pos, t_vector normal, t_light light)
+double	get_intensity(t_vector ray_pos, t_vector normal, t_light light)
 {
 	double		intensity;
 	double		cos;
 	t_vector	light_dir;
 
 	intensity = 0.0;
-	intensity += scene.amli.ratio;
 	light_dir = vec_diff(light.cord, ray_pos);
 	light_dir = normalize(light_dir);
 	cos = vec_dot(normal, light_dir);
@@ -45,7 +43,8 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene)
 	while (lights->next)
 	{
 		light = lights->content;
-		intensity = get_intensity(*scene, ray_pos, normal, *light);
+		intensity = scene->amli.ratio;
+		intensity = get_intensity(ray_pos, normal, *light);
 		light_color = rgb_add(light_color,
 		rgb_multipli(light->color, intensity));
 		lights = lights->next;
