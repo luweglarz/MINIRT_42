@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 12:13:38 by user42            #+#    #+#             */
-/*   Updated: 2021/02/09 13:10:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/15 16:14:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ t_rgb	color_range2(t_frgb frgb)
 	if (rgb1.b > 255)
 		rgb1.b = 255;
 	return (rgb1);
+}
+
+void	color_init(t_rgb *rgb)
+{
+	rgb->r = 0;
+	rgb->g = 0;
+	rgb->b = 0;
 }

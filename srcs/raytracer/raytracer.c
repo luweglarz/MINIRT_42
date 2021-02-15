@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/14 20:44:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/15 16:20:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ void	ray_init(t_ray *ray)
 	ray->ray_t = INFINITY;
 }
 
-t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
-{
-	ray.ray_color.r = 0;
-	ray.ray_color.g = 0;
-	ray.ray_color.b = 0;
-	ray.dir.x = x * 1.0 / scene->reso.w;
-	ray.dir.y = y * 1.0 / scene->reso.h;
-	raytosphere(&ray, scene);
-	raytoplane(&ray, scene);
-	
-	return (ray.ray_color);
-}
-
 void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 {
 	mlx_session->mlx = mlx_init();
@@ -46,6 +33,15 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 	mlx_session->img.addr =
 	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp,
 	&mlx_session->img.line_length, &mlx_session->img.endian);
+}
+
+t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
+{
+	ray.dir.x = x * 1.0 / scene->reso.w;
+	ray.dir.y = y * 1.0 / scene->reso.h;
+	raytosphere(&ray, scene);
+	raytoplane(&ray, scene);
+	return (ray.ray_color);
 }
 
 void	ray_tracer(t_scene *scene)
@@ -65,6 +61,7 @@ void	ray_tracer(t_scene *scene)
 		y = -scene->reso.h / 2;
 		while (++y < scene->reso.h / 2)
 		{
+			color_init(&color);
 			color = trace_ray(ray, scene, x, y);
 			my_pixel_put(&mlx_session.img, scene->reso.w / 2 + x,
 			scene->reso.h / 2 - y - 1, &color);
