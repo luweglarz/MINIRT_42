@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/15 15:11:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/17 17:14:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-void	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
+double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 {
 	t_vector	dist;
 	double		a;
@@ -29,23 +29,28 @@ void	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 	{
 		t[0] = INFINITY;
 		t[1] = INFINITY;
-		return ;
+		return (INFINITY);
 	}
 	t[0] = (-b + sqrt(discriminant)) / (2 * a);
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
+	if (t[0] < t[1])
+		return (t[0]);
+	else
+		return (t[1]);
 }
 
 void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 {
 	double			t[2];
+	double			t_;
 	t_vector		ray_pos;
 	t_vector		normal;
 
-	sphere_intersec_equation(ray, sphere, t);
+	t_ = sphere_intersec_equation(ray, sphere, t);
 //	printf("dir2\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
-	if (t[0] > 1.0 && t[0] < INFINITY && t[0] < ray->ray_t)
+	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
 	{
-		ray->ray_t = t[0];
+		ray->ray_t = t_;
 		ray->ray_color = sphere->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
 		normal = vec_diff(ray_pos, sphere->cord);
@@ -53,17 +58,10 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene));
 	}
-	if (t[1] > 1.0 && t[1] < INFINITY && t[1] < ray->ray_t)
-	{
-		ray->ray_t = t[1];
-		ray->ray_color = sphere->color;
-		ray_pos = ray_equation(ray, ray->ray_t);
-		normal = vec_diff(ray_pos, sphere->cord);
-		normal = normalize(normal);
-		ray->ray_color = color_multipli(color_range1(ray->ray_color),
-		compute_light(ray_pos, normal, scene));
-	}
+
 }
+
+
 
 void		raytosphere(t_ray *ray, t_scene *scene)
 {

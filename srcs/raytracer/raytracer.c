@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/15 16:20:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/17 14:14:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,15 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 }
 
 t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
-{
+{	
+	t_list	 *camera_list;
+	t_camera *camera;
+
+	camera_list = scene->camera;
+	camera = camera_list->content;
+	ray.origin.x = camera->cord.x;
+	ray.origin.y = camera->cord.y;
+	ray.origin.z = camera->cord.z;
 	ray.dir.x = x * 1.0 / scene->reso.w;
 	ray.dir.y = y * 1.0 / scene->reso.h;
 	raytosphere(&ray, scene);

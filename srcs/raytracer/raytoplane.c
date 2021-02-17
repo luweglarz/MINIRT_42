@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:45:18 by user42            #+#    #+#             */
-/*   Updated: 2021/02/12 17:50:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/17 17:15:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void		raytoplane(t_ray *ray, t_scene *scene)
 {
 	t_list			*plane_list;
 	t_plane			*plane;
+
 
 	plane_list = scene->plane;
 	while (plane_list->next)
