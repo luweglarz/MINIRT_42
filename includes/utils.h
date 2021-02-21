@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/15 16:15:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/19 21:38:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_ray
 	double		ray_t;
 	double		ray_t_temp;
 	t_rgb		ray_color;
+	void		*obj;
 }				t_ray;
 
 typedef struct	s_img_data
