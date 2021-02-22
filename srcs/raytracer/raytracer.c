@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/22 12:12:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/22 13:08:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_camera(t_ray *ray, t_scene *scene, int x, int y)
 
 t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
-	raytosphere(&ray, scene);
+	raytosphere(&ray, scene, 0);
 	raytoplane(&ray, scene);
 	return (ray.ray_color);
 }
