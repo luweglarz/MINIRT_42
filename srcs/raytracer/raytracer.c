@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/19 21:41:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/22 12:12:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,22 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 	&mlx_session->img.line_length, &mlx_session->img.endian);
 }
 
-t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y)
-{	
+void	init_camera(t_ray *ray, t_scene *scene, int x, int y)
+{
 	t_list	 *camera_list;
 	t_camera *camera;
 
 	camera_list = scene->camera;
 	camera = camera_list->content;
-	ray.origin.x = camera->cord.x;
-	ray.origin.y = camera->cord.y;
-	ray.origin.z = camera->cord.z;
-	ray.dir.x = x * 1.0 / scene->reso.w;
-	ray.dir.y = y * 1.0 / scene->reso.h;
+	ray->origin.x = camera->cord.x;
+	ray->origin.y = camera->cord.y;
+	ray->origin.z = camera->cord.z;
+	ray->dir.x = x * 1.0 / scene->reso.w;
+	ray->dir.y = y * 1.0 / scene->reso.h;
+}
+
+t_rgb	trace_ray(t_ray ray, t_scene *scene)
+{
 	raytosphere(&ray, scene);
 	raytoplane(&ray, scene);
 	return (ray.ray_color);
@@ -61,16 +65,17 @@ void	ray_tracer(t_scene *scene)
 	t_ray		ray;
 
 	x = -scene->reso.w / 2;
-	y = 0;
+
 	init_mlx(&mlx_session, scene);
-	ray_init(&ray);
 	while (++x < scene->reso.w / 2)
 	{
 		y = -scene->reso.h / 2;
 		while (++y < scene->reso.h / 2)
 		{
+			ray_init(&ray);
 			color_init(&color);
-			color = trace_ray(ray, scene, x, y);
+			init_camera(&ray, scene, x, y);
+			color = trace_ray(ray, scene);
 			my_pixel_put(&mlx_session.img, scene->reso.w / 2 + x,
 			scene->reso.h / 2 - y - 1, &color);
 		}

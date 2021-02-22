@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/19 21:50:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/22 11:58:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene);
 
 void	ray_tracer(t_scene *scene);
 void	ray_init(t_ray *ray);
-t_rgb	trace_ray(t_ray ray, t_scene *scene, int x, int y);
+t_rgb	trace_ray(t_ray ray, t_scene *scene);
 
 void		raytosphere(t_ray *ray, t_scene *scene);
 double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t);

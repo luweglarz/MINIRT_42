@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/19 22:31:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/22 12:41:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,13 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 		ray->ray_t = t_;
 		ray->obj = sphere;
 		ray->ray_color = sphere->color;
-		ray_pos = ray_equation(ray,
-		ray->ray_t);
+		ray_pos = ray_equation(ray,	ray->ray_t);
 		normal = vec_diff(ray_pos, sphere->cord);
 		normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));
 	}
-
 }
-
-
 
 void		raytosphere(t_ray *ray, t_scene *scene)
 {
