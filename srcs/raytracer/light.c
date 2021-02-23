@@ -37,14 +37,15 @@ int	sphere_intersec(t_scene scene, t_ray ray, void *obj)
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-	    if ((t_ = sphere_intersec_equation(&ray, sphere, t)) != INFINITY)
+	    if ((t_ = sphere_intersec_equation(&ray, sphere, t)) != INFINITY && t_ < ray.ray_t)
 		{
 			ray.ray_t = t_;
+			ray.obj = sphere;
 		}
-		if(sphere == obj)
-			ray.ray_t = INFINITY;
 		sphere_list = sphere_list->next;
 	}
+	if(ray.obj == obj)
+			return(0);
 	if (ray.ray_t != INFINITY)
 		return (1);
 	return (0);
@@ -56,8 +57,10 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_dir, void *
 
 	ray_init(&ray);
 	ray.origin = light_dir;
-	ray.dir = ray_pos;
-	(void)obj;
+	ray.dir = vec_diff(ray_pos, light_dir);
+	ray.dir.x = ray_pos.x - light_dir.x;
+	ray.dir.y = ray_pos.y - light_dir.y;
+	ray.dir.z = ray_pos.z - light_dir.z;
 	if (sphere_intersec(scene, ray, obj))
 		return (1);
 	return (0);

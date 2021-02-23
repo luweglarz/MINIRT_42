@@ -21,6 +21,7 @@ void	ray_init(t_ray *ray)
 	ray->dir.y = 0.0;
 	ray->dir.z = 1.0;
 	ray->ray_t = INFINITY;
+	ray->obj = NULL;
 }
 
 void	init_mlx(t_mlx *mlx_session, t_scene *scene)
@@ -51,7 +52,7 @@ void	init_camera(t_ray *ray, t_scene *scene, int x, int y)
 
 t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
-	raytosphere(&ray, scene, 0);
+	raytosphere(&ray, scene);
 	raytoplane(&ray, scene);
 	return (ray.ray_color);
 }
