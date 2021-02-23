@@ -45,22 +45,19 @@ int	sphere_intersec(t_scene scene, t_ray ray, void *obj)
 		sphere_list = sphere_list->next;
 	}
 	if(ray.obj == obj)
-			return(0);
+		return(0);
 	if (ray.ray_t != INFINITY)
 		return (1);
 	return (0);
 }
 
-int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_dir, void *obj)
+int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void *obj)
 {
 	t_ray	ray;
 
 	ray_init(&ray);
-	ray.origin = light_dir;
-	ray.dir = vec_diff(ray_pos, light_dir);
-	ray.dir.x = ray_pos.x - light_dir.x;
-	ray.dir.y = ray_pos.y - light_dir.y;
-	ray.dir.z = ray_pos.z - light_dir.z;
+	ray.origin = light_cord;
+	ray.dir = vec_diff(ray_pos, light_cord);
 	if (sphere_intersec(scene, ray, obj))
 		return (1);
 	return (0);
@@ -82,7 +79,7 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray_pos);
 		light_dir = normalize(light_dir);
-		if (is_intersection(*scene, ray_pos, light_dir, obj))
+		if (is_intersection(*scene, ray_pos, light->cord, obj))
 		{
 			color_init(&light_color);
 			break;
