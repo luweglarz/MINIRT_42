@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/02/22 16:34:41 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/24 19:53:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	sphere_intersec(t_scene scene, t_ray ray, void *obj)
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-	    if ((t_ = sphere_intersec_equation(&ray, sphere, t)) != INFINITY && t_ < ray.ray_t)
+		t_ = sphere_intersec_equation(&ray, sphere, t);
+	    if (t_ < INFINITY && t_ < ray.ray_t)
 		{
 			ray.ray_t = t_;
 			ray.obj = sphere;
@@ -56,7 +57,7 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 	t_ray	ray;
 
 	ray_init(&ray);
-	ray.origin = light_cord;
+	ray.origin = ray_pos;
 	ray.dir = vec_diff(ray_pos, light_cord);
 	if (sphere_intersec(scene, ray, obj))
 		return (1);
@@ -71,14 +72,12 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 	t_light		*light;
 	t_vector	light_dir;
 
-	intensity = 0.0;
 	color_init(&light_color);
 	lights = scene->light;
 	while (lights->next)
 	{
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray_pos);
-		light_dir = normalize(light_dir);
 		if (is_intersection(*scene, ray_pos, light->cord, obj))
 		{
 			color_init(&light_color);

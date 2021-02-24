@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:45:18 by user42            #+#    #+#             */
-/*   Updated: 2021/02/19 22:44:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:29:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,9 @@
 
 double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 {
-	double 	 a;
-	double 	 t;
-	t_vector	normal;
-	t_vector	dist;
-
-	t = INFINITY;
-	normal = normalize(plane->ori);
-	a = vec_dot(normal, ray->dir);
-	if (a < 0)
-		return (t);
-	dist = vec_diff(plane->cord, ray->origin);
-	t = vec_dot(dist, normal) / a;
-	return (t);
+	(void)ray;
+	(void)plane;
+	return 1;
 }
 
 void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)

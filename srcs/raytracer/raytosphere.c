@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/22 13:14:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/24 19:48:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 	t_vector		normal;
 
 	t_ = sphere_intersec_equation(ray, sphere, t);
-//	printf("dir2\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
 	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
