@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/24 19:48:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/26 22:25:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 		t[1] = INFINITY;
 		return (INFINITY);
 	}
+
 	t[0] = (-b + sqrt(discriminant)) / (2 * a);
 	t[1] = (-b - sqrt(discriminant)) / (2 * a);
 	if (t[0] < t[1])
 		return (t[0]);
-	else
+	if (t[0] > t[1])
 		return (t[1]);
+	return (INFINITY);
 }
 
 void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)

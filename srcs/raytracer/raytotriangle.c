@@ -6,18 +6,23 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:46:13 by user42            #+#    #+#             */
-/*   Updated: 2021/02/24 22:07:46 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/26 16:58:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle)
-{
-	(void)ray;
-	(void)triangle;
-	return 1;
-}
+
+//double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle)
+//{
+//	t_vector	V1;
+//	t_vector	V2;
+//	t_vector	cross;
+//	V1 = vec_diff(triangle->cord2, triangle->cord1);
+//	V2 = vec_diff(triangle->cord3, triangle->cord1);
+//	cross = vec_dot(V1, V2, )
+//	return 1;
+//}
 
 void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 {

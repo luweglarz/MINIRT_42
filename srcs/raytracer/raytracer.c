@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/24 21:50:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/02/26 16:59:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
 	raytosphere(&ray, scene);
 	raytoplane(&ray, scene);
-	raytotriangle(&ray, scene);
+	//raytotriangle(&ray, scene);
+	raytosquare(&ray, scene);
 	raytocylinder(&ray, scene);
 	return (ray.ray_color);
 }
