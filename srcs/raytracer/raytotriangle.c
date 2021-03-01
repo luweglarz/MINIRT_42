@@ -12,18 +12,23 @@
 
 #include "../../includes/minirt.h"
 
-
-//double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle)
-//{
-//	t_vector	V1;
-//	t_vector	V2;
-//	t_vector	cross;
-//	V1 = vec_diff(triangle->cord2, triangle->cord1);
-//	V2 = vec_diff(triangle->cord3, triangle->cord1);
-//	cross = vec_dot(V1, V2, )
-//	return 1;
-//}
-
+/*
+double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle)
+{
+	t_vector	V1;
+	t_vector	V2;
+	t_vector	cross;
+	V1 = vec_diff(triangle->cord2, triangle->cord1);
+	V2 = vec_diff(triangle->cord3, triangle->cord1);
+	cross = vec_dot(V1, V2);
+	cross.x = v1.x * v2.z - v1.z * v2.y;
+	cross.y = v1.y * v2.x - v1.x * v2.z;
+	cross.z = v1.x * v2.y - v1.y * v2.x;
+	//double area(cross,cross);
+	double a = vec_dot(ray->dir, ray->dir);
+	return 1;
+}
+*/
 void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;

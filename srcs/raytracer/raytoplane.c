@@ -21,8 +21,6 @@ double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 
 	normal = normalize(plane->ori);
 	a = vec_dot(ray->dir, normal);
-//	printf("norma \n x: %f\n y: %f\n z: %f\n", normal.x, normal.y, normal.z);
-	printf("a %f\n", a);
 	if (a < 0)
 		return (INFINITY);
 	dist = vec_diff(plane->cord, ray->origin);

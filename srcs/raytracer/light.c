@@ -26,24 +26,39 @@ double	get_intensity(t_scene scene, t_vector light_dir, t_vector normal, t_light
 }
 
 
-int	sphere_intersec(t_scene scene, t_ray *ray)
+int	sphere_intersec(t_scene scene, t_ray *ray, double length)
 {
 	double			t[2];
 	t_list			*sphere_list;
 	t_sphere		*sphere;
 	double	t_;
 	sphere_list = scene.sphere;
+	t_sphere *test;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
 		t_ = sphere_intersec_equation(ray, sphere, t);
-		if (t_ > -1 && t_ < INFINITY && t_ < ray->ray_t)
+		//printf("t_1 %f\n", t_);
+		if (t_ > 0.0001 && t_ < length && t_ < ray->ray_t)
 		{
+		//	printf("t_2 %f\n", t_);
 			ray->ray_t = t_;
 			ray->obj = sphere;
+			test = ray->obj;
+		//	printf("sphere x: %f\n", test->cord.z);
 		}
 		sphere_list = sphere_list->next;
 	}
+//	t_sphere *test;
+//	if (ray->obj != NULL){
+	//test = ray->obj;
+	//if (t_ != INFINITY){
+//	printf("t_ %f\n", t_);
+	//test = ray->obj;
+	//printf("sphere x: %f\n", test->cord.z);
+	//}
+	//printf("sphere x: %f\n", test->cord.z);
+	//}
 	if (ray->ray_t != INFINITY)
 		return (1);
 	return (0);
@@ -55,8 +70,14 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 
 	ray_init(&ray);
 	ray.origin = ray_pos;
-	ray.dir = vec_diff(ray_pos, light_cord);
-	if (sphere_intersec(scene, &ray) && ray.obj != obj)
+	ray.dir = vec_diff(light_cord, ray_pos);
+	double		length = vec_length(ray.dir);
+	if (length > 3)
+	{
+	printf("ray.dir\n x: %f\n y: %f\n z: %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
+	printf("length %f\n", length);
+	}
+	if (sphere_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
 	return (0);
 }
