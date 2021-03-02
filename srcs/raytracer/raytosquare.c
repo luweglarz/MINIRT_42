@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:58:49 by user42            #+#    #+#             */
-/*   Updated: 2021/02/24 22:09:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/02 16:46:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
+	double			t_;
 
-	ray->ray_t_temp = square_intersec_equation(ray, square);
-	if (ray->ray_t_temp < INFINITY && ray->ray_t_temp > 0 && ray->ray_t_temp < ray->ray_t)
+	t_ = square_intersec_equation(ray, square);
+	if (t_ < INFINITY && t_ > 1 && t_ < ray->ray_t)
 	{
-		ray->ray_t = ray->ray_t_temp;
+		ray->ray_t = t_;
 		ray->obj = square;
 		ray->ray_color = square->color;
 				(void)ray_pos;

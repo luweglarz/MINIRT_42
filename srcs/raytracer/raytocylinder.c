@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:03:48 by user42            #+#    #+#             */
-/*   Updated: 2021/02/24 22:10:10 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/02 16:46:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
+	double			t_;
 
-	ray->ray_t_temp = cylinder_intersec_equation(ray, cylinder);
-	if (ray->ray_t_temp < INFINITY && ray->ray_t_temp > 0 && ray->ray_t_temp < ray->ray_t)
+	t_ = cylinder_intersec_equation(ray, cylinder);
+	if (t_ < INFINITY && t_ > 1 && t_ < ray->ray_t)
 	{
-		ray->ray_t = ray->ray_t_temp;
+		ray->ray_t = t_;
 		ray->obj = cylinder;
 		ray->ray_color = cylinder->color;
 		(void)ray_pos;

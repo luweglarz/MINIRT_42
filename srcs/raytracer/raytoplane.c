@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:45:18 by user42            #+#    #+#             */
-/*   Updated: 2021/02/27 00:06:41 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/02 16:45:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
+	double t_;
 
-	ray->ray_t_temp = plane_intersec_equation(ray, plane);
-	if (ray->ray_t_temp < INFINITY && ray->ray_t_temp > 0 && ray->ray_t_temp < ray->ray_t)
+	t_ = plane_intersec_equation(ray, plane);
+	if (t_ < INFINITY && t_ > 1 && t_ < ray->ray_t)
 	{
-		ray->ray_t = ray->ray_t_temp;
+		ray->ray_t = t_;
 		ray->obj = plane;
 		ray->ray_color = plane->color;
 		ray_pos = ray_equation(ray, ray->ray_t);

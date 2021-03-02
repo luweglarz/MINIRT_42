@@ -54,7 +54,7 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
 	raytosphere(&ray, scene);
 	raytoplane(&ray, scene);
-	//raytotriangle(&ray, scene);
+	raytotriangle(&ray, scene);
 	raytosquare(&ray, scene);
 	raytocylinder(&ray, scene);
 	return (ray.ray_color);
