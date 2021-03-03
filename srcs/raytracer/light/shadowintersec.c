@@ -59,3 +59,27 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 		return (1);
 	return (0);
 }
+
+int	plane_intersec(t_scene scene, t_ray *ray, double length)
+{
+	double			t_;
+	t_list			*plane_list;
+	t_plane			*plane;
+
+	(void)length;
+	plane_list = scene.plane;
+	while (plane_list->next)
+	{
+		plane = plane_list->content;
+		t_ = plane_intersec_equation(ray, plane);
+		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
+		{
+			ray->ray_t = t_;
+			ray->obj = plane;
+		}
+		plane_list = plane_list->next;
+	}
+	if (ray->ray_t != INFINITY)
+		return (1);
+	return (0);
+}

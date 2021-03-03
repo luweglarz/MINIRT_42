@@ -45,7 +45,8 @@ double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *no
 	if (v < 0.0 || u + v > 1.0)
 		return (INFINITY);
 	double t = f * vec_dot(v2, q);
-	*normal = q;
+	(void)normal;
+	*normal = cross;
 	return t;
 }
 
@@ -61,8 +62,6 @@ void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 		ray->ray_t = t_;
 		ray->obj = triangle;
 		ray->ray_color = triangle->color;
-		(void)ray_pos;
-		(void)scene;
 		ray_pos = ray_equation(ray, ray->ray_t);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	

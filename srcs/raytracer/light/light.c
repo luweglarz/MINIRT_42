@@ -38,6 +38,8 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 		return (1);
 	if (triangle_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
+	if (plane_intersec(scene, &ray, length) && ray.obj != obj)
+		return (1);
 	return (0);
 }
 
@@ -55,7 +57,6 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 	{
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray_pos);
-		//light_dir = normalize(light_dir);
 		if (is_intersection(*scene, ray_pos, light_dir, obj))
 		{
 			color_init(&light_color);
