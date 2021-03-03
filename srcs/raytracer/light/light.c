@@ -32,9 +32,11 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 
 	ray_init(&ray);
 	ray.origin = ray_pos;
-	ray.dir = vec_diff(light_cord, ray_pos);
+	ray.dir = light_cord;
 	length = vec_length(ray.dir);
 	if (sphere_intersec(scene, &ray, length) && ray.obj != obj)
+		return (1);
+	if (triangle_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
 	return (0);
 }
@@ -53,11 +55,13 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 	{
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray_pos);
-		if (is_intersection(*scene, ray_pos, light->cord, obj))
+		//light_dir = normalize(light_dir);
+		if (is_intersection(*scene, ray_pos, light_dir, obj))
 		{
 			color_init(&light_color);
 			break;
 		}
+		light_dir = normalize(light_dir);
 		intensity = get_intensity(*scene, light_dir, normal, *light);
 		light_color = rgb_add(light_color,
 		rgb_multipli(light->color, intensity));

@@ -54,6 +54,8 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 		ray->obj = sphere;
 		ray->ray_color = sphere->color;
 		ray_pos = ray_equation(ray,	ray->ray_t);
+		//printf("ray_t %f\n", ray->ray_t);
+		//printf("ray_pos1\n x: %f\n y: %f\n z: %f\n", ray_pos.x, ray_pos.y, ray_pos.z);
 		normal = vec_diff(ray_pos, sphere->cord);
 		normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
@@ -73,5 +75,8 @@ void		raytosphere(t_ray *ray, t_scene *scene)
 		sphere_intersec_color(sphere, ray, scene);
 		sphere_list = sphere_list->next;
 	}
-
+		//printf("ray.origin1\n x: %f\n y: %f\n z: %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
+	//	printf("ray.dir1\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	//	printf("t_ %f1\n", t_);
+	//	printf("length %f\n", length);
 }

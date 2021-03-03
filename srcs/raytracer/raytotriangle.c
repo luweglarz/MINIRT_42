@@ -12,17 +12,25 @@
 
 #include "../../includes/minirt.h"
 
+t_vector	cross_product(t_vector v1, t_vector v2)
+{
+	t_vector	cross;
+
+	cross.x = v1.x * v2.z - v1.z * v2.y;
+	cross.y = v1.y * v2.x - v1.x * v2.z;
+	cross.z = v1.x * v2.y - v1.y * v2.x;
+	return (cross);
+}
 
 double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal)
 {
 	t_vector	v1;
 	t_vector	v2;
 	t_vector	cross;
+	// structure triangle rajouter des variables pour resoudre equation 
 	v1 = vec_diff(triangle->cord2, triangle->cord1);
 	v2 = vec_diff(triangle->cord3, triangle->cord1);
-	cross.x = ray->dir.x * v2.z - ray->dir.z * v2.y;
-	cross.y = ray->dir.y * v2.x - ray->dir.x * v2.z;
-	cross.z = ray->dir.x * v2.y - ray->dir.y * v2.x;
+	cross = cross_product(ray->dir, v2);
 	double a = vec_dot(cross, v1);
 	if (a > -0.00000001 && a < 0.00000001)
 		return (INFINITY);
@@ -32,9 +40,7 @@ double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *no
 	if (u < 0.0 || u > 1.0)
 		return (INFINITY);
 	t_vector q;
-	q.x = s.x * v1.z - s.z * v1.y;
-	q.y = s.y * v1.x - s.x * v1.z;
-	q.z = s.x * v1.y - s.y * v1.x;
+	q = cross_product(s, v1);
 	double v = f * vec_dot(ray->dir, q);
 	if (v < 0.0 || u + v > 1.0)
 		return (INFINITY);
