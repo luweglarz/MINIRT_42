@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
-
+#include "../../../includes/minirt.h"
 double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 {
 	t_vector normal;

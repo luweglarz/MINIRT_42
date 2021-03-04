@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../../includes/minirt.h"
 
 double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder)
 {

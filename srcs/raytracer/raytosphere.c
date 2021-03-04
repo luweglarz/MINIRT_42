@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../../includes/minirt.h"
 
 double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
 {
