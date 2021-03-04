@@ -34,7 +34,8 @@ void	motrum_init(t_motrum *motrum)
 
 }
 
-double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal)
+double
+triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal)
 {
 	t_vector	v1;
 	t_vector	v2;

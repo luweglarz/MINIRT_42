@@ -32,10 +32,10 @@ void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
-	double t_;
+	double 			t_;
 
 	t_ = plane_intersec_equation(ray, plane);
-	if (t_ < INFINITY && t_ > 1 && t_ < ray->ray_t)
+	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
 		ray->obj = plane;
