@@ -22,32 +22,44 @@ t_vector	cross_product(t_vector v1, t_vector v2)
 	return (cross);
 }
 
+void	motrum_init(t_motrum *motrum)
+{
+	motrum->cross.x = 0;
+	motrum->cross.y = 0;
+	motrum->cross.z = 0;
+	motrum->det = 0;
+	motrum->inv_det = 0;
+	motrum->ubary = 0;
+	motrum->vbary = 0;
+
+}
+
 double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal)
 {
 	t_vector	v1;
 	t_vector	v2;
-	t_vector	cross;
-	// structure triangle rajouter des variables pour resoudre equation 
+	t_vector	u;
+	t_vector	v;
+	t_motrum	motrum;
+
+	motrum_init(&motrum);
 	v1 = vec_diff(triangle->cord2, triangle->cord1);
 	v2 = vec_diff(triangle->cord3, triangle->cord1);
-	cross = cross_product(ray->dir, v2);
-	double a = vec_dot(cross, v1);
-	if (a > -0.00000001 && a < 0.00000001)
+	motrum.cross = cross_product(ray->dir, v2);
+	motrum.det = vec_dot(motrum.cross, v1);
+	if (motrum.det > -0.00000001 && motrum.det < 0.00000001)
 		return (INFINITY);
-	double f = 1.0 / a;
-	t_vector s = vec_diff(ray->origin, triangle->cord1);
-	double u = f * vec_dot(s, cross);
-	if (u < 0.0 || u > 1.0)
+	motrum.inv_det = 1.0 / motrum.det;
+	u = vec_diff(ray->origin, triangle->cord1);
+	motrum.ubary = vec_dot(u, motrum.cross) * motrum.inv_det;
+	if (motrum.ubary < 0.0 || motrum.ubary > 1.0)
 		return (INFINITY);
-	t_vector q;
-	q = cross_product(s, v1);
-	double v = f * vec_dot(ray->dir, q);
-	if (v < 0.0 || u + v > 1.0)
+	v = cross_product(u, v1);
+	motrum.vbary = vec_dot(ray->dir, v) * motrum.inv_det;
+	if (motrum.vbary < 0.0 || motrum.vbary + motrum.ubary > 1.0)
 		return (INFINITY);
-	double t = f * vec_dot(v2, q);
-	(void)normal;
-	*normal = cross;
-	return t;
+	*normal = u;
+	return (vec_dot(v2, v) * motrum.inv_det);
 }
 
 void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
@@ -57,7 +69,7 @@ void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 	double			t_;
 
 	t_ = triangle_intersec_equation(ray, triangle, &normal);
-	if (t_ < INFINITY && t_ > 1 && t_ < ray->ray_t)
+	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
 		ray->obj = triangle;

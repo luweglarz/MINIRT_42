@@ -54,8 +54,6 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 		ray->obj = sphere;
 		ray->ray_color = sphere->color;
 		ray_pos = ray_equation(ray,	ray->ray_t);
-		//printf("ray_t %f\n", ray->ray_t);
-		//printf("ray_pos1\n x: %f\n y: %f\n z: %f\n", ray_pos.x, ray_pos.y, ray_pos.z);
 		normal = vec_diff(ray_pos, sphere->cord);
 		normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),

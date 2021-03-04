@@ -18,13 +18,14 @@ int	sphere_intersec(t_scene scene, t_ray *ray, double length)
 	double	t_;
 	t_list			*sphere_list;
 	t_sphere		*sphere;
+
 	sphere_list = scene.sphere;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
 		t_ = sphere_intersec_equation(ray, sphere, t);
 		(void)length;
-		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = sphere;
@@ -42,12 +43,13 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 	t_list			*triangle_list;
 	t_triangle		*triangle;
 	t_vector		normal;	
-	(void)length;
+
 	triangle_list = scene.triangle;
 	while (triangle_list->next)
 	{
 		triangle = triangle_list->content;
 		t_ = triangle_intersec_equation(ray, triangle, &normal);
+	(void)length;
 		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
@@ -72,7 +74,7 @@ int	plane_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		plane = plane_list->content;
 		t_ = plane_intersec_equation(ray, plane);
-		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = plane;

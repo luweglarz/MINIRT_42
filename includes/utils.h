@@ -26,6 +26,15 @@ typedef struct	s_ray
 	void		*obj;
 }				t_ray;
 
+typedef struct 	s_motrum
+{
+	t_vector	cross;
+	double		det;
+	double		inv_det;
+	double		ubary;
+	double		vbary;
+}				t_motrum;
+
 typedef struct	s_img_data
 {
 	void		*img;
