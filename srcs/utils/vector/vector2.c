@@ -29,3 +29,11 @@ t_vector	ray_equation(t_ray *ray, double ray_t)
 	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
 	return (equa_ray);
 }
+
+t_vector	normalize(t_vector vec)
+{
+	t_vector	normal;
+
+	normal = vec_multipli_coeff(vec, 1.0 / vec_length(vec));
+	return (normal);
+}

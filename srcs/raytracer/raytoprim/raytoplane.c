@@ -13,18 +13,15 @@
 #include "../../../includes/minirt.h"
 double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 {
-	t_vector normal;
 	t_vector dist;
 	double	 a;
 	double	 t;
 
-	normal = normalize(plane->ori);
-	a = vec_dot(ray->dir, normal);
+	a = vec_dot(ray->dir, plane->ori);
 	if (a < 0)
 		return (INFINITY);
 	dist = vec_diff(plane->cord, ray->origin);
-	t = vec_dot(dist, normal) / a;
-//	printf("t %f\n", t); // cross product
+	t = vec_dot(dist, plane->ori) / a;
 	return (t);
 }
 

@@ -12,26 +12,31 @@
 
 #include "../../../includes/minirt.h"
 
-//double	square_intersec_equation(t_ray *ray, t_square *square)
-//{
-//	t_vector	normal;
-//	t_plane		plane;
+double	square_intersec_equation(t_ray *ray, t_square *square)
+{
+	t_vector	dist;
+	t_plane		plane;
+	double		length;
 
-//	plane.ori = normalize(square->ori);
-//	plane.cord = square->cord;
-//	return 1;
-//}
+	plane.ori = square->ori;
+	plane.cord = square->cord;
+	dist = vec_diff(plane.cord, ray->dir);
+	length = vec_length(dist);
+	if (length > square->height / 2)
+		return (INFINITY);
+	return 1;
+}
 
 void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
-	////double			t_;
+	double			t_;
 
-	//t_ = square_intersec_equation(ray, square);
-	//if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
-	//{
-	//	ray->ray_t = t_;
+	t_ = square_intersec_equation(ray, square);
+	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
+	{
+		ray->ray_t = t_;
 		ray->obj = square;
 		ray->ray_color = square->color;
 			(void)ray_pos;
@@ -39,7 +44,7 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 		(void)normal;
 		//ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		//compute_light(ray_pos, normal, scene, ray->obj));	
-//	}
+	}
 }
 
 void		raytosquare(t_ray *ray, t_scene *scene)

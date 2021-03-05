@@ -42,6 +42,7 @@ void	get_square(t_scene *scene, char **data)
 	rgb = ft_split(data[4], ',');
 	new_square->cord = *get_cord(cord);
 	new_square->ori = *get_orientation(ori);
+	new_square->ori = normalize(new_square->ori);
 	new_square->color = *get_color(rgb);
 	new_square->height = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->square, ft_lstnew(new_square));
@@ -102,6 +103,7 @@ void	get_plane(t_scene *scene, char **data)
 	rgb = ft_split(data[3], ',');
 	new_plane->cord = *get_cord(cord);
 	new_plane->ori = *get_orientation(ori);
+	new_plane->ori = normalize(new_plane->ori);
 	new_plane->color = *get_color(rgb);
 	ft_lstadd_front(&scene->plane, ft_lstnew(new_plane));
 }

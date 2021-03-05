@@ -52,10 +52,12 @@ t_vector	vec_div(t_vector v1, double nb)
 	return (v3);
 }
 
-t_vector	normalize(t_vector vec)
+t_vector	cross_product(t_vector v1, t_vector v2)
 {
-	t_vector	normal;
+	t_vector	cross;
 
-	normal = vec_multipli_coeff(vec, 1.0 / vec_length(vec));
-	return (normal);
+	cross.x = v1.x * v2.z - v1.z * v2.y;
+	cross.y = v1.y * v2.x - v1.x * v2.z;
+	cross.z = v1.x * v2.y - v1.y * v2.x;
+	return (cross);
 }

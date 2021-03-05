@@ -12,16 +12,6 @@
 
 #include "../../../includes/minirt.h"
 
-t_vector	cross_product(t_vector v1, t_vector v2)
-{
-	t_vector	cross;
-
-	cross.x = v1.x * v2.z - v1.z * v2.y;
-	cross.y = v1.y * v2.x - v1.x * v2.z;
-	cross.z = v1.x * v2.y - v1.y * v2.x;
-	return (cross);
-}
-
 void	motrum_init(t_motrum *motrum)
 {
 	motrum->cross.x = 0;
@@ -59,7 +49,7 @@ triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal)
 	motrum.vbary = vec_dot(ray->dir, v) * motrum.inv_det;
 	if (motrum.vbary < 0.0 || motrum.vbary + motrum.ubary > 1.0)
 		return (INFINITY);
-	*normal = u;
+	*normal = cross_product(v1, v2);
 	return (vec_dot(v2, v) * motrum.inv_det);
 }
 

@@ -63,6 +63,7 @@ t_vector		vec_diff(t_vector v1, t_vector v2);
 t_vector		vec_multipli_coeff(t_vector v1, double coeff);
 t_vector		vec_add(t_vector v1, t_vector v2);
 t_vector		vec_div(t_vector v1, double nb);
+t_vector		cross_product(t_vector v1, t_vector v2);
 
 t_rgb			rgb_multipli(t_rgb color, double coeff);
 void			my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb);

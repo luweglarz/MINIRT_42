@@ -73,8 +73,4 @@ void		raytosphere(t_ray *ray, t_scene *scene)
 		sphere_intersec_color(sphere, ray, scene);
 		sphere_list = sphere_list->next;
 	}
-		//printf("ray.origin1\n x: %f\n y: %f\n z: %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
-	//	printf("ray.dir1\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
-	//	printf("t_ %f1\n", t_);
-	//	printf("length %f\n", length);
 }

@@ -45,7 +45,7 @@ typedef struct		s_reso
 
 typedef struct		s_amli
 {
-	float	ratio;
+	double	ratio;
 	t_rgb	color;
 }					t_amli;
 
@@ -59,14 +59,14 @@ typedef struct		s_camera
 typedef struct		s_light
 {
 	t_vector			cord;
-	float				ratio;
+	double				ratio;
 	t_rgb				color;
 }					t_light;
 
 typedef struct		s_sphere
 {
 	t_vector			cord;
-	float				radius;
+	double				radius;
 	t_rgb				color;
 }					t_sphere;
 
@@ -81,7 +81,7 @@ typedef struct		s_square
 {
 	t_vector			cord;
 	t_vector			ori;
-	float				height;
+	double				height;
 	t_rgb				color;
 }					t_square;
 
@@ -89,8 +89,8 @@ typedef struct		s_cylinder
 {
 	t_vector			cord;
 	t_vector			ori;
-	float				diameter;
-	float				height;
+	double				diameter;
+	double				height;
 	t_rgb				color;
 }					t_cylinder;
 
