@@ -85,3 +85,29 @@ int	plane_intersec(t_scene scene, t_ray *ray, double length)
 		return (1);
 	return (0);
 }
+
+int	square_intersec(t_scene scene, t_ray *ray, double length)
+{
+	double			t_;
+	t_list			*square_list;
+	t_square			*square;
+
+	(void)length;
+	square_list = scene.square;
+	//printf("ray.dir \n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	while (square_list->next)
+	{
+		square = square_list->content;
+		t_ = square_intersec_equation(ray, square);
+
+		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
+		{
+			ray->ray_t = t_;
+			ray->obj = square;
+		}
+		square_list = square_list->next;
+	}
+	if (ray->ray_t != INFINITY)
+		return (1);
+	return (0);
+}

@@ -48,4 +48,6 @@ double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder);
 int		sphere_intersec(t_scene scene, t_ray *ray, double length);
 int		triangle_intersec(t_scene scene, t_ray *ray, double length);
 int		plane_intersec(t_scene scene, t_ray *ray, double length);
+int		square_intersec(t_scene scene, t_ray *ray, double length);
+
 #endif

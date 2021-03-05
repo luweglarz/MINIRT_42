@@ -14,17 +14,20 @@
 
 double	square_intersec_equation(t_ray *ray, t_square *square)
 {
-	t_vector	dist;
 	t_plane		plane;
-	double		length;
+	t_vector	ray_pos;
+	t_vector	dist;
+	double		t;
 
 	plane.ori = square->ori;
 	plane.cord = square->cord;
-	dist = vec_diff(plane.cord, ray->dir);
-	length = vec_length(dist);
-	if (length > square->height / 2)
-		return (INFINITY);
-	return 1;
+	t = plane_intersec_equation(ray, &plane);
+	ray_pos = ray_equation(ray, t);
+	dist = vec_diff(plane.cord, ray_pos);
+	if (dist.x <= (square->height / 2) && dist.x >= -(square->height / 2))
+		if (dist.y <= (square->height / 2) && dist.y >= -(square->height / 2))
+				return (t);
+	return (INFINITY);
 }
 
 void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
@@ -39,11 +42,11 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 		ray->ray_t = t_;
 		ray->obj = square;
 		ray->ray_color = square->color;
-			(void)ray_pos;
-		(void)scene;
-		(void)normal;
-		//ray->ray_color = color_multipli(color_range1(ray->ray_color),
-		//compute_light(ray_pos, normal, scene, ray->obj));	
+		ray_pos = ray_equation(ray, ray->ray_t);
+		normal = vec_diff(ray->dir, square->cord);
+		normal = normalize(normal);
+		ray->ray_color = color_multipli(color_range1(ray->ray_color),
+		compute_light(ray_pos, normal, scene, ray->obj));	
 	}
 }
 
