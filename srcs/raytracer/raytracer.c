@@ -46,10 +46,12 @@ void	init_camera(t_ray *ray, t_scene *scene, int x, int y)
 	ray->origin.x = camera->cord.x;
 	ray->origin.y = camera->cord.y;
 	ray->origin.z = camera->cord.z;
-	ray->dir.x = x * 1.0 / scene->reso.w;
-	ray->dir.y = y * 1.0 / scene->reso.h;
+	ray->dir.x = (x + 0.5) / scene->reso.w;
+	ray->dir.y = (y + 0.5) / scene->reso.h;
+	ray->dir.x = 2 * ray->dir.x - 1;
+	ray->dir.y = 1 - 2 * ray->dir.y;
+	//printf("ray->dir\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
 }
-
 t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
 	raytosphere(&ray, scene);
@@ -68,20 +70,19 @@ void	ray_tracer(t_scene *scene)
 	t_rgb		color;
 	t_ray		ray;
 
-	x = -scene->reso.w / 2;
+	x = -1;
 
 	init_mlx(&mlx_session, scene);
-	while (++x < scene->reso.w / 2)
+	while (++x < scene->reso.w)
 	{
-		y = -scene->reso.h / 2;
-		while (++y < scene->reso.h / 2)
+		y = -1;
+		while (++y < scene->reso.h)
 		{
 			ray_init(&ray);
 			color_init(&color);
 			init_camera(&ray, scene, x, y);
 			color = trace_ray(ray, scene);
-			my_pixel_put(&mlx_session.img, scene->reso.w / 2 + x,
-			scene->reso.h / 2 - y - 1, &color);
+			my_pixel_put(&mlx_session.img, x, y, &color);
 		}
 	}
 	mlx_put_image_to_window(mlx_session.mlx,

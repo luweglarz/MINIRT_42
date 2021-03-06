@@ -26,7 +26,7 @@ void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene *scene)
 	double			t_;
 
 	t_ = cylinder_intersec_equation(ray, cylinder);
-	if (t_ < INFINITY && t_ > 1 && t_ < ray->ray_t)
+	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
 		ray->obj = cylinder;

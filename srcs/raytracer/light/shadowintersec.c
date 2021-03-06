@@ -94,12 +94,14 @@ int	square_intersec(t_scene scene, t_ray *ray, double length)
 
 	(void)length;
 	square_list = scene.square;
+//	printf("ray.ori \n x: %f\n y: %f\n z: %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
 	//printf("ray.dir \n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
 	while (square_list->next)
 	{
 		square = square_list->content;
 		t_ = square_intersec_equation(ray, square);
-
+		//if (t_ != INFINITY)
+	//		printf("t_ %f\n", t_);
 		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;

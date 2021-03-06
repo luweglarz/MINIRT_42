@@ -26,6 +26,7 @@ double	square_intersec_equation(t_ray *ray, t_square *square)
 	dist = vec_diff(plane.cord, ray_pos);
 	if (dist.x <= (square->height / 2) && dist.x >= -(square->height / 2))
 		if (dist.y <= (square->height / 2) && dist.y >= -(square->height / 2))
+			if (dist.z <= (square->height / 2) && dist.z >= -(square->height / 2))
 				return (t);
 	return (INFINITY);
 }
@@ -37,7 +38,7 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 	double			t_;
 
 	t_ = square_intersec_equation(ray, square);
-	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
+	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
 		ray->obj = square;

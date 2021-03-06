@@ -60,7 +60,7 @@ void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 	double			t_;
 
 	t_ = triangle_intersec_equation(ray, triangle, &normal);
-	if (t_ > 1.0 && t_ < INFINITY && t_ < ray->ray_t)
+	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
 		ray->obj = triangle;
