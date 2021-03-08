@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/08 16:29:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/08 17:06:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,27 @@ void	ray_init(t_ray *ray)
 	ray->obj = NULL;
 }
 
+int		closee(int keycode, t_mlx *mlx_session)
+{
+	(void)keycode;
+	(void)mlx_session;
+	mlx_destroy_window(mlx_session->mlx, mlx_session->mlx_win);
+	return (1);
+}
+
 void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 {
+	int	size_w;
+	int	size_h;
+
+	size_w = 0;
+	size_h = 0;
 	mlx_session->mlx = mlx_init();
+	mlx_get_screen_size(mlx_session->mlx, &size_w, &size_h);
+	if (scene->reso.w > size_w)
+		scene->reso.w = size_w;
+	if (scene->reso.h > size_h)
+		scene->reso.h = size_h;
 	mlx_session->mlx_win =
 	mlx_new_window(mlx_session->mlx, scene->reso.w, scene->reso.h, "MiniRT");
 	mlx_session->img.img =

@@ -2,7 +2,6 @@
 - Cylinder intersection
 - Camera rotation,fov etc
 - Understanding triangles
-- Adjust window size to screen
 - Memory leaks
 - Makefile
 - parser errors
