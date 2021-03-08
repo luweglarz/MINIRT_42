@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/26 16:59:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/08 16:29:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,32 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp,
 	&mlx_session->img.line_length, &mlx_session->img.endian);
 }
-
-void	init_camera(t_ray *ray, t_scene *scene, int x, int y)
+#define M_PI       3.14159265358979323846
+void	init_camera(t_ray *ray, t_scene *scene, int x, int y, t_mlx mlx_session)
 {
 	t_list	 *camera_list;
 	t_camera *camera;
+	double	 aspect_ratio;
 
+	(void)mlx_session;
+	aspect_ratio = 1;
 	camera_list = scene->camera;
 	camera = camera_list->content;
 	ray->origin.x = camera->cord.x;
 	ray->origin.y = camera->cord.y;
 	ray->origin.z = camera->cord.z;
+//	printf("x: %d\n y: %d\n",x, y);
+	if(scene->reso.w > scene->reso.h)
+		aspect_ratio = scene->reso.w / scene->reso.h;
 	ray->dir.x = (x + 0.5) / scene->reso.w;
 	ray->dir.y = (y + 0.5) / scene->reso.h;
-	ray->dir.x = 2 * ray->dir.x - 1;
-	ray->dir.y = 1 - 2 * ray->dir.y;
-	//printf("ray->dir\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	ray->dir.x = (2 * ray->dir.x - 1) * aspect_ratio;
+	ray->dir.y = (1 - 2 * ray->dir.y);
+	ray->dir.x = ray->dir.x * tan(camera->fov / 2 * M_PI / 180) * aspect_ratio;
+	ray->dir.y = ray->dir.y * tan(camera->fov / 2 * M_PI / 180);
+	ray->dir = vec_diff(ray->dir, ray->origin);
+	ray->dir = normalize(ray->dir);
+//	printf("ray->dir\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
 }
 t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
@@ -80,7 +90,7 @@ void	ray_tracer(t_scene *scene)
 		{
 			ray_init(&ray);
 			color_init(&color);
-			init_camera(&ray, scene, x, y);
+			init_camera(&ray, scene, x, y, mlx_session);
 			color = trace_ray(ray, scene);
 			my_pixel_put(&mlx_session.img, x, y, &color);
 		}
