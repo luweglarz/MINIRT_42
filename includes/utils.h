@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/02 16:33:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/09 14:34:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minirt.h"
 
 # define BUFFER_SIZE 128
+# define PI 3.14159265358979323846
 
 typedef struct	s_ray
 {
@@ -66,7 +67,7 @@ t_vector		vec_div(t_vector v1, double nb);
 t_vector		cross_product(t_vector v1, t_vector v2);
 
 t_rgb			rgb_multipli(t_rgb color, double coeff);
-void			my_pixel_put(t_img_data *data, int x, int y, t_rgb *rgb);
+void    		my_pixel_put(t_img_data *data, t_px px, t_rgb *rgb);
 int				color_to_int(t_rgb rgb);
 t_vector		normalize(t_vector vec);
 t_vector		ray_equation(t_ray *ray, double ray_t);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/08 17:06:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/09 14:34:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ void	ray_init(t_ray *ray)
 	ray->dir.z = 1.0;
 	ray->ray_t = INFINITY;
 	ray->obj = NULL;
-}
-
-int		closee(int keycode, t_mlx *mlx_session)
-{
-	(void)keycode;
-	(void)mlx_session;
-	mlx_destroy_window(mlx_session->mlx, mlx_session->mlx_win);
-	return (1);
 }
 
 void	init_mlx(t_mlx *mlx_session, t_scene *scene)
@@ -53,32 +45,35 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp,
 	&mlx_session->img.line_length, &mlx_session->img.endian);
 }
-#define M_PI       3.14159265358979323846
-void	init_camera(t_ray *ray, t_scene *scene, int x, int y, t_mlx mlx_session)
-{
-	t_list	 *camera_list;
-	t_camera *camera;
-	double	 aspect_ratio;
 
-	(void)mlx_session;
-	aspect_ratio = 1;
+t_vector	
+set_ray_dir(t_ray *ray, t_scene scene, t_camera camera, t_px px)
+{
+	double	 	aspect_ratio;
+	double	 	fov;
+
+	fov = tan((double)camera.fov / 2 * PI / 180);
+	aspect_ratio = scene.reso.w / scene.reso.h;
+	ray->dir.x = (2 * (px.x + 0.5) / scene.reso.w - 1) * aspect_ratio * fov * aspect_ratio;
+	ray->dir.y = (1 - 2 * (px.y + 0.5) / scene.reso.h) * fov;
+	ray->dir = vec_diff(ray->dir, ray->origin);
+	ray->dir = normalize(ray->dir);
+	return (ray->dir);
+}
+
+void	init_camera(t_ray *ray, t_scene *scene, t_px px)
+{
+	t_list	 	*camera_list;
+	t_camera 	*camera;
+
+	//double		matrix[4][4];
+
 	camera_list = scene->camera;
 	camera = camera_list->content;
 	ray->origin.x = camera->cord.x;
 	ray->origin.y = camera->cord.y;
 	ray->origin.z = camera->cord.z;
-//	printf("x: %d\n y: %d\n",x, y);
-	if(scene->reso.w > scene->reso.h)
-		aspect_ratio = scene->reso.w / scene->reso.h;
-	ray->dir.x = (x + 0.5) / scene->reso.w;
-	ray->dir.y = (y + 0.5) / scene->reso.h;
-	ray->dir.x = (2 * ray->dir.x - 1) * aspect_ratio;
-	ray->dir.y = (1 - 2 * ray->dir.y);
-	ray->dir.x = ray->dir.x * tan(camera->fov / 2 * M_PI / 180) * aspect_ratio;
-	ray->dir.y = ray->dir.y * tan(camera->fov / 2 * M_PI / 180);
-	ray->dir = vec_diff(ray->dir, ray->origin);
-	ray->dir = normalize(ray->dir);
-//	printf("ray->dir\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	ray->dir = set_ray_dir(ray, *scene, *camera, px);
 }
 t_rgb	trace_ray(t_ray ray, t_scene *scene)
 {
@@ -93,24 +88,23 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene)
 void	ray_tracer(t_scene *scene)
 {
 	t_mlx		mlx_session;
-	int			x;
-	int			y;
+	t_px		px;
 	t_rgb		color;
 	t_ray		ray;
 
-	x = -1;
+	px.x = -1;
 
 	init_mlx(&mlx_session, scene);
-	while (++x < scene->reso.w)
+	while (++px.x < scene->reso.w)
 	{
-		y = -1;
-		while (++y < scene->reso.h)
+		px.y = -1;
+		while (++px.y < scene->reso.h)
 		{
 			ray_init(&ray);
 			color_init(&color);
-			init_camera(&ray, scene, x, y, mlx_session);
+			init_camera(&ray, scene, px);
 			color = trace_ray(ray, scene);
-			my_pixel_put(&mlx_session.img, x, y, &color);
+			my_pixel_put(&mlx_session.img, px, &color);
 		}
 	}
 	mlx_put_image_to_window(mlx_session.mlx,

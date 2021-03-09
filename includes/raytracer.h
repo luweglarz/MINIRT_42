@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/08 13:28:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/09 14:31:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene);
 void	ray_tracer(t_scene *scene);
 void	ray_init(t_ray *ray);
 t_rgb	trace_ray(t_ray ray, t_scene *scene);
-void	init_camera(t_ray *ray, t_scene *scene, int x, int y, t_mlx mlx_session);
+void	init_camera(t_ray *ray, t_scene *scene, t_px px);
 
 t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj);
 

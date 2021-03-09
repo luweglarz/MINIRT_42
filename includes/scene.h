@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:47:42 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/09 13:09:41 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/09 14:34:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct		s_vector
 	double	y;
 	double	z;
 }					t_vector;
+
+typedef	struct s_px
+{
+	int	x;
+	int	y;
+}			   t_px;
 
 typedef struct		s_rgb
 {
