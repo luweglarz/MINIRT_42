@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:15:55 by user42            #+#    #+#             */
-/*   Updated: 2021/02/04 15:51:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/10 20:22:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_vector	ray_equation(t_ray *ray, double ray_t)
 	equa_ray = vec_add(ray->origin, vec_multipli_coeff(ray->dir, ray_t));
 	return (equa_ray);
 }
+
 
 t_vector	normalize(t_vector vec)
 {

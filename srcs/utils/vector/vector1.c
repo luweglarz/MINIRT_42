@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:44:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/24 17:57:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/10 21:33:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ t_vector	vec_div(t_vector v1, double nb)
 
 t_vector	cross_product(t_vector v1, t_vector v2)
 {
-	t_vector	cross;
+	t_vector result;
 
-	cross.x = v1.x * v2.z - v1.z * v2.y;
-	cross.y = v1.y * v2.x - v1.x * v2.z;
-	cross.z = v1.x * v2.y - v1.y * v2.x;
-	return (cross);
+	result.x = v1.y * v2.z - v1.z * v2.y;
+	result.y = v1.z * v2.x - v1.x * v2.z;
+	result.z = v1.x * v2.y - v1.y * v2.x;
+	return (result);
 }

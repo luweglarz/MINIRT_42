@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 16:53:51 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/01 10:33:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/10 20:48:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ float	ft_atof(char *nptr)
 	float	ent;
 	float	dec;
 	int		size;
+	char	tmp;
 
+	tmp = nptr[0];
 	ent = (float)ft_atoi(nptr);
 	while (*nptr && *nptr != '.')
 		nptr++;
@@ -63,7 +65,7 @@ float	ft_atof(char *nptr)
 	size = ft_strlen(nptr);
 	while (size--)
 		dec /= 10;
-	if (ent < 0)
+	if (ent <= 0 && tmp == '-')
 		return ((ent + -dec));
 	return ((ent + dec) * 1);
 }

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/08 16:30:16 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/10 21:13:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	get_camera(t_scene *scene, char **data)
 	ori = ft_split(data[2], ',');
 	new_cam->cord = *get_cord(cord);
 	new_cam->ori = *get_orientation(ori);
+	new_cam->ori = normalize(new_cam->ori);
 	new_cam->fov = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }
