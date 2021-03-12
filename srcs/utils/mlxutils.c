@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 21:45:03 by user42            #+#    #+#             */
-/*   Updated: 2021/03/10 21:45:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/12 13:39:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 	&mlx_session->img.line_length, &mlx_session->img.endian);
 	mlx_hook(mlx_session->mlx_win, 33, 1L << 17, close_window, mlx_session);
 	mlx_hook(mlx_session->mlx_win, 9, 1L << 21, refresh_window, mlx_session);
+	
 }

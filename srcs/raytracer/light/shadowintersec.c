@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:19:34 by user42            #+#    #+#             */
-/*   Updated: 2021/03/02 16:19:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/11 13:45:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,12 @@ int	plane_intersec(t_scene scene, t_ray *ray, double length)
 	t_list			*plane_list;
 	t_plane			*plane;
 
-	(void)length;
 	plane_list = scene.plane;
 	while (plane_list->next)
 	{
 		plane = plane_list->content;
 		t_ = plane_intersec_equation(ray, plane);
-		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = plane;
@@ -94,14 +93,10 @@ int	square_intersec(t_scene scene, t_ray *ray, double length)
 
 	(void)length;
 	square_list = scene.square;
-//	printf("ray.ori \n x: %f\n y: %f\n z: %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
-	//printf("ray.dir \n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
 	while (square_list->next)
 	{
 		square = square_list->content;
 		t_ = square_intersec_equation(ray, square);
-		//if (t_ != INFINITY)
-	//		printf("t_ %f\n", t_);
 		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;

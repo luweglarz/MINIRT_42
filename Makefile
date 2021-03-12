@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 14:17:23 by lweglarz          #+#    #+#              #
-#    Updated: 2021/03/10 21:45:47 by user42           ###   ########.fr        #
+#    Updated: 2021/03/11 13:33:25 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCS =   srcs/parser/get_scene_elements.c srcs/parser/get_scene_objects.c srcs/parser/parser.c srcs/utils/lib/lst_func.c srcs/raytracer/light/light.c srcs/raytracer/light/shadowintersec.c \
 		srcs/utils/lib/libftfunctions1.c srcs/utils/lib/libftfunctions2.c srcs/utils/lib/get_next_line.c srcs/utils/lib/ft_split.c srcs/raytracer/raytoprim/raytosphere.c \
-		srcs/utils/utilsdata.c srcs/utils/mlxutils.c srcs/utils/vector/vector1.c srcs/utils/vector/vector2.c srcs/parser/parsing_error.c srcs/utils/displayutils.c srcs/raytracer/raytracer.c \
+		srcs/utils/utilsdata.c srcs/raytracer/initcamera.c srcs/utils/mlxutils.c srcs/utils/vector/vector1.c srcs/utils/vector/vector2.c srcs/parser/parsing_error.c srcs/utils/displayutils.c srcs/raytracer/raytracer.c \
 		main.c srcs/utils/color/color1.c srcs/utils/color/color2.c srcs/raytracer/raytoprim/raytoplane.c srcs/raytracer/raytoprim/raytotriangle.c srcs/raytracer/raytoprim/raytosquare.c srcs/raytracer/raytoprim/raytocylinder.c
 
 RM	= rm -f
