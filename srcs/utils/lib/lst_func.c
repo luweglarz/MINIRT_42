@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:00:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/12 16:55:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/15 15:36:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_list	*ft_lstnew(void *content)
 	return (new_elem);
 }
 
+
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst == NULL)
@@ -39,9 +40,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (!*lst)
 		*lst = new;
-	else if (lst && new && *lst)
+	else
 	{
 		last = ft_lstlast(*lst);
+		new->prev = last;
 		last->next = new;
 	}
 }

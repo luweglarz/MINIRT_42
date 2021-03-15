@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:32:24 by user42            #+#    #+#             */
-/*   Updated: 2021/03/12 16:55:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/15 16:42:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,18 @@ int		switch_cam(int key_code, t_mlx *mlx_session, t_list *lst, t_camera *camera)
 	(void)key_code;
 	(void)mlx_session;
 	(void)camera;
-	printf("test\n");
-	lst = lst->next;
+		printf("test\n");
+		if (key_code == 100)
+		{
+			printf("test\n");
+			lst = lst->prev;
+		}
+		if (key_code == 97)
+		{
+			printf("test\n");
+			lst = lst->prev;
+		}
 	return (1);
-}
-
-int		ft_lstsize(t_list *lst)
-{
-	int			i;
-	t_list		*tmp;
-
-	tmp = lst;
-	i = 0;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
 }
 
 void	init_camera(t_ray *ray, t_scene *scene, t_px px, t_mlx *mlx_session)
@@ -100,8 +94,9 @@ void	init_camera(t_ray *ray, t_scene *scene, t_px px, t_mlx *mlx_session)
 	t_matrix	matrix;
 
 	camera_list = scene->camera;
+	camera_list = camera_list->next;
+	camera_list = camera_list->next;
 	camera = camera_list->content;
-	printf("test %d\n", ft_lstsize(camera_list));
 	mlx_key_hook(mlx_session->mlx_win, switch_cam, &mlx_session);
 	matrix = look_at(camera->cord, camera->ori);
 	ray->origin = vector_matrix(ray->origin, matrix);
