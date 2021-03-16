@@ -95,7 +95,7 @@ void	init_camera(t_ray *ray, t_scene *scene, t_px px, t_mlx *mlx_session)
 
 	camera_list = scene->camera;
 	camera_list = camera_list->next;
-	camera_list = camera_list->next;
+	//camera_list = camera_list->next;
 	camera = camera_list->content;
 	mlx_key_hook(mlx_session->mlx_win, switch_cam, &mlx_session);
 	matrix = look_at(camera->cord, camera->ori);
