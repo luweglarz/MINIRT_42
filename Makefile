@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 14:17:23 by lweglarz          #+#    #+#              #
-#    Updated: 2021/03/15 15:31:29 by user42           ###   ########.fr        #
+#    Updated: 2021/03/16 19:39:17 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ all: $(NAME)
 $(NAME): $(OBJS) includes/minirt.h
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	$(CC) main.c -o minirt minirt.a minilibx/libmlx.a -lm -lXext -lX11
+	$(CC) -g -fsanitize=address main.c -o minirt minirt.a minilibx/libmlx.a -lm -lXext -lX11
 clean:
 	$(RM) $(OBJS)
 fclean:	clean

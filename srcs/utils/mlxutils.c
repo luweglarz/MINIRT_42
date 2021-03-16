@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 21:45:03 by user42            #+#    #+#             */
-/*   Updated: 2021/03/12 13:39:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/16 20:17:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		refresh_window(t_mlx *mlx_session)
 	return (1);
 }
 
-void	init_mlx(t_mlx *mlx_session, t_scene *scene)
+void	init_mlx_window(t_mlx *mlx_session, t_scene *scene)
 {
 	int	size_w;
 	int	size_h;
@@ -41,12 +41,21 @@ void	init_mlx(t_mlx *mlx_session, t_scene *scene)
 		scene->reso.h = size_h;
 	mlx_session->mlx_win =
 	mlx_new_window(mlx_session->mlx, scene->reso.w, scene->reso.h, "MiniRT");
+}
+
+void	init_mlx_image(t_mlx *mlx_session, t_scene *scene)
+{
 	mlx_session->img.img =
 	mlx_new_image(mlx_session->mlx, scene->reso.w, scene->reso.h);
 	mlx_session->img.addr =
 	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp,
 	&mlx_session->img.line_length, &mlx_session->img.endian);
-	mlx_hook(mlx_session->mlx_win, 33, 1L << 17, close_window, mlx_session);
-	mlx_hook(mlx_session->mlx_win, 9, 1L << 21, refresh_window, mlx_session);
-	
+
+}
+
+void	keys(t_mlx mlx_session)
+{
+	mlx_key_hook(mlx_session.mlx_win, cam_hook, &mlx_session);
+	mlx_hook(mlx_session.mlx_win, 33, 1L << 17, close_window, &mlx_session);
+	mlx_hook(mlx_session.mlx_win, 9, 1L << 21, refresh_window, &mlx_session);
 }

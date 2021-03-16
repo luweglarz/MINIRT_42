@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:32:24 by user42            #+#    #+#             */
-/*   Updated: 2021/03/15 16:42:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/16 19:02:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,10 @@ int		switch_cam(int key_code, t_mlx *mlx_session, t_list *lst, t_camera *camera)
 	return (1);
 }
 
-void	init_camera(t_ray *ray, t_scene *scene, t_px px, t_mlx *mlx_session)
+void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene)
 {
-	t_list	 	*camera_list;
-	t_camera 	*camera;
 	t_matrix	matrix;
 
-	camera_list = scene->camera;
-	camera_list = camera_list->next;
-	//camera_list = camera_list->next;
-	camera = camera_list->content;
-	mlx_key_hook(mlx_session->mlx_win, switch_cam, &mlx_session);
 	matrix = look_at(camera->cord, camera->ori);
 	ray->origin = vector_matrix(ray->origin, matrix);
 	ray->dir = set_ray_dir(ray, *scene, *camera, px);
