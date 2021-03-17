@@ -46,6 +46,8 @@ void	get_camera(t_scene *scene, char **data)
 	new_cam->ori = *get_orientation(ori);
 	new_cam->ori = normalize(new_cam->ori);
 	new_cam->fov = ft_atoi(data[3]);
+	if (new_cam->fov > 180 || new_cam->fov < 0)
+		error(ERR_ELEMENT);
 	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }
 

@@ -49,16 +49,19 @@ int		cam_hook(int keycode, t_mlx *mlx_session)
 {
 	t_camera	*camera;
 
-	if (keycode == 100 && mlx_session->nb_cam > 2)
+	if (keycode == 100 && mlx_session->nb_cam > 2 && mlx_session->camera_list->next)
 	{
-		printf("test100\n");
 		mlx_session->camera_list = mlx_session->camera_list->next;
 		camera = mlx_session->camera_list->content;
+		if (camera == NULL)
+		{
+			mlx_session->camera_list = mlx_session->camera_list->prev;
+			return (0);
+		}
 		the_ray(mlx_session->scene, camera, *mlx_session);
 	}
-	if (keycode == 97 && mlx_session->nb_cam > 2)
+	if (keycode == 97 && mlx_session->nb_cam > 2 && mlx_session->camera_list->prev)
 	{
-		printf("test97\n");
 		mlx_session->camera_list = mlx_session->camera_list->prev;
 		camera = mlx_session->camera_list->content;
 		the_ray(mlx_session->scene, camera, *mlx_session);

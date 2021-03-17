@@ -22,7 +22,6 @@ void	ray_init(t_ray *ray)
 	ray->dir.z = 1.0;
 	ray->ray_t = INFINITY;
 	color_init(&ray->ray_color);
-
 	ray->obj = NULL;
 }
 

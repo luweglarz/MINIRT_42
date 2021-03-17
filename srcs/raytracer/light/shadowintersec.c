@@ -12,7 +12,7 @@
 
 #include "../../../includes/minirt.h"
 
-int	sphere_intersec(t_scene scene, t_ray *ray, double length)
+int	sphere_intersec(t_scene scene, t_ray *ray)
 {
 	double			t[2];
 	double	t_;
@@ -24,8 +24,7 @@ int	sphere_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		sphere = sphere_list->content;
 		t_ = sphere_intersec_equation(ray, sphere, t);
-		(void)length;
-		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = sphere;
@@ -37,7 +36,7 @@ int	sphere_intersec(t_scene scene, t_ray *ray, double length)
 	return (0);
 }
 
-int	triangle_intersec(t_scene scene, t_ray *ray, double length)
+int	triangle_intersec(t_scene scene, t_ray *ray)
 {
 	double			t_;
 	t_list			*triangle_list;
@@ -49,8 +48,7 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		triangle = triangle_list->content;
 		t_ = triangle_intersec_equation(ray, triangle, &normal);
-	(void)length;
-		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = triangle;
@@ -62,7 +60,7 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 	return (0);
 }
 
-int	plane_intersec(t_scene scene, t_ray *ray, double length)
+int	plane_intersec(t_scene scene, t_ray *ray)
 {
 	double			t_;
 	t_list			*plane_list;
@@ -73,7 +71,7 @@ int	plane_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		plane = plane_list->content;
 		t_ = plane_intersec_equation(ray, plane);
-		if (t_ > 0.0001 && t_ < length && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = plane;
@@ -85,18 +83,21 @@ int	plane_intersec(t_scene scene, t_ray *ray, double length)
 	return (0);
 }
 
-int	square_intersec(t_scene scene, t_ray *ray, double length)
+int	square_intersec(t_scene scene, t_ray *ray)
 {
 	double			t_;
 	t_list			*square_list;
-	t_square			*square;
+	t_square		*square;
 
-	(void)length;
 	square_list = scene.square;
+	//printf("ray_pos\n x: %f\n y: %f\n z: %f\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	//printf("ray_origin\n x: %f\n y: %f\n z: %f\n", ray->origin.x, ray->origin.y, ray->origin.z);
 	while (square_list->next)
 	{
 		square = square_list->content;
 		t_ = square_intersec_equation(ray, square);
+		//if (t_ != INFINITY)
+		//printf("t %f\n", t_);
 		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;

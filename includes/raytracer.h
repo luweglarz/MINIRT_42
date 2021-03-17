@@ -33,6 +33,7 @@ void	ray_init(t_ray *ray);
 t_rgb	trace_ray(t_ray ray, t_scene *scene);
 void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene);
 void	keys(t_mlx mlx_session);
+
 t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj);
 
 void	raytosphere(t_ray *ray, t_scene *scene);
@@ -50,9 +51,9 @@ double	square_intersec_equation(t_ray *ray, t_square *square);
 void	raytocylinder(t_ray *ray, t_scene *scene);
 double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder);
 
-int		sphere_intersec(t_scene scene, t_ray *ray, double length);
-int		triangle_intersec(t_scene scene, t_ray *ray, double length);
-int		plane_intersec(t_scene scene, t_ray *ray, double length);
-int		square_intersec(t_scene scene, t_ray *ray, double length);
+int		sphere_intersec(t_scene scene, t_ray *ray);
+int		triangle_intersec(t_scene scene, t_ray *ray);
+int		plane_intersec(t_scene scene, t_ray *ray);
+int		square_intersec(t_scene scene, t_ray *ray);
 
 #endif

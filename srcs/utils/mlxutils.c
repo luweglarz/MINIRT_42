@@ -19,6 +19,15 @@ int		close_window(t_mlx *mlx_session)
 	exit(0);
 }
 
+int		key_code(int keycode, t_mlx *mlx_session)
+{
+	if (keycode == 65307)
+		close_window(mlx_session);
+	if (keycode == 100 || keycode == 97)
+		cam_hook(keycode, mlx_session);
+	return(0);
+}
+
 int		refresh_window(t_mlx *mlx_session)
 {
 	mlx_put_image_to_window(mlx_session->mlx,
@@ -55,7 +64,7 @@ void	init_mlx_image(t_mlx *mlx_session, t_scene *scene)
 
 void	keys(t_mlx mlx_session)
 {
-	mlx_key_hook(mlx_session.mlx_win, cam_hook, &mlx_session);
+	mlx_key_hook(mlx_session.mlx_win,  key_code, &mlx_session);
 	mlx_hook(mlx_session.mlx_win, 33, 1L << 17, close_window, &mlx_session);
-	mlx_hook(mlx_session.mlx_win, 9, 1L << 21, refresh_window, &mlx_session);
+	mlx_hook(mlx_session.mlx_win, 9, 1L << 21, refresh_window, &mlx_session);	
 }

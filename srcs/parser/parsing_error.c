@@ -23,6 +23,6 @@ void	error(int errorcode)
 	if (errorcode == ERR_MALLOC)
 		write(STDERR_FILENO, "Malloc failed", 13);
 	if (errorcode == ERR_ELEMENT)
-		write(STDERR_FILENO, "Wrong element value given", 25);
+		write(STDERR_FILENO, "Wrong element value", 25);
 	exit(errorcode);
 }

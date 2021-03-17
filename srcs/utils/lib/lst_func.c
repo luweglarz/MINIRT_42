@@ -24,7 +24,6 @@ t_list	*ft_lstnew(void *content)
 	return (new_elem);
 }
 
-
 int			lstsize(t_list **head)
 {
 	t_list		*cursor;
