@@ -68,25 +68,6 @@ set_ray_dir(t_ray *ray, t_scene scene, t_camera camera, t_px px)
 	return (ray->dir);
 }
 
-int		switch_cam(int key_code, t_mlx *mlx_session, t_list *lst, t_camera *camera)
-{
-	(void)key_code;
-	(void)mlx_session;
-	(void)camera;
-		printf("test\n");
-		if (key_code == 100)
-		{
-			printf("test\n");
-			lst = lst->prev;
-		}
-		if (key_code == 97)
-		{
-			printf("test\n");
-			lst = lst->prev;
-		}
-	return (1);
-}
-
 void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene)
 {
 	t_matrix	matrix;

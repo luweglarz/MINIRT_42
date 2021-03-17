@@ -21,6 +21,8 @@ typedef struct	s_mlx
 	void		*mlx_win;
 	t_img_data	img;
 	t_scene		*scene;
+	t_list		*camera_list;
+	int			nb_cam;
 }				t_mlx;
 
 void	init_mlx_window(t_mlx *mlx_session, t_scene *scene);

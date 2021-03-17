@@ -46,7 +46,7 @@ void	get_camera(t_scene *scene, char **data)
 	new_cam->ori = *get_orientation(ori);
 	new_cam->ori = normalize(new_cam->ori);
 	new_cam->fov = ft_atoi(data[3]);
-	ft_lstadd_back(&scene->camera, ft_lstnew(new_cam));
+	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
 }
 
 void	get_light(t_scene *scene, char **data)
