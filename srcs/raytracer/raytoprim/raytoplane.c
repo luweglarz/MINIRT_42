@@ -38,8 +38,9 @@ void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)
 		ray->obj = plane;
 		ray->ray_color = plane->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
-		normal = vec_diff(ray->dir, plane->cord);
-		normal = normalize(normal);
+		normal = plane->ori;
+		//normal = vec_diff(ray->dir, plane->cord);
+		//normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	
 	}

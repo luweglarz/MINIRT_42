@@ -15,7 +15,7 @@
 int	sphere_intersec(t_scene scene, t_ray *ray)
 {
 	double			t[2];
-	double	t_;
+	double			t_;
 	t_list			*sphere_list;
 	t_sphere		*sphere;
 

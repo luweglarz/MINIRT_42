@@ -38,3 +38,6 @@ t_vector	normalize(t_vector vec)
 	normal = vec_multipli_coeff(vec, 1.0 / vec_length(vec));
 	return (normal);
 }
+
+
+

@@ -13,7 +13,7 @@
 #include "../../../includes/minirt.h"
 
 
-
+/*
 double	square_intersec_equation(t_ray *ray, t_square *square)
 {
 	double		denom;
@@ -44,8 +44,8 @@ double	square_intersec_equation(t_ray *ray, t_square *square)
 	}
 	return (INFINITY);
 }
+*/
 
-/*
 double	square_intersec_equation(t_ray *ray, t_square *square)
 {
 	t_plane		plane;
@@ -64,7 +64,7 @@ double	square_intersec_equation(t_ray *ray, t_square *square)
 				return (t);
 	return (INFINITY);
 }
-*/
+
 void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
@@ -78,9 +78,7 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 		ray->obj = square;
 		ray->ray_color = square->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
-		//normal = vec_diff(square->cord, ray->dir);
-		normal = cross_product(ray->dir, square->cord);
-		//normal = normalize(normal);
+		normal = square->ori;
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	
 	}

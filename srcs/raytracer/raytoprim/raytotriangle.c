@@ -21,7 +21,6 @@ void	motrum_init(t_motrum *motrum)
 	motrum->inv_det = 0;
 	motrum->ubary = 0;
 	motrum->vbary = 0;
-
 }
 
 double
@@ -66,6 +65,7 @@ void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 		ray->obj = triangle;
 		ray->ray_color = triangle->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
+		//normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	
 	}
