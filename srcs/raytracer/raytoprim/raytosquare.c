@@ -12,6 +12,40 @@
 
 #include "../../../includes/minirt.h"
 
+
+
+double	square_intersec_equation(t_ray *ray, t_square *square)
+{
+	double		denom;
+	t_vector	hit_point;
+	t_vector	polo;
+	double		t;
+
+	denom = vec_dot(square->ori, ray->dir);
+	if (fabs(denom) > 0.00000001)
+	{
+		polo = vec_diff(square->cord, ray->origin);
+		t = vec_dot(polo, square->ori) / denom;
+		hit_point = vec_add(ray->origin, vec_multipli_coeff(ray->dir, t));
+		if (t >= 0)
+		{
+			if (fabs(hit_point.x - square->cord.x) > (square->height / 2))
+				return (INFINITY);
+			if (fabs(hit_point.y - square->cord.y) > (square->height / 2))
+				return (INFINITY);
+			if (fabs(hit_point.z - square->cord.z) > (square->height / 2))
+				return (INFINITY);
+			else
+			return (t);
+		}
+		else
+			return (INFINITY);
+
+	}
+	return (INFINITY);
+}
+
+/*
 double	square_intersec_equation(t_ray *ray, t_square *square)
 {
 	t_plane		plane;
@@ -30,7 +64,7 @@ double	square_intersec_equation(t_ray *ray, t_square *square)
 				return (t);
 	return (INFINITY);
 }
-
+*/
 void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 {
 	t_vector		ray_pos;
@@ -44,8 +78,9 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 		ray->obj = square;
 		ray->ray_color = square->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
-		normal = vec_diff(ray->dir, square->cord);
-		normal = normalize(normal);
+		//normal = vec_diff(square->cord, ray->dir);
+		normal = cross_product(ray->dir, square->cord);
+		//normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	
 	}

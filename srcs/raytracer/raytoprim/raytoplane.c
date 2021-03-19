@@ -18,7 +18,7 @@ double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 	double	 t;
 
 	a = vec_dot(ray->dir, plane->ori);
-	if (a < 0)
+	if (fabs(a) < 0.00000001)
 		return (INFINITY);
 	dist = vec_diff(plane->cord, ray->origin);
 	t = vec_dot(dist, plane->ori) / a;

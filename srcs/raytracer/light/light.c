@@ -32,7 +32,7 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 	ray_init(&ray);
 	ray.origin = ray_pos;
 	ray.dir = light_cord;
-//	ray.dir = normalize(ray.dir);
+	ray.dir = normalize(ray.dir);
 	if (sphere_intersec(scene, &ray) && ray.obj != obj)
 		return (1);
 	if (triangle_intersec(scene, &ray) && ray.obj != obj)
