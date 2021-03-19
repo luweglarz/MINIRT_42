@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/03/02 16:19:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/19 19:30:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ double	get_intensity(t_scene scene, t_vector light_dir, t_vector normal, t_light
 	intensity = 0.0;
 	intensity = scene.amli.ratio;
 	cos = vec_dot(normal, light_dir);
-	printf("cos %f\n", cos);
+	//printf("normal\n x: %f\n y: %f\n z: %f\n", normal.x, normal.y, normal.z);
+	//printf("cos %f\n", cos);
 	if (cos > 0)
 		intensity += light.ratio * cos;
-	printf("intesenity  %f\n", intensity);
 	return (intensity);
 }
 
@@ -35,13 +35,14 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 	ray.origin = ray_pos;
 	ray.dir = light_cord;
 	ray.dir = normalize(ray.dir);
+	double length = vec_length(vec_diff(light_cord, ray_pos));
 	if (sphere_intersec(scene, &ray) && ray.obj != obj)
 		return (1);
-	if (triangle_intersec(scene, &ray))
+	if (triangle_intersec(scene, &ray, length))
 		return (1);
-	if (plane_intersec(scene, &ray) && ray.obj != obj)
+	if (plane_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
-	if (square_intersec(scene, &ray))
+	if (square_intersec(scene, &ray, length))
 		return (1);
 	return (0);
 }

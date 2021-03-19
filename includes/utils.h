@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/09 14:34:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/19 20:13:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ float			ft_atof(char *nptr);
 
 double			vec_dot(t_vector v1, t_vector v2);
 double			vec_length(t_vector v1);
+t_vector		init_vector(double x, double y, double z);
 t_vector		vec_diff(t_vector v1, t_vector v2);
 t_vector		vec_multipli_coeff(t_vector v1, double coeff);
 t_vector		vec_add(t_vector v1, t_vector v2);

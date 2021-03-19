@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/16 20:17:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/19 19:29:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	raytocylinder(t_ray *ray, t_scene *scene);
 double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder);
 
 int		sphere_intersec(t_scene scene, t_ray *ray);
-int		triangle_intersec(t_scene scene, t_ray *ray);
-int		plane_intersec(t_scene scene, t_ray *ray);
-int		square_intersec(t_scene scene, t_ray *ray);
+int		triangle_intersec(t_scene scene, t_ray *ray, double length);
+int	plane_intersec(t_scene scene, t_ray *ray, double length);
+int		square_intersec(t_scene scene, t_ray *ray, double length);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:45:18 by user42            #+#    #+#             */
-/*   Updated: 2021/03/08 13:22:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/19 20:17:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)
 		ray->ray_color = plane->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
 		normal = plane->ori;
-		//normal = vec_diff(ray->dir, plane->cord);
-		//normal = normalize(normal);
+		if (vec_dot(ray->dir, normal) > 0)
+			normal = vec_multipli_coeff(normal, -1);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	
 	}

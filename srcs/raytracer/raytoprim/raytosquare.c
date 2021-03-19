@@ -6,45 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:58:49 by user42            #+#    #+#             */
-/*   Updated: 2021/03/02 16:46:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/19 20:17:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minirt.h"
-
-
-/*
-double	square_intersec_equation(t_ray *ray, t_square *square)
-{
-	double		denom;
-	t_vector	hit_point;
-	t_vector	polo;
-	double		t;
-
-	denom = vec_dot(square->ori, ray->dir);
-	if (fabs(denom) > 0.00000001)
-	{
-		polo = vec_diff(square->cord, ray->origin);
-		t = vec_dot(polo, square->ori) / denom;
-		hit_point = vec_add(ray->origin, vec_multipli_coeff(ray->dir, t));
-		if (t >= 0)
-		{
-			if (fabs(hit_point.x - square->cord.x) > (square->height / 2))
-				return (INFINITY);
-			if (fabs(hit_point.y - square->cord.y) > (square->height / 2))
-				return (INFINITY);
-			if (fabs(hit_point.z - square->cord.z) > (square->height / 2))
-				return (INFINITY);
-			else
-			return (t);
-		}
-		else
-			return (INFINITY);
-
-	}
-	return (INFINITY);
-}
-*/
 
 double	square_intersec_equation(t_ray *ray, t_square *square)
 {
@@ -75,10 +41,13 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
+
 		ray->obj = square;
 		ray->ray_color = square->color;
 		ray_pos = ray_equation(ray, ray->ray_t);
 		normal = square->ori;
+		if (vec_dot(ray->dir, normal) > 0)
+			normal = vec_multipli_coeff(normal, -1);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(ray_pos, normal, scene, ray->obj));	
 	}
