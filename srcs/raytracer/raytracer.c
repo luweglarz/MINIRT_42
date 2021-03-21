@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/16 20:58:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/21 14:25:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		cam_hook(int keycode, t_mlx *mlx_session)
 	return (0);
 }
 
-void	ray_tracer(t_scene *scene)
+void	ray_tracer(t_scene *scene, int save)
 {
 	t_mlx		mlx_session;
 	t_camera	*camera;
@@ -77,6 +77,8 @@ void	ray_tracer(t_scene *scene)
 
 	camera_list = scene->camera;
 	camera = camera_list->content;
+	if (save == 1)
+		create_bmp(scene, camera);
 	mlx_session.camera_list = camera_list;
 	mlx_session.nb_cam = lstsize(&mlx_session.camera_list);
 	mlx_session.scene = scene;

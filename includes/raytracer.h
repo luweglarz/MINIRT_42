@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/19 19:29:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/21 14:25:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_mlx
 void	init_mlx_window(t_mlx *mlx_session, t_scene *scene);
 void	init_mlx_image(t_mlx *mlx_session, t_scene *scene);
 int		cam_hook(int keycode, t_mlx *mlx_session);
-void	ray_tracer(t_scene *scene);
+void	ray_tracer(t_scene *scene, int save);
 void	ray_init(t_ray *ray);
 t_rgb	trace_ray(t_ray ray, t_scene *scene);
 void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene);

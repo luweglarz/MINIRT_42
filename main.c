@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:30:07 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/16 19:21:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/21 14:13:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		scene = parsing_config(fd);
 		close(fd);
-		ray_tracer(scene);
+		ray_tracer(scene, 0);
 	}
 	if ((argc == 3) && (ft_strcmp(argv[2], "-save") == 0))
 		write(1, "screenshot", 11);
