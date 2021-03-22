@@ -69,7 +69,7 @@ int		cam_hook(int keycode, t_mlx *mlx_session)
 	return (0);
 }
 
-void	ray_tracer(t_scene *scene, int save)
+void	ray_tracer(t_scene *scene)
 {
 	t_mlx		mlx_session;
 	t_camera	*camera;
@@ -77,8 +77,6 @@ void	ray_tracer(t_scene *scene, int save)
 
 	camera_list = scene->camera;
 	camera = camera_list->content;
-	if (save == 1)
-		create_bmp(scene, camera);
 	mlx_session.camera_list = camera_list;
 	mlx_session.nb_cam = lstsize(&mlx_session.camera_list);
 	mlx_session.scene = scene;

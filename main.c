@@ -24,10 +24,15 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		scene = parsing_config(fd);
 		close(fd);
-		ray_tracer(scene, 0);
+		ray_tracer(scene);
 	}
 	if ((argc == 3) && (ft_strcmp(argv[2], "-save") == 0))
-		write(1, "screenshot", 11);
+	{
+		fd = open(argv[1], O_RDONLY);
+		scene = parsing_config(fd);
+		close(fd);
+		create_bmp(scene);
+	}
 	else if  ((argc == 3) && (ft_strcmp(argv[2], "-save") != 0))
 		error(ERR_SAVE);
 	if (argc > 3)

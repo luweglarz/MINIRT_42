@@ -12,43 +12,74 @@
 
 #include "../../includes/minirt.h"
 
+/*
+  	write(fd, "BM", 2); 
 
-void	fill_sizes(unsigned char *header, unsigned int height,
-					unsigned int width)
+ 	 octet = 14 + 40 + 4 * scene->reso.w * scene->reso.h;
+ 	 write(fd, &octet, 4);
+  	octet = 0;
+  	write(fd, &octet, 2); 
+  	write(fd, &octet, 2); 
+ 	 octet = 54;
+ 	write(fd, &octet, 4);
+ 	 octet = 40;
+ 	 write(fd, &octet, 4);
+  	write(fd, & scene->reso.w, 4);
+  	write(fd, &scene->reso.h, 4);
+  	octet = 1;
+  	write(fd, &octet, 2);
+  	octet = 32
+  	write(fd, &octet, 2); 
+  	octet = 0;
+  	write(fd, &octet, 4);
+  	write(fd, &octet, 4);
+  	write(fd, &octet, 4);
+ write(fd, &octet, 4);
+ 	write(fd, &toctetmp, 4);
+ write(fd, &octet, 4);
+*/
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned int pixels_in_row;
-	unsigned int padding_in_row;
+	unsigned char	*ptr;
+	size_t			i;
 
-	*(unsigned int *)(&header[18]) = width;
-	*(unsigned int *)(&header[22]) = height;
-	pixels_in_row = width * sizeof(t_pixel);
-	padding_in_row = (4 - (pixels_in_row % 4)) % 4;
-	header[2] = 54 + (pixels_in_row + padding_in_row) * height;
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }
-int		write_bmp(char *filename, unsigned int width, unsigned int height,
-					t_pixel **pixels)
+
+void	make_header(unsigned char *header, t_scene *scene)
 {
-	int				fd;
-	unsigned char	header[54];
-
-	fill_header(header);
-	fill_sizes(header, height, width);
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC);
-	write(fd, header, 54);
-	write_file(height, width, pixels, fd);
-	close(fd);
-	return (0);
+	ft_memset(header, 0, 54);
+ 	header[0] = 'B';
+  	header[1] = 'M';
+  	header[2] = 14 + 40 + 4 * scene->reso.h * scene->reso.w;
+	header[10] = 54;
+	header[14] = 40;
+	header[18] = scene->reso.w;
+	header[22] = scene->reso.h;
+	header[26] = 1;
+	header[28] = 24;
 }
 
-int create_bmp(t_scene *scene, t_camera *camera)
+
+void	bmp_raytrace(int fd, t_scene *scene)
 {
 	t_px		px;
 	t_rgb		color;
 	t_ray		ray;
-	t_px		**buffer;
+	t_list		*camera_list;
+	t_camera	*camera;
 
 	px.x = 0;
-	buffer = create_buffer(scene->reso.h, scene->reso.w);
+	camera_list = scene->camera;
+	camera = camera_list->content;
 	while (++px.x < scene->reso.w)
 	{
 		px.y = 0;
@@ -58,9 +89,20 @@ int create_bmp(t_scene *scene, t_camera *camera)
 			color_init(&color);
 			init_camera(&ray, camera, px, scene);
 			color = trace_ray(ray, scene);
-			buffer[px.x][px.y] = ;
+			write(fd, , );
 		}
 	}
-		write_bmp("file.bmp", scene->reso.w, scene->reso.h, buffer);
-//	free_buffer
+
+}
+
+void create_bmp(t_scene *scene)
+{
+	int				fd;
+	unsigned char	header[54];
+
+	fd = open("minirt", O_WRONLY | O_CREAT | O_TRUNC);
+	make_header(header, scene);
+	write(fd, header, 54);
+	bmp_raytrace(fd, scene);
+	close(fd);
 }

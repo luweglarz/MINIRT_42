@@ -28,11 +28,12 @@ typedef struct	s_mlx
 void	init_mlx_window(t_mlx *mlx_session, t_scene *scene);
 void	init_mlx_image(t_mlx *mlx_session, t_scene *scene);
 int		cam_hook(int keycode, t_mlx *mlx_session);
-void	ray_tracer(t_scene *scene, int save);
+void	ray_tracer(t_scene *scene);
 void	ray_init(t_ray *ray);
 t_rgb	trace_ray(t_ray ray, t_scene *scene);
 void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene);
 void	keys(t_mlx mlx_session);
+void 	create_bmp(t_scene *scene);
 
 t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj);
 
