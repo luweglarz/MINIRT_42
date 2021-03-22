@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/19 20:13:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:34:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@
 # define BUFFER_SIZE 128
 # define PI 3.14159265358979323846
 
-typedef struct	s_ray
-{
-	t_vector	origin;
-	t_vector	dir;
-	double		ray_t;
-	t_rgb		ray_color;
-	void		*obj;
-}				t_ray;
-
 typedef struct 	s_motrum
 {
 	t_vector	cross;
@@ -35,15 +26,6 @@ typedef struct 	s_motrum
 	double		ubary;
 	double		vbary;
 }				t_motrum;
-
-typedef struct	s_img_data
-{
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			line_length;
-	int			endian;
-}				t_img_data;
 
 void			ft_bzero(void *s, size_t n);
 char			*ft_strdup(char *s);
@@ -68,10 +50,8 @@ t_vector		vec_div(t_vector v1, double nb);
 t_vector		cross_product(t_vector v1, t_vector v2);
 
 t_rgb			rgb_multipli(t_rgb color, double coeff);
-void    		my_pixel_put(t_img_data *data, t_px px, t_rgb *rgb);
 int				color_to_int(t_rgb rgb);
 t_vector		normalize(t_vector vec);
-t_vector		ray_equation(t_ray *ray, double ray_t);
 void			color_init(t_rgb *rgb);
 t_frgb			color_range1(t_rgb rgb);
 t_rgb			color_range2(t_frgb frgb);

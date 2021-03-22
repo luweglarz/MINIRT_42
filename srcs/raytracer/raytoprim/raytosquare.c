@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:58:49 by user42            #+#    #+#             */
-/*   Updated: 2021/03/21 14:00:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:29:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
-
 		ray->obj = square;
 		ray->ray_color = square->color;
 		ray_pos = ray_equation(ray, ray->ray_t);

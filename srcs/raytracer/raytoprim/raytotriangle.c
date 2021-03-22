@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:46:13 by user42            #+#    #+#             */
-/*   Updated: 2021/03/19 20:17:47 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:45:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void		raytotriangle(t_ray *ray, t_scene *scene)
 {
 	t_list			*triangle_list;
 	t_triangle		*triangle;
-
 
 	triangle_list = scene->triangle;
 	while (triangle_list->next)

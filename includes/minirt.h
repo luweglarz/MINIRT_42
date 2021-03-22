@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:56:38 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/02/01 10:31:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 15:31:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # include "scene.h"
 # include "utils.h"
 # include "parser.h"
+# include "minirt_mlx.h"
 # include "raytracer.h"
+
 # include <stdio.h>
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/21 14:25:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:35:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,21 @@
 
 # include "minirt.h"
 
-typedef struct	s_mlx
+typedef struct	s_ray
 {
-	void		*mlx;
-	void		*mlx_win;
-	t_img_data	img;
-	t_scene		*scene;
-	t_list		*camera_list;
-	int			nb_cam;
-}				t_mlx;
+	t_vector	origin;
+	t_vector	dir;
+	double		ray_t;
+	t_rgb		ray_color;
+	void		*obj;
+}				t_ray;
 
-void	init_mlx_window(t_mlx *mlx_session, t_scene *scene);
-void	init_mlx_image(t_mlx *mlx_session, t_scene *scene);
-int		cam_hook(int keycode, t_mlx *mlx_session);
+t_vector		ray_equation(t_ray *ray, double ray_t);
+
 void	ray_tracer(t_scene *scene, int save);
 void	ray_init(t_ray *ray);
 t_rgb	trace_ray(t_ray ray, t_scene *scene);
 void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene);
-void	keys(t_mlx mlx_session);
-void create_bmp(t_scene *scene, t_mlx *mlx_session);
 
 t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj);
 
@@ -54,7 +50,9 @@ double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder);
 
 int		sphere_intersec(t_scene scene, t_ray *ray);
 int		triangle_intersec(t_scene scene, t_ray *ray, double length);
-int	plane_intersec(t_scene scene, t_ray *ray, double length);
+int     plane_intersec(t_scene scene, t_ray *ray, double length);
 int		square_intersec(t_scene scene, t_ray *ray, double length);
+
+void    create_bmp(t_scene *scene, t_mlx *mlx_session);
 
 #endif
