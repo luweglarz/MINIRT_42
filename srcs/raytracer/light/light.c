@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/03/22 16:37:27 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:50:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,13 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 		light_dir = vec_diff(light->cord, ray_pos);
 		if (is_intersection(*scene, ray_pos, light_dir, obj))
 		{
-			color_init(&light_color);
-			break;
+			//color_init(&light_color);
+			lights = lights->next;
+			continue;
 		}
-		light_dir = normalize(light_dir);
-		intensity = get_intensity(*scene, light_dir, normal, *light);
+		intensity = get_intensity(*scene, normalize(light_dir), normal, *light);
 		light_color = rgb_add(light_color,
 		rgb_multipli(light->color, intensity));
-		
 		lights = lights->next;
 	}
 	light_color = rgb_add(light_color,

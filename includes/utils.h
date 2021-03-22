@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/22 16:34:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:09:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 
 # define BUFFER_SIZE 128
 # define PI 3.14159265358979323846
+
+typedef	struct s_matrix
+{
+	double	m[4][4];
+}				t_matrix;
 
 typedef struct 	s_motrum
 {

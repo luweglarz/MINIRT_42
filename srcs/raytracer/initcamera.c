@@ -6,17 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:32:24 by user42            #+#    #+#             */
-/*   Updated: 2021/03/16 19:02:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:10:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
-
-typedef	struct s_matrix
-{
-	double	m[4][4];
-}				t_matrix;
-
 
 t_vector		vector_matrix(t_vector v, t_matrix m)
 {
