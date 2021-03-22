@@ -41,8 +41,6 @@ void	the_ray(t_scene *scene, t_camera *camera, t_mlx mlx_session)
 			my_pixel_put(&mlx_session.img, px, &color);
 		}
 	}
-	mlx_put_image_to_window(mlx_session.mlx,
-	mlx_session.mlx_win, mlx_session.img.img, 0, 0);
 }
 
 int		cam_hook(int keycode, t_mlx *mlx_session)
@@ -69,7 +67,7 @@ int		cam_hook(int keycode, t_mlx *mlx_session)
 	return (0);
 }
 
-void	ray_tracer(t_scene *scene)
+void	ray_tracer(t_scene *scene, int save)
 {
 	t_mlx		mlx_session;
 	t_camera	*camera;
@@ -80,9 +78,13 @@ void	ray_tracer(t_scene *scene)
 	mlx_session.camera_list = camera_list;
 	mlx_session.nb_cam = lstsize(&mlx_session.camera_list);
 	mlx_session.scene = scene;
-	init_mlx_window(&mlx_session, scene);
 	init_mlx_image(&mlx_session, scene);
-	keys(mlx_session);
 	the_ray(scene, camera, mlx_session);
+	if ( save == 1)
+		create_bmp(scene, &mlx_session);
+	init_mlx_window(&mlx_session, scene);
+	mlx_put_image_to_window(mlx_session.mlx,
+	mlx_session.mlx_win, mlx_session.img.img, 0, 0);
+	keys(mlx_session);
 	mlx_loop(mlx_session.mlx);
 }

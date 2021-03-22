@@ -54,55 +54,60 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-void	make_header(unsigned char *header, t_scene *scene)
+void	make_header(int fd, t_scene *scene)
 {
-	ft_memset(header, 0, 54);
- 	header[0] = 'B';
-  	header[1] = 'M';
-  	header[2] = 14 + 40 + 4 * scene->reso.h * scene->reso.w;
-	header[10] = 54;
-	header[14] = 40;
-	header[18] = scene->reso.w;
-	header[22] = scene->reso.h;
-	header[26] = 1;
-	header[28] = 24;
+	int octet;
+  	write(fd, "BM", 2); 
+
+ 	 octet = 66;
+ 	 write(fd, &octet, 4);
+  	octet = 0;
+  	write(fd, &octet, 2); 
+  	write(fd, &octet, 2); 
+ 	 octet = 54;
+ 	write(fd, &octet, 4);
+ 	 octet = 40;
+ 	 write(fd, &octet, 4);
+  	write(fd, &scene->reso.w, 4);
+  	write(fd, &scene->reso.h, 4);
+  	octet = 1;
+  	write(fd, &octet, 2);
+  	octet = 32;
+  	write(fd, &octet, 2); 
+  	octet = 0;
+  	write(fd, &octet, 4);
+  	write(fd, &octet, 4);
+  	write(fd, &octet, 4);
+ write(fd, &octet, 4);
+ 	write(fd, &octet, 4);
+ write(fd, &octet, 4);
 }
 
 
-void	bmp_raytrace(int fd, t_scene *scene)
+void	bmp_raytrace(int fd, t_scene *scene, t_mlx *mlx_session)
 {
 	t_px		px;
-	t_rgb		color;
-	t_ray		ray;
-	t_list		*camera_list;
-	t_camera	*camera;
 
-	px.x = 0;
-	camera_list = scene->camera;
-	camera = camera_list->content;
-	while (++px.x < scene->reso.w)
+	px.y = scene->reso.h;
+	while (--px.y >= 0)
 	{
-		px.y = 0;
-		while (++px.y < scene->reso.h)
+		px.x = -1;
+		while (++px.x < scene->reso.w)
 		{
-			ray_init(&ray);
-			color_init(&color);
-			init_camera(&ray, camera, px, scene);
-			color = trace_ray(ray, scene);
-			write(fd, , );
+			write(fd, &mlx_session->img.addr[px.y * mlx_session->img.line_length + px.x * 4] , 4);
 		}
 	}
 
 }
 
-void create_bmp(t_scene *scene)
+void create_bmp(t_scene *scene, t_mlx *mlx_session)
 {
 	int				fd;
-	unsigned char	header[54];
 
-	fd = open("minirt", O_WRONLY | O_CREAT | O_TRUNC);
-	make_header(header, scene);
-	write(fd, header, 54);
-	bmp_raytrace(fd, scene);
+	fd = open("minirtscreen.bmp", O_WRONLY | O_CREAT | O_TRUNC);
+	make_header(fd, scene);
+	bmp_raytrace(fd, scene, mlx_session);
 	close(fd);
+	system("chmod 777 minirtscreen.bmp");
+	exit(0);
 }

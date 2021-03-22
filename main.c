@@ -15,7 +15,7 @@
 int		main(int argc, char **argv)
 {
 	t_scene		*scene;
-	int		fd;
+	int			fd;
 
 	if (argc == 1)
 		error(ERR_FEWFILE);
@@ -24,16 +24,16 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		scene = parsing_config(fd);
 		close(fd);
-		ray_tracer(scene);
+		ray_tracer(scene, 0);
 	}
-	if ((argc == 3) && (ft_strcmp(argv[2], "-save") == 0))
+	if ((argc == 3) && (ft_strcmp(argv[2], "--save") == 0))
 	{
 		fd = open(argv[1], O_RDONLY);
 		scene = parsing_config(fd);
 		close(fd);
-		create_bmp(scene);
+		ray_tracer(scene, 1);
 	}
-	else if  ((argc == 3) && (ft_strcmp(argv[2], "-save") != 0))
+	else if  ((argc == 3) && (ft_strcmp(argv[2], "--save") != 0))
 		error(ERR_SAVE);
 	if (argc > 3)
 		error(ERR_NBFILE);

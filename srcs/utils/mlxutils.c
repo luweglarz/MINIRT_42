@@ -42,7 +42,6 @@ void	init_mlx_window(t_mlx *mlx_session, t_scene *scene)
 
 	size_w = 0;
 	size_h = 0;
-	mlx_session->mlx = mlx_init();
 	mlx_get_screen_size(mlx_session->mlx, &size_w, &size_h);
 	if (scene->reso.w > size_w)
 		scene->reso.w = size_w;
@@ -54,6 +53,7 @@ void	init_mlx_window(t_mlx *mlx_session, t_scene *scene)
 
 void	init_mlx_image(t_mlx *mlx_session, t_scene *scene)
 {
+	mlx_session->mlx = mlx_init();
 	mlx_session->img.img =
 	mlx_new_image(mlx_session->mlx, scene->reso.w, scene->reso.h);
 	mlx_session->img.addr =
