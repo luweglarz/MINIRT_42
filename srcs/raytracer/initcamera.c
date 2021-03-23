@@ -6,21 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:32:24 by user42            #+#    #+#             */
-/*   Updated: 2021/03/22 21:10:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/23 11:46:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
-
-t_vector		vector_matrix(t_vector v, t_matrix m)
-{
-	t_vector res;
-
-	res.x = v.x * m.m[0][0] + v.y * m.m[1][0] + v.z * m.m[2][0] + m.m[3][0];
-	res.y = v.x * m.m[0][1] + v.y * m.m[1][1] + v.z * m.m[2][1] + m.m[3][1];
-	res.z = v.x * m.m[0][2] + v.y * m.m[1][2] + v.z * m.m[2][2] + m.m[3][2];
-	return (res);
-}
 
 t_matrix	look_at(t_vector origin, t_vector direction)
 {

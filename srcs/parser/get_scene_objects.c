@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/12 14:26:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/23 13:20:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ void	get_cylinder(t_scene *scene, char **data)
 	rgb = ft_split(data[5], ',');
 	new_cylinder->cord = *get_cord(cord);
 	new_cylinder->ori = *get_orientation(ori);
+	new_cylinder->ori = normalize(new_cylinder->ori);
 	new_cylinder->color = *get_color(rgb);
-	new_cylinder->diameter = ft_atoi(data[3]);
-	new_cylinder->height = ft_atoi(data[4]);
+	new_cylinder->diameter = ft_atof(data[3]);
+	new_cylinder->height = ft_atof(data[4]);
 	ft_lstadd_front(&scene->cylinder, ft_lstnew(new_cylinder));
 }
 

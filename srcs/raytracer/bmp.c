@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 14:15:08 by user42            #+#    #+#             */
-/*   Updated: 2021/03/22 21:09:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/23 12:00:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@ void	make_header(int fd, t_scene *scene)
 {
 	int octet;
   	write(fd, "BM", 2); 
-
- 	 octet = 66;
- 	 write(fd, &octet, 4);
+ 	octet = 66;
+ 	write(fd, &octet, 4);
   	octet = 0;
   	write(fd, &octet, 2); 
   	write(fd, &octet, 2); 
- 	 octet = 54;
+ 	octet = 54;
  	write(fd, &octet, 4);
- 	 octet = 40;
- 	 write(fd, &octet, 4);
+ 	octet = 40;
+ 	write(fd, &octet, 4);
   	write(fd, &scene->reso.w, 4);
   	write(fd, &scene->reso.h, 4);
   	octet = 1;
@@ -36,11 +35,10 @@ void	make_header(int fd, t_scene *scene)
   	write(fd, &octet, 4);
   	write(fd, &octet, 4);
   	write(fd, &octet, 4);
- write(fd, &octet, 4);
  	write(fd, &octet, 4);
- write(fd, &octet, 4);
+ 	write(fd, &octet, 4);
+	write(fd, &octet, 4);
 }
-
 
 void	bmp_raytrace(int fd, t_scene *scene, t_mlx *mlx_session)
 {

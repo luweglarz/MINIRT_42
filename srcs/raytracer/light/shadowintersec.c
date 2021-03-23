@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:19:34 by user42            #+#    #+#             */
-/*   Updated: 2021/03/22 16:39:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/23 15:09:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	sphere_intersec(t_scene scene, t_ray *ray)
 	{
 		sphere = sphere_list->content;
 		t_ = sphere_intersec_equation(ray, sphere, t);
-		if (t_ > 0.0001 && t_ < 1.0 && t_ < ray->ray_t)
+		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = sphere;

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:15:55 by user42            #+#    #+#             */
-/*   Updated: 2021/03/19 20:12:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/23 11:46:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ double		vec_length(t_vector v1)
 	return (sqrt(vec_dot(v1, v1)));
 }
 
-t_vector	init_vector(double x, double y, double z)
+t_vector		vector_matrix(t_vector v, t_matrix m)
 {
-	t_vector new_vec;
+	t_vector res;
 
-	new_vec.x = x;
-	new_vec.y = y;
-	new_vec.z = z;
-	return (new_vec);
+	res.x = v.x * m.m[0][0] + v.y * m.m[1][0] + v.z * m.m[2][0] + m.m[3][0];
+	res.y = v.x * m.m[0][1] + v.y * m.m[1][1] + v.z * m.m[2][1] + m.m[3][1];
+	res.z = v.x * m.m[0][2] + v.y * m.m[1][2] + v.z * m.m[2][2] + m.m[3][2];
+	return (res);
 }
 
 t_vector	ray_equation(t_ray *ray, double ray_t)
