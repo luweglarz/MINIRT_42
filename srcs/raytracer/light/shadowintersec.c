@@ -12,9 +12,8 @@
 
 #include "../../../includes/minirt.h"
 
-int	sphere_intersec(t_scene scene, t_ray *ray)
+int	sphere_intersec(t_scene scene, t_ray *ray, double length)
 {
-	double			t[2];
 	double			t_;
 	t_list			*sphere_list;
 	t_sphere		*sphere;
@@ -23,8 +22,8 @@ int	sphere_intersec(t_scene scene, t_ray *ray)
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-		t_ = sphere_intersec_equation(ray, sphere, t);
-		if (t_ > 0.0001 && t_ < 1 && t_ < ray->ray_t)
+		t_ = sphere_intersec_equation(ray, sphere);
+		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = sphere;
@@ -48,7 +47,7 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		triangle = triangle_list->content;
 		t_ = triangle_intersec_equation(ray, triangle, &normal);
-		if (t_ > 0.0001 && t_ <  length / 2  && t_ < ray->ray_t)
+		if (t_ > 0.00000001 && t_ <  length  && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = triangle;
@@ -71,7 +70,7 @@ int	plane_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		plane = plane_list->content;
 		t_ = plane_intersec_equation(ray, plane);
-		if (t_ > 0.0001 && t_ < length / 2 && t_ < ray->ray_t)
+		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = plane;
@@ -94,12 +93,36 @@ int	square_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		square = square_list->content;
 		t_ = square_intersec_equation(ray, square);
-		if (t_ > 0.0001 && t_ < length / 2 && t_ < ray->ray_t)
+		if (t_ > 0.00000001 && t_ < length  && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = square;
 		}
 		square_list = square_list->next;
+	}
+	if (ray->ray_t != INFINITY)
+		return (1);
+	return (0);
+}
+
+int	cylinder_intersec(t_scene scene, t_ray *ray, double length)
+{
+	double			t_;
+	t_list			*cylinder_list;
+	t_cylinder		*cylinder;
+	t_quadric		q;
+
+	cylinder_list = scene.cylinder;
+	while (cylinder_list->next)
+	{
+		cylinder = cylinder_list->content;
+		t_ = cylinder_intersec_equation(ray, cylinder, &q);
+		if (t_ > 0.00000001 && t_ < length  && t_ < ray->ray_t)
+		{
+			ray->ray_t = t_;
+			ray->obj = cylinder;
+		}
+		cylinder_list = cylinder_list->next;
 	}
 	if (ray->ray_t != INFINITY)
 		return (1);

@@ -22,6 +22,11 @@ t_rgb	trace_ray(t_ray ray, t_scene *scene)
 	return (ray.ray_color);
 }
 
+int		loading(int x, int y)
+{
+	return ((x + 1) * 100 / y);
+}
+
 void	the_ray(t_scene *scene, t_camera *camera, t_mlx mlx_session)
 {
 	t_px		px;
@@ -40,7 +45,9 @@ void	the_ray(t_scene *scene, t_camera *camera, t_mlx mlx_session)
 			color = trace_ray(ray, mlx_session.scene);
 			my_pixel_put(&mlx_session.img, px, &color);
 		}
+		printf("\rLoading : %d%%", loading(px.x, scene->reso.w));
 	}
+	printf("\n");
 }
 
 int		cam_hook(int keycode, t_mlx *mlx_session)

@@ -34,7 +34,7 @@ void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene);
 t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj);
 
 void	raytosphere(t_ray *ray, t_scene *scene);
-double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t);
+double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere);
 
 void	raytoplane(t_ray *ray, t_scene *scene);
 double	plane_intersec_equation(t_ray *ray, t_plane *plane);
@@ -46,13 +46,13 @@ void	raytosquare(t_ray *ray, t_scene *scene);
 double	square_intersec_equation(t_ray *ray, t_square *square);
 
 void	raytocylinder(t_ray *ray, t_scene *scene);
-double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder, double *t);
+double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder, t_quadric *q);
 
-int		sphere_intersec(t_scene scene, t_ray *ray);
+int		sphere_intersec(t_scene scene, t_ray *ray, double length);
 int		triangle_intersec(t_scene scene, t_ray *ray, double length);
 int     plane_intersec(t_scene scene, t_ray *ray, double length);
 int		square_intersec(t_scene scene, t_ray *ray, double length);
-
+int		cylinder_intersec(t_scene scene, t_ray *ray, double length);
 void    create_bmp(t_scene *scene, t_mlx *mlx_session);
 
 #endif

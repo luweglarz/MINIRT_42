@@ -28,19 +28,21 @@ double	get_intensity(t_scene scene, t_vector light_dir, t_vector normal, t_light
 int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void *obj)
 {
 	t_ray		ray;
+	double		length;
 
 	ray_init(&ray);
 	ray.origin = ray_pos;
-	ray.dir = light_cord;
-	ray.dir = normalize(ray.dir);
-	double length = vec_length(vec_diff(light_cord, ray_pos));
-	if (sphere_intersec(scene, &ray) && ray.obj != obj)
+	ray.dir = vec_diff(light_cord, ray.origin);
+	length = vec_length(normalize(ray.dir));
+	if (sphere_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
 	if (triangle_intersec(scene, &ray, length)&& ray.obj != obj)
 		return (1);
 	if (plane_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
 	if (square_intersec(scene, &ray, length)&& ray.obj != obj)
+		return (1);
+	if (cylinder_intersec(scene, &ray, length)&& ray.obj != obj)
 		return (1);
 	return (0);
 }
@@ -59,7 +61,7 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 	{
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray_pos);
-		if (is_intersection(*scene, ray_pos, light_dir, obj))
+		if (is_intersection(*scene, ray_pos, light->cord, obj))
 		{
 			lights = lights->next;
 			continue;

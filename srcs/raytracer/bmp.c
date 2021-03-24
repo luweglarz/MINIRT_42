@@ -65,5 +65,6 @@ void create_bmp(t_scene *scene, t_mlx *mlx_session)
 	bmp_raytrace(fd, scene, mlx_session);
 	close(fd);
 	system("chmod 777 minirtscreen.bmp");
+	//fonction qui free
 	exit(0);
 }

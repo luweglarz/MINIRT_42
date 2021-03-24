@@ -23,6 +23,15 @@ typedef	struct s_matrix
 	double	m[4][4];
 }				t_matrix;
 
+typedef	struct	s_quadric
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double 	m_;
+}				t_quadric;
+
 typedef struct 	s_motrum
 {
 	t_vector	cross;

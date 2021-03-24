@@ -12,42 +12,38 @@
 
 #include "../../../includes/minirt.h"
 
-double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere, double *t)
+double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere)
 {
 	t_vector	dist;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-
+	t_quadric	q;
+	double		t[2];
 	dist = vec_diff(ray->origin, sphere->cord);
-	a = vec_dot(ray->dir, ray->dir);
-	b = 2 * vec_dot(ray->dir, dist);
-	c = vec_dot(dist, dist) - (sphere->radius * sphere->radius);
-	discriminant = (b * b) - 4 * (a * c);
-	if (discriminant < 0)
+	q.a = vec_dot(ray->dir, ray->dir);
+	q.b = 2 * vec_dot(ray->dir, dist);
+	q.c = vec_dot(dist, dist) - (sphere->radius * sphere->radius);
+	q.discriminant = (q.b * q.b) - 4 * (q.a * q.c);
+	if (q.discriminant < 0)
 	{
 		t[0] = INFINITY;
 		t[1] = INFINITY;
 		return (INFINITY);
 	}
-	t[0] = (-b + sqrt(discriminant)) / (2 * a);
-	t[1] = (-b - sqrt(discriminant)) / (2 * a);
-	if (t[0] < t[1])
+	t[0] = (-q.b + sqrt(q.discriminant)) / (2 * q.a);
+	t[1] = (-q.b - sqrt(q.discriminant)) / (2 * q.a);
+	if (t[0] < t[1] && t[0] > 0)
 		return (t[0]);
-	if (t[0] > t[1])
+	if (t[0] > t[1] && t[1] > 0)
 		return (t[1]);
 	return (INFINITY);
 }
 
 void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 {
-	double			t[2];
 	double			t_;
 	t_vector		ray_pos;
 	t_vector		normal;
 
-	t_ = sphere_intersec_equation(ray, sphere, t);
+	t_ = sphere_intersec_equation(ray, sphere);
 	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;

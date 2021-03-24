@@ -15,7 +15,7 @@
 int		close_window(t_mlx *mlx_session)
 {
 	mlx_destroy_window(mlx_session->mlx, mlx_session->mlx_win);
-	// free tout les by
+	//fonction qui free
 	exit(0);
 }
 

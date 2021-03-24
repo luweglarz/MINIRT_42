@@ -24,5 +24,6 @@ void	error(int errorcode)
 		write(STDERR_FILENO, "Malloc failed", 13);
 	if (errorcode == ERR_ELEMENT)
 		write(STDERR_FILENO, "Wrong element value", 25);
+	// fonction qui free;
 	exit(errorcode);
 }
