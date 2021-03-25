@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:03:48 by user42            #+#    #+#             */
-/*   Updated: 2021/03/23 16:44:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:58:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder, t_quadric *q)
 	return (INFINITY);
 }
 
-void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene *scene)
+void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
@@ -71,13 +71,13 @@ void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene *scene)
 	}
 }
 
-void		raytocylinder(t_ray *ray, t_scene *scene)
+void		raytocylinder(t_ray *ray, t_scene scene)
 {
 	t_list			*cylinder_list;
 	t_cylinder		*cylinder;
 
 
-	cylinder_list = scene->cylinder;
+	cylinder_list = scene.cylinder;
 	while (cylinder_list->next)
 	{
 		cylinder = cylinder_list->content;

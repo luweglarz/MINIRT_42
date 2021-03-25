@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:58:49 by user42            #+#    #+#             */
-/*   Updated: 2021/03/22 16:29:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:58:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ double	square_intersec_equation(t_ray *ray, t_square *square)
 	return (INFINITY);
 }
 
-void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
+void	square_intersec_color(t_square *square, t_ray *ray, t_scene scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
@@ -52,13 +52,13 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene *scene)
 	}
 }
 
-void		raytosquare(t_ray *ray, t_scene *scene)
+void		raytosquare(t_ray *ray, t_scene scene)
 {
 	t_list			*square_list;
 	t_square		*square;
 
 
-	square_list = scene->square;
+	square_list = scene.square;
 	while (square_list->next)
 	{
 		square = square_list->content;

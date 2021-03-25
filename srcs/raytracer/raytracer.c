@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/22 16:43:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 19:02:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-t_rgb	trace_ray(t_ray ray, t_scene *scene)
+t_rgb	trace_ray(t_ray ray, t_scene scene)
 {
 	raytosphere(&ray, scene);
 	raytoplane(&ray, scene);
@@ -27,17 +27,17 @@ int		loading(int x, int y)
 	return ((x + 1) * 100 / y);
 }
 
-void	the_ray(t_scene *scene, t_camera *camera, t_mlx mlx_session)
+void	the_ray(t_scene scene, t_camera *camera, t_mlx mlx_session)
 {
 	t_px		px;
 	t_rgb		color;
 	t_ray		ray;
 	
 	px.x = 0;
-	while (++px.x < scene->reso.w)
+	while (++px.x < scene.reso.w)
 	{
 		px.y = 0;
-		while (++px.y < scene->reso.h)
+		while (++px.y < scene.reso.h)
 		{
 			ray_init(&ray);
 			color_init(&color);
@@ -45,7 +45,7 @@ void	the_ray(t_scene *scene, t_camera *camera, t_mlx mlx_session)
 			color = trace_ray(ray, mlx_session.scene);
 			my_pixel_put(&mlx_session.img, px, &color);
 		}
-		printf("\rLoading : %d%%", loading(px.x, scene->reso.w));
+		printf("\rLoading : %d%%", loading(px.x, scene.reso.w));
 	}
 	printf("\n");
 }
@@ -78,13 +78,13 @@ int		cam_hook(int keycode, t_mlx *mlx_session)
 	return (0);
 }
 
-void	ray_tracer(t_scene *scene, int save)
+void	ray_tracer(t_scene scene, int save)
 {
 	t_mlx		mlx_session;
 	t_camera	*camera;
 	t_list	 	*camera_list;
 
-	camera_list = scene->camera;
+	camera_list = scene.camera;
 	camera = camera_list->content;
 	mlx_session.camera_list = camera_list;
 	mlx_session.nb_cam = lstsize(&mlx_session.camera_list);

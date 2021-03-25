@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   libftfunctions1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lweglarz <lweglarz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:27:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2020/10/23 14:45:36 by lweglarz         ###   ########.fr       */
+/*   Updated: 2021/03/25 23:04:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ char	*ft_substr(char *s, int start, int len)
 
 	i = 0;
 	if (start > ft_strlenc(s, '\0'))
-		return (ft_strdup(""));
+		return (NULL);
 	if (!(str = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (s[i] && i < len)
+	while (s[start] && i < len)
 	{
 		str[i] = s[start];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/15 15:35:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 22:53:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ void	get_amlight(t_scene *scene, char **data)
 	char	**rgb;
 	t_amli	*amlight;
 
-	if (!(amlight = malloc(sizeof(t_amli))))
+	if (!(amlight = malloc(sizeof(*amlight))))
 		error(ERR_MALLOC);
 	rgb = ft_split(data[2], ',');
-	scene->amli.color = *get_color(rgb);
+	scene->amli.color = get_color(rgb);
 	scene->amli.ratio = ft_atof(data[1]);
+	free(amlight);
+	free_data(rgb);
 }
+
 
 void	get_camera(t_scene *scene, char **data)
 {
@@ -38,17 +41,20 @@ void	get_camera(t_scene *scene, char **data)
 	char		**cord;
 	char		**ori;
 
-	if (!(new_cam = malloc(sizeof(t_camera))))
+	if (!(new_cam = malloc(sizeof(*new_cam))))
 		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
-	new_cam->cord = *get_cord(cord);
-	new_cam->ori = *get_orientation(ori);
+	new_cam->cord = get_cord(cord);
+	new_cam->ori = get_orientation(ori);
 	new_cam->ori = normalize(new_cam->ori);
 	new_cam->fov = ft_atoi(data[3]);
 	if (new_cam->fov > 180 || new_cam->fov < 0)
 		error(ERR_ELEMENT);
 	ft_lstadd_front(&scene->camera, ft_lstnew(new_cam));
+	free_data(cord);
+	free_data(ori);
+//	free(new_cam);
 }
 
 void	get_light(t_scene *scene, char **data)
@@ -57,14 +63,17 @@ void	get_light(t_scene *scene, char **data)
 	char		**cord;
 	char		**rgb;
 
-	if (!(new_light = malloc(sizeof(t_light))))
+	if (!(new_light = malloc(sizeof(*new_light))))
 		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
-	new_light->cord = *get_cord(cord);
-	new_light->color = *get_color(rgb);
+	new_light->cord = get_cord(cord);
+	new_light->color = get_color(rgb);
 	new_light->ratio = ft_atof(data[2]);
 	if (new_light->ratio < 0.0 || new_light->ratio > 1.0)
 		error(ERR_ELEMENT);
 	ft_lstadd_front(&scene->light, ft_lstnew(new_light));
+	free_data(cord);
+	free_data(rgb);
+	//free(new_light);
 }

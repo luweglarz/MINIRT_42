@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:29:10 by user42            #+#    #+#             */
-/*   Updated: 2021/03/22 16:44:47 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 19:01:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ typedef struct	s_mlx
 	void		*mlx;
 	void		*mlx_win;
 	t_img_data	img;
-	t_scene		*scene;
+	t_scene		scene;
 	t_list		*camera_list;
 	int			nb_cam;
 }				t_mlx;
 
-void	init_mlx_window(t_mlx *mlx_session, t_scene *scene);
-void	init_mlx_image(t_mlx *mlx_session, t_scene *scene);
+void	init_mlx_window(t_mlx *mlx_session, t_scene scene);
+void	init_mlx_image(t_mlx *mlx_session, t_scene scene);
 int		cam_hook(int keycode, t_mlx *mlx_session);
 void	keys(t_mlx mlx_session);
 void    my_pixel_put(t_img_data *data, t_px px, t_rgb *rgb);

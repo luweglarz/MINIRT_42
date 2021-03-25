@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:45:18 by user42            #+#    #+#             */
-/*   Updated: 2021/03/23 15:35:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:58:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 	return (t);
 }
 
-void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)
+void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
@@ -46,12 +46,12 @@ void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene *scene)
 	}
 }
 
-void		raytoplane(t_ray *ray, t_scene *scene)
+void		raytoplane(t_ray *ray, t_scene scene)
 {
 	t_list			*plane_list;
 	t_plane			*plane;
 
-	plane_list = scene->plane;
+	plane_list = scene.plane;
 	while (plane_list->next)
 	{
 		plane = plane_list->content;

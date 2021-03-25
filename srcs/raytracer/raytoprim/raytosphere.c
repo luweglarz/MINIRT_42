@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/02 16:23:47 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:58:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere)
 	return (INFINITY);
 }
 
-void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
+void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene scene)
 {
 	double			t_;
 	t_vector		ray_pos;
@@ -57,12 +57,12 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene *scene)
 	}
 }
 
-void		raytosphere(t_ray *ray, t_scene *scene)
+void		raytosphere(t_ray *ray, t_scene scene)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;
 
-	sphere_list = scene->sphere;
+	sphere_list = scene.sphere;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;

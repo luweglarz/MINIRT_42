@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/03/23 15:34:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 19:00:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 	return (0);
 }
 
-t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj)
+t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene scene, void *obj)
 {
 	double		intensity;
 	t_rgb		light_color;
@@ -56,22 +56,22 @@ t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *ob
 	t_vector	light_dir;
 
 	color_init(&light_color);
-	lights = scene->light;
+	lights = scene.light;
 	while (lights->next)
 	{
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray_pos);
-		if (is_intersection(*scene, ray_pos, light->cord, obj))
+		if (is_intersection(scene, ray_pos, light->cord, obj))
 		{
 			lights = lights->next;
 			continue;
 		}
-		intensity = get_intensity(*scene, normalize(light_dir), normal, *light);
+		intensity = get_intensity(scene, normalize(light_dir), normal, *light);
 		light_color = rgb_add(light_color,
 		rgb_multipli(light->color, intensity));
 		lights = lights->next;
 	}
 	light_color = rgb_add(light_color,
-	rgb_multipli(scene->amli.color, scene->amli.ratio));
+	rgb_multipli(scene.amli.color, scene.amli.ratio));
 	return (color_range1(light_color));
 }

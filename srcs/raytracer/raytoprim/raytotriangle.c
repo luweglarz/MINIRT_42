@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:46:13 by user42            #+#    #+#             */
-/*   Updated: 2021/03/23 15:34:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:59:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal)
 	return (vec_dot(v2, v) * motrum.inv_det);
 }
 
-void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
+void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene scene)
 {
 	t_vector		ray_pos;
 	t_vector		normal;
@@ -73,12 +73,12 @@ void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene *scene)
 	}
 }
 
-void		raytotriangle(t_ray *ray, t_scene *scene)
+void		raytotriangle(t_ray *ray, t_scene scene)
 {
 	t_list			*triangle_list;
 	t_triangle		*triangle;
 
-	triangle_list = scene->triangle;
+	triangle_list = scene.triangle;
 	while (triangle_list->next)
 	{
 		triangle = triangle_list->content;

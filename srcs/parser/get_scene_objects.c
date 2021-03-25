@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:47 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/23 13:20:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 23:08:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ void	get_sphere(t_scene *scene, char **data)
 	char		**cord;
 	char		**rgb;
 
-	if (!(new_sphere = malloc(sizeof(t_sphere))))
+	if (!(new_sphere = malloc(sizeof(*new_sphere))))
 		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
-	new_sphere->cord = *get_cord(cord);
-	new_sphere->color = *get_color(rgb);
+	new_sphere->cord = get_cord(cord);
+	new_sphere->color = get_color(rgb);
 	new_sphere->radius = ft_atof(data[2]);
 	ft_lstadd_front(&scene->sphere, ft_lstnew(new_sphere));
+	//free(new_sphere);
+	free_data(cord);
+	free_data(rgb);
 }
 
 void	get_square(t_scene *scene, char **data)
@@ -35,17 +38,21 @@ void	get_square(t_scene *scene, char **data)
 	char		**ori;
 	char		**rgb;
 
-	if (!(new_square = malloc(sizeof(t_square))))
+	if (!(new_square = malloc(sizeof(*new_square))))
 		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[4], ',');
-	new_square->cord = *get_cord(cord);
-	new_square->ori = *get_orientation(ori);
+	new_square->cord = get_cord(cord);
+	new_square->ori = get_orientation(ori);
 	new_square->ori = normalize(new_square->ori);
-	new_square->color = *get_color(rgb);
+	new_square->color = get_color(rgb);
 	new_square->height = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->square, ft_lstnew(new_square));
+//free(new_square);
+	free(cord);
+	free_data(ori);
+	free_data(rgb);
 }
 
 void	get_cylinder(t_scene *scene, char **data)
@@ -55,18 +62,22 @@ void	get_cylinder(t_scene *scene, char **data)
 	char		**ori;
 	char		**rgb;
 
-	if (!(new_cylinder = malloc(sizeof(t_cylinder))))
+	if (!(new_cylinder = malloc(sizeof(*new_cylinder))))
 		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[5], ',');
-	new_cylinder->cord = *get_cord(cord);
-	new_cylinder->ori = *get_orientation(ori);
+	new_cylinder->cord = get_cord(cord);
+	new_cylinder->ori = get_orientation(ori);
 	new_cylinder->ori = normalize(new_cylinder->ori);
-	new_cylinder->color = *get_color(rgb);
+	new_cylinder->color = get_color(rgb);
 	new_cylinder->diameter = ft_atof(data[3]);
 	new_cylinder->height = ft_atof(data[4]);
 	ft_lstadd_front(&scene->cylinder, ft_lstnew(new_cylinder));
+	//free(new_cylinder);
+	free_data(cord);
+	free_data(ori);
+	free_data(rgb);
 }
 
 void	get_triangle(t_scene *scene, char **data)
@@ -77,17 +88,22 @@ void	get_triangle(t_scene *scene, char **data)
 	char		**cord3;
 	char		**rgb;
 
-	if (!(new_triangle = malloc(sizeof(t_triangle))))
+	if (!(new_triangle = malloc(sizeof(*new_triangle))))
 		error(ERR_MALLOC);
 	cord1 = ft_split(data[1], ',');
 	cord2 = ft_split(data[2], ',');
 	cord3 = ft_split(data[3], ',');
 	rgb = ft_split(data[4], ',');
-	new_triangle->cord1 = *get_cord(cord1);
-	new_triangle->cord2 = *get_cord(cord2);
-	new_triangle->cord3 = *get_cord(cord3);
-	new_triangle->color = *get_color(rgb);
+	new_triangle->cord1 = get_cord(cord1);
+	new_triangle->cord2 = get_cord(cord2);
+	new_triangle->cord3 = get_cord(cord3);
+	new_triangle->color = get_color(rgb);
 	ft_lstadd_front(&scene->triangle, ft_lstnew(new_triangle));
+//	free(new_triangle);
+	free_data(cord1);
+	free_data(cord2);
+	free_data(cord3);
+	free_data(rgb);
 }
 
 void	get_plane(t_scene *scene, char **data)
@@ -97,14 +113,18 @@ void	get_plane(t_scene *scene, char **data)
 	char		**ori;
 	char		**rgb;
 
-	if (!(new_plane = malloc(sizeof(t_plane))))
+	if (!(new_plane = malloc(sizeof(*new_plane))))
 		error(ERR_MALLOC);
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[3], ',');
-	new_plane->cord = *get_cord(cord);
-	new_plane->ori = *get_orientation(ori);
+	new_plane->cord = get_cord(cord);
+	new_plane->ori = get_orientation(ori);
 	new_plane->ori = normalize(new_plane->ori);
-	new_plane->color = *get_color(rgb);
+	new_plane->color = get_color(rgb);
 	ft_lstadd_front(&scene->plane, ft_lstnew(new_plane));
+	//free(new_plane);
+	free_data(cord);
+	free_data(ori);
+	free_data(rgb);
 }

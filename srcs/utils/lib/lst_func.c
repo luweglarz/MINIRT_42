@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:00:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/15 15:36:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 19:34:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,28 @@ t_list	*ft_lstnew(void *content)
 	new_elem->next = NULL;
 	new_elem->prev = NULL;
 	return (new_elem);
+}
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	if (!lst)
+		return ;
+	if (del)
+		del(lst->content);
+	free(lst);
+}
+
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	if (!*lst)
+		return ;
+	if ((*lst)->next)
+	{
+		ft_lstclear(&((*lst)->next), del);
+		free((*lst)->next);
+	}
+	ft_lstdelone(*lst, del);
+	*lst = NULL;
 }
 
 int			lstsize(t_list **head)

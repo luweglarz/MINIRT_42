@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/23 13:16:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:56:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ typedef struct	s_ray
 
 t_vector		ray_equation(t_ray *ray, double ray_t);
 
-void	ray_tracer(t_scene *scene, int save);
+void	ray_tracer(t_scene scene, int save);
 void	ray_init(t_ray *ray);
-t_rgb	trace_ray(t_ray ray, t_scene *scene);
-void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene);
+t_rgb	trace_ray(t_ray ray, t_scene scene);
+void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene scene);
 
-t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene *scene, void *obj);
+t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene scene, void *obj);
 
-void	raytosphere(t_ray *ray, t_scene *scene);
+void	raytosphere(t_ray *ray, t_scene scene);
 double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere);
 
-void	raytoplane(t_ray *ray, t_scene *scene);
+void	raytoplane(t_ray *ray, t_scene scene);
 double	plane_intersec_equation(t_ray *ray, t_plane *plane);
 
-void	raytotriangle(t_ray *ray, t_scene *scene);
+void	raytotriangle(t_ray *ray, t_scene scene);
 double	triangle_intersec_equation(t_ray *ray, t_triangle *triangle, t_vector *normal);
 
-void	raytosquare(t_ray *ray, t_scene *scene);
+void	raytosquare(t_ray *ray, t_scene scene);
 double	square_intersec_equation(t_ray *ray, t_square *square);
 
-void	raytocylinder(t_ray *ray, t_scene *scene);
+void	raytocylinder(t_ray *ray, t_scene scene);
 double	cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder, t_quadric *q);
 
 int		sphere_intersec(t_scene scene, t_ray *ray, double length);
@@ -53,6 +53,6 @@ int		triangle_intersec(t_scene scene, t_ray *ray, double length);
 int     plane_intersec(t_scene scene, t_ray *ray, double length);
 int		square_intersec(t_scene scene, t_ray *ray, double length);
 int		cylinder_intersec(t_scene scene, t_ray *ray, double length);
-void    create_bmp(t_scene *scene, t_mlx *mlx_session);
+void    create_bmp(t_scene scene, t_mlx *mlx_session);
 
 #endif

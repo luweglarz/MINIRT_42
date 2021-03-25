@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:32:24 by user42            #+#    #+#             */
-/*   Updated: 2021/03/23 11:46:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:59:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ set_ray_dir(t_ray *ray, t_scene scene, t_camera camera, t_px px)
 	return (ray->dir);
 }
 
-void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene *scene)
+void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene scene)
 {
 	t_matrix	matrix;
 
 	matrix = look_at(camera->cord, camera->ori);
 	ray->origin = vector_matrix(ray->origin, matrix);
-	ray->dir = set_ray_dir(ray, *scene, *camera, px);
+	ray->dir = set_ray_dir(ray, scene, *camera, px);
 	ray->dir = vector_matrix(ray->dir, matrix);
 	ray->dir = vec_diff(ray->dir, ray->origin);
 	ray->dir = normalize(ray->dir);

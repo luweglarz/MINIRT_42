@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 12:52:23 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/22 16:16:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 22:54:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_tab		g_tab[9] = {
 	{LIGHT, 1, &get_light}
 };
 
-void	*init_scene(t_scene *scene)
+void	init_scene(t_scene *scene)
 {
 	scene->reso.h = 0;
 	scene->reso.w = 0;
@@ -35,7 +35,6 @@ void	*init_scene(t_scene *scene)
 	scene->square = ft_lstnew(NULL);
 	scene->cylinder = ft_lstnew(NULL);
 	scene->triangle = ft_lstnew(NULL);
-	return (scene);
 }
 
 void	free_data(char **data)
@@ -70,21 +69,20 @@ void	append_data(t_scene *scene, char *line)
 	free_data(data);
 }
 
-t_scene	*parsing_config(int fd)
+t_scene	parsing_config(int fd)
 {
 	char	*line;
 	int		ret;
-	t_scene	*scene;
+	t_scene	scene;
 
-	if (!(scene = malloc(sizeof(*scene))))
-		write(2, "error", 5);
-	init_scene(scene);
+	init_scene(&scene);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (ret != 0 && ft_strlen(line) != 0)
-			append_data(scene, line);
+			append_data(&scene, line);
 		free(line);
 		line = NULL;
 	}
+	free(line);
 	return (scene);
 }

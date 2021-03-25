@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:42:16 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/08 16:33:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:54:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct	s_tab
 	void			(*tab_elem)(t_scene *scene, char **data);
 }				t_tab;
 
-t_scene			*parsing_config(int fd);
-void			*init_scene(t_scene *scene);
+t_scene			parsing_config(int fd);
+void			init_scene(t_scene *scene);
 void			free_data(char **data);
 void			append_data(t_scene *scene, char *line);
 
@@ -54,9 +54,9 @@ void			get_cylinder(t_scene *scene, char **data);
 void			get_triangle(t_scene *scene, char **data);
 void			get_plane(t_scene *scene, char **data);
 
-t_rgb			*get_color(char **rgbtab);
-t_vector		*get_orientation(char **ori);
-t_vector		*get_cord(char	**cord);
+t_rgb			get_color(char **rgbtab);
+t_vector		get_orientation(char **ori);
+t_vector		get_cord(char	**cord);
 
 void			error(int errorcode);
 #endif
