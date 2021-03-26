@@ -16,8 +16,17 @@
 int		close_window(t_mlx *mlx_session)
 {
 	mlx_destroy_window(mlx_session->mlx, mlx_session->mlx_win);
-	//fonction qui free
-	exit(0);
+	mlx_destroy_image(mlx_session->mlx, mlx_session->img.img);
+	mlx_destroy_display(mlx_session->mlx);
+	free(mlx_session->mlx);
+	ft_lstclear(&mlx_session->scene.sphere, free);
+	ft_lstclear(&mlx_session->scene.camera, free);
+	ft_lstclear(&mlx_session->scene.square, free);
+	ft_lstclear(&mlx_session->scene.plane, free);
+	ft_lstclear(&mlx_session->scene.cylinder, free);
+	ft_lstclear(&mlx_session->scene.triangle, free);
+	ft_lstclear(&mlx_session->scene.light, free);
+	exit(1);
 }
 
 int		key_code(int keycode, t_mlx *mlx_session)

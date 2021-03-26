@@ -27,7 +27,6 @@
 # include "parser.h"
 # include "minirt_mlx.h"
 # include "raytracer.h"
-
 # include <stdio.h>
 
 #endif

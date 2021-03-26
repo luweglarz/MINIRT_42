@@ -34,13 +34,13 @@ typedef struct	s_mlx
 	int			nb_cam;
 }				t_mlx;
 
-void	init_mlx_window(t_mlx *mlx_session, t_scene scene);
-void	init_mlx_image(t_mlx *mlx_session, t_scene scene);
-int		cam_hook(int keycode, t_mlx *mlx_session);
-void	keys(t_mlx mlx_session);
-void    my_pixel_put(t_img_data *data, t_px px, t_rgb *rgb);
-int		refresh_window(t_mlx *mlx_session);
-int		key_code(int keycode, t_mlx *mlx_session);
-int		close_window(t_mlx *mlx_session);
+void			init_mlx_window(t_mlx *mlx_session, t_scene scene);
+void			init_mlx_image(t_mlx *mlx_session, t_scene scene);
+int				cam_hook(int keycode, t_mlx *mlx_session);
+void			keys(t_mlx mlx_session);
+void			my_pixel_put(t_img_data *data, t_px px, t_rgb *rgb);
+int				refresh_window(t_mlx *mlx_session);
+int				key_code(int keycode, t_mlx *mlx_session);
+int				close_window(t_mlx *mlx_session);
 
 #endif

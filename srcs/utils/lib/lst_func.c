@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 	t_list	*new_elem;
 
 	if (!(new_elem = malloc(sizeof(t_list))))
-		error(ERR_MALLOC);
+		return (NULL);
 	new_elem->content = content;
 	new_elem->next = NULL;
 	new_elem->prev = NULL;
@@ -35,6 +35,21 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
+	t_list *tmp;
+
+	if (lst)
+	{
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			(*lst) = tmp;
+		}
+	}
+}
+/*
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
 	if (!*lst)
 		return ;
 	if ((*lst)->next)
@@ -45,7 +60,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	ft_lstdelone(*lst, del);
 	*lst = NULL;
 }
-
+*/
 int			lstsize(t_list **head)
 {
 	t_list		*cursor;

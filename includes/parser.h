@@ -33,12 +33,12 @@
 
 typedef struct	s_tab
 {
-	char			*data_type;
-	int				data_len;
-	void			(*tab_elem)(t_scene *scene, char **data);
+	char		*data_type;
+	int			data_len;
+	void		(*tab_elem)(t_scene *scene, char **data);
 }				t_tab;
 
-t_scene			parsing_config(int fd);
+t_scene			parsing_config(int fd, t_scene scene);
 void			init_scene(t_scene *scene);
 void			free_data(char **data);
 void			append_data(t_scene *scene, char *line);
@@ -54,9 +54,11 @@ void			get_cylinder(t_scene *scene, char **data);
 void			get_triangle(t_scene *scene, char **data);
 void			get_plane(t_scene *scene, char **data);
 
-t_rgb			get_color(char **rgbtab);
-t_vector		get_orientation(char **ori);
+t_rgb			get_color(char **rgbtab, t_scene *scene, char **data,
+void *elm);
+t_vector		get_orientation(char **ori, t_scene *scene, char **data,
+void *elm);
 t_vector		get_cord(char	**cord);
 
-void			error(int errorcode);
+void			error(int errorcode, t_scene *scene);
 #endif

@@ -18,21 +18,21 @@
 # define BUFFER_SIZE 128
 # define PI 3.14159265358979323846
 
-typedef	struct s_matrix
+typedef	struct	s_matrix
 {
-	double	m[4][4];
+				double	m[4][4];
 }				t_matrix;
 
 typedef	struct	s_quadric
 {
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-	double 	m_;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		m_;
 }				t_quadric;
 
-typedef struct 	s_motrum
+typedef struct	s_motrum
 {
 	t_vector	cross;
 	double		det;

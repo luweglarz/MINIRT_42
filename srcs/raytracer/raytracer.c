@@ -41,7 +41,7 @@ void	the_ray(t_scene scene, t_camera *camera, t_mlx mlx_session)
 		{
 			ray_init(&ray);
 			color_init(&color);
-			init_camera(&ray, camera, px, scene);
+			set_camera_pos(&ray, camera, px, scene);
 			color = trace_ray(ray, mlx_session.scene);
 			my_pixel_put(&mlx_session.img, px, &color);
 		}

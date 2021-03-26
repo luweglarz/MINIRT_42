@@ -17,108 +17,108 @@
 
 typedef struct		s_vector
 {
-	double	x;
-	double	y;
-	double	z;
+	double			x;
+	double			y;
+	double			z;
 }					t_vector;
 
-typedef	struct s_px
+typedef	struct		s_px
 {
-	int	x;
-	int	y;
-}			   t_px;
+	int				x;
+	int				y;
+}					t_px;
 
 typedef struct		s_rgb
 {
-	int		r;
-	int		g;
-	int		b;
+	int				r;
+	int				g;
+	int				b;
 }					t_rgb;
 
 typedef struct		s_frgb
 {
-	float	r;
-	float	g;
-	float	b;
-
+	float			r;
+	float			g;
+	float			b;
 }					t_frgb;
 
 typedef struct		s_reso
 {
-	int		w;
-	int		h;
+	int				w;
+	int				h;
 }					t_reso;
 
 typedef struct		s_amli
 {
-	double	ratio;
-	t_rgb	color;
+	double			ratio;
+	t_rgb			color;
 }					t_amli;
 
 typedef struct		s_camera
 {
-	t_vector			cord;
-	t_vector			ori;
-	unsigned int		fov;
+	t_vector		cord;
+	t_vector		ori;
+	unsigned int	fov;
 }					t_camera;
 
 typedef struct		s_light
 {
-	t_vector			cord;
-	double				ratio;
-	t_rgb				color;
+	t_vector		cord;
+	double			ratio;
+	t_rgb			color;
 }					t_light;
 
 typedef struct		s_sphere
 {
-	t_vector			cord;
-	double				radius;
-	t_rgb				color;
+	t_vector		cord;
+	double			radius;
+	t_rgb			color;
 }					t_sphere;
 
 typedef struct		s_plane
 {
-	t_vector			cord;
-	t_vector			ori;
-	t_rgb				color;
+	t_vector		cord;
+	t_vector		ori;
+	t_rgb			color;
 }					t_plane;
 
 typedef struct		s_square
 {
-	t_vector			cord;
-	t_vector			ori;
-	double				height;
-	t_rgb				color;
+	t_vector		cord;
+	t_vector		ori;
+	double			height;
+	t_rgb			color;
 }					t_square;
 
 typedef struct		s_cylinder
 {
-	t_vector			cord;
-	t_vector			ori;
-	double				diameter;
-	double				height;
-	t_rgb				color;
+	t_vector		cord;
+	t_vector		ori;
+	double			diameter;
+	double			height;
+	t_rgb			color;
 }					t_cylinder;
 
 typedef struct		s_triangle
 {
-	t_vector			cord1;
-	t_vector			cord2;
-	t_vector			cord3;
-	t_rgb				color;
+	t_vector		cord1;
+	t_vector		cord2;
+	t_vector		cord3;
+	t_rgb			color;
 }					t_triangle;
 
 typedef struct		s_scene
 {
-	t_reso				reso;
-	t_amli				amli;
-	t_list				*camera;
-	t_list				*light;
-	t_list				*sphere;
-	t_list				*plane;
-	t_list				*square;
-	t_list				*cylinder;
-	t_list				*triangle;
+	char			*gnl;
+	t_reso			reso;
+	t_amli			amli;
+	t_list			*camera;
+	t_list			*light;
+	t_list			*sphere;
+	t_list			*plane;
+	t_list			*square;
+	t_list			*cylinder;
+	t_list			*triangle;
 }					t_scene;
 
 #endif

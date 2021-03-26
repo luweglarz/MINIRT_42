@@ -52,7 +52,7 @@ set_ray_dir(t_ray *ray, t_scene scene, t_camera camera, t_px px)
 	return (ray->dir);
 }
 
-void	init_camera(t_ray *ray, t_camera *camera, t_px px, t_scene scene)
+void	set_camera_pos(t_ray *ray, t_camera *camera, t_px px, t_scene scene)
 {
 	t_matrix	matrix;
 

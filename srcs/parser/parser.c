@@ -69,13 +69,11 @@ void	append_data(t_scene *scene, char *line)
 	free_data(data);
 }
 
-t_scene	parsing_config(int fd)
+t_scene	parsing_config(int fd, t_scene scene)
 {
 	char	*line;
 	int		ret;
-	t_scene	scene;
 
-	init_scene(&scene);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (ret != 0 && ft_strlen(line) != 0)
