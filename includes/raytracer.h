@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/25 18:56:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:29:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			raytosquare(t_ray *ray, t_scene scene);
 double			square_intersec_equation(t_ray *ray, t_square *square);
 
 void			raytocylinder(t_ray *ray, t_scene scene);
-double			cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder,
+double			cylinder_inter_equation(t_ray *ray, t_cylinder *cylinder,
 t_quadric *q);
 
 int				sphere_intersec(t_scene scene, t_ray *ray, double length);

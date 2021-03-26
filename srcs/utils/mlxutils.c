@@ -6,12 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 21:45:03 by user42            #+#    #+#             */
-/*   Updated: 2021/03/25 19:03:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:54:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
-
 
 int		close_window(t_mlx *mlx_session)
 {
@@ -35,7 +34,7 @@ int		key_code(int keycode, t_mlx *mlx_session)
 		close_window(mlx_session);
 	if (keycode == 100 || keycode == 97)
 		cam_hook(keycode, mlx_session);
-	return(0);
+	return (0);
 }
 
 int		refresh_window(t_mlx *mlx_session)
@@ -69,5 +68,4 @@ void	init_mlx_image(t_mlx *mlx_session, t_scene scene)
 	mlx_session->img.addr =
 	mlx_get_data_addr(mlx_session->img.img, &mlx_session->img.bpp,
 	&mlx_session->img.line_length, &mlx_session->img.endian);
-
 }

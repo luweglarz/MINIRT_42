@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:03:48 by user42            #+#    #+#             */
-/*   Updated: 2021/03/25 18:58:10 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:35:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,20 @@ double	cylinder_res(t_quadric *q, double m_, double t)
 	return (t);
 }
 
-double	
-cylinder_intersec_equation(t_ray *ray, t_cylinder *cylinder, t_quadric *q)
+double	cylinder_inter_equation(t_ray *ray, t_cylinder *cylinder,
+t_quadric *q)
 {
 	t_vector	dist;
 	double		t[2];
 	double		m[2];
-	double		r;
 
-//printf("notmal \n x: %f\n y: %f\n z: %f\n", cylinder->cord.x, cylinder->cord.y, cylinder->cord.z);
 	dist = vec_diff(ray->origin, cylinder->cord);
-	r = cylinder->diameter / 2;
-	q->a = vec_dot(ray->dir, ray->dir) - vec_dot(ray->dir, cylinder->ori) * vec_dot(ray->dir, cylinder->ori);
+	q->a = vec_dot(ray->dir, ray->dir) -
+	pow(vec_dot(ray->dir, cylinder->ori), 2);
 	q->b = 2 * (vec_dot(ray->dir, dist) - (vec_dot(ray->dir, cylinder->ori) *
 	vec_dot(dist, cylinder->ori)));
-	q->c = vec_dot(dist, dist) - (vec_dot(dist, cylinder->ori) * vec_dot(dist, cylinder->ori)) - r * r;
+	q->c = vec_dot(dist, dist) - (vec_dot(dist, cylinder->ori) *
+	vec_dot(dist, cylinder->ori)) - pow(cylinder->diameter / 2, 2);
 	q->discriminant = (q->b * q->b) - 4 * (q->a * q->c);
 	if (q->discriminant < 0)
 		return (INFINITY);
@@ -56,26 +55,25 @@ void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene scene)
 	double			t_;
 	t_quadric		q;
 
-	t_ = cylinder_intersec_equation(ray, cylinder, &q);
+	t_ = cylinder_inter_equation(ray, cylinder, &q);
 	if (t_ > ray->dir.z && t_ < INFINITY && t_ < ray->ray_t)
 	{
 		ray->ray_t = t_;
 		ray->obj = cylinder;
 		ray->ray_color = cylinder->color;
-		ray_pos = ray_equation(ray,	ray->ray_t);
+		ray_pos = ray_equation(ray, ray->ray_t);
 		normal = vec_diff(ray_pos, cylinder->cord);
 		normal = vec_diff(normal, vec_multipli_coeff(cylinder->ori, q.m_));
-		normal= normalize(normal);
+		normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
-		compute_light(ray_pos, normal, scene, ray->obj));	
+		compute_light(ray_pos, normal, scene, ray->obj));
 	}
 }
 
-void		raytocylinder(t_ray *ray, t_scene scene)
+void	raytocylinder(t_ray *ray, t_scene scene)
 {
 	t_list			*cylinder_list;
 	t_cylinder		*cylinder;
-
 
 	cylinder_list = scene.cylinder;
 	while (cylinder_list->next)

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:48:11 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/25 18:58:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:33:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere)
 	t_vector	dist;
 	t_quadric	q;
 	double		t[2];
+
 	dist = vec_diff(ray->origin, sphere->cord);
 	q.a = vec_dot(ray->dir, ray->dir);
 	q.b = 2 * vec_dot(ray->dir, dist);
@@ -49,7 +50,7 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene scene)
 		ray->ray_t = t_;
 		ray->obj = sphere;
 		ray->ray_color = sphere->color;
-		ray_pos = ray_equation(ray,	ray->ray_t);
+		ray_pos = ray_equation(ray, ray->ray_t);
 		normal = vec_diff(ray_pos, sphere->cord);
 		normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
@@ -57,7 +58,7 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene scene)
 	}
 }
 
-void		raytosphere(t_ray *ray, t_scene scene)
+void	raytosphere(t_ray *ray, t_scene scene)
 {
 	t_list			*sphere_list;
 	t_sphere		*sphere;

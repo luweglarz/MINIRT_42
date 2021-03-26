@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:24:26 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/25 22:53:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:21:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	get_amlight(t_scene *scene, char **data)
 	free(amlight);
 }
 
-
 void	get_camera(t_scene *scene, char **data)
 {
 	t_camera	*new_cam;
@@ -62,6 +61,7 @@ void	get_camera(t_scene *scene, char **data)
 	new_cam->fov = ft_atoi(data[3]);
 	if (new_cam->fov > 180 || new_cam->fov < 0)
 	{
+		free(new_cam);
 		free_data(data);
 		error(ERR_ELEMENT, scene);
 	}

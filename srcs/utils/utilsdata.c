@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:25:05 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/25 20:31:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:55:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,8 @@ t_vector	get_orientation(char **ori, t_scene *scene, char **data, void *elm)
 	vector.x = ft_atof(ori[0]);
 	vector.y = ft_atof(ori[1]);
 	vector.z = ft_atof(ori[2]);
-	if (vector.x < -1.0 || vector.x > 1.0)
-	{
-		free(elm);
-		free_data(data);
-		free_data(ori);
-		error(ERR_ELEMENT, scene);
-	}
-	if (vector.y < -1.0 || vector.y > 1.0)
-	{
-		free(elm);
-		free_data(data);
-		free_data(ori);
-		error(ERR_ELEMENT, scene);
-	}
-	if (vector.z < -1.0 || vector.y > 1.0)
+	if (vector.x < -1.0 || vector.x > 1.0 || vector.y < -1.0 || vector.y > 1.0
+	|| vector.z < -1.0 || vector.y > 1.0)
 	{
 		free(elm);
 		free_data(data);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 15:20:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/25 19:02:27 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:46:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	the_ray(t_scene scene, t_camera *camera, t_mlx mlx_session)
 	t_px		px;
 	t_rgb		color;
 	t_ray		ray;
-	
+
 	px.x = 0;
 	while (++px.x < scene.reso.w)
 	{
@@ -50,39 +50,40 @@ void	the_ray(t_scene scene, t_camera *camera, t_mlx mlx_session)
 	printf("\n");
 }
 
-int		cam_hook(int keycode, t_mlx *mlx_session)
+void	cam_hook(int keycode, t_mlx *mlx_session)
 {
 	t_camera	*camera;
 
-	if (keycode == 100 && mlx_session->nb_cam > 2 && mlx_session->camera_list->next)
+	if (keycode == 100 && mlx_session->nb_cam > 2 &&
+	mlx_session->camera_list->next)
 	{
 		mlx_session->camera_list = mlx_session->camera_list->next;
 		camera = mlx_session->camera_list->content;
 		if (camera == NULL)
 		{
 			mlx_session->camera_list = mlx_session->camera_list->prev;
-			return (0);
+			return ;
 		}
 		the_ray(mlx_session->scene, camera, *mlx_session);
-			mlx_put_image_to_window(mlx_session->mlx,
-	mlx_session->mlx_win, mlx_session->img.img, 0, 0);
+		mlx_put_image_to_window(mlx_session->mlx,
+		mlx_session->mlx_win, mlx_session->img.img, 0, 0);
 	}
-	if (keycode == 97 && mlx_session->nb_cam > 2 && mlx_session->camera_list->prev)
+	if (keycode == 97 && mlx_session->nb_cam > 2 &&
+	mlx_session->camera_list->prev)
 	{
 		mlx_session->camera_list = mlx_session->camera_list->prev;
 		camera = mlx_session->camera_list->content;
 		the_ray(mlx_session->scene, camera, *mlx_session);
-			mlx_put_image_to_window(mlx_session->mlx,
-	mlx_session->mlx_win, mlx_session->img.img, 0, 0);
+		mlx_put_image_to_window(mlx_session->mlx,
+		mlx_session->mlx_win, mlx_session->img.img, 0, 0);
 	}
-	return (0);
 }
 
 void	ray_tracer(t_scene scene, int save)
 {
 	t_mlx		mlx_session;
 	t_camera	*camera;
-	t_list	 	*camera_list;
+	t_list		*camera_list;
 
 	camera_list = scene.camera;
 	camera = camera_list->content;
@@ -91,10 +92,10 @@ void	ray_tracer(t_scene scene, int save)
 	mlx_session.scene = scene;
 	init_mlx_image(&mlx_session, scene);
 	the_ray(scene, camera, mlx_session);
-	if ( save == 1)
+	if (save == 1)
 		create_bmp(scene, &mlx_session);
 	init_mlx_window(&mlx_session, scene);
-	mlx_key_hook(mlx_session.mlx_win,  key_code, &mlx_session);
+	mlx_key_hook(mlx_session.mlx_win, key_code, &mlx_session);
 	mlx_hook(mlx_session.mlx_win, 33, 1L << 17, close_window, &mlx_session);
 	mlx_hook(mlx_session.mlx_win, 9, 1L << 21, refresh_window, &mlx_session);
 	mlx_put_image_to_window(mlx_session.mlx,

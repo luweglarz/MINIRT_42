@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initcamera.c                                       :+:      :+:    :+:   */
+/*   set_camera_pos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:32:24 by user42            #+#    #+#             */
-/*   Updated: 2021/03/25 18:59:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:48:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,21 @@ t_matrix	look_at(t_vector origin, t_vector direction)
 	return (m);
 }
 
-t_vector	
-set_ray_dir(t_ray *ray, t_scene scene, t_camera camera, t_px px)
+t_vector	set_ray_dir(t_ray *ray, t_scene scene, t_camera camera,
+t_px px)
 {
-	double	 	aspect_ratio;
-	double	 	fov;
-	
+	double		aspect_ratio;
+	double		fov;
+
 	fov = tan((double)camera.fov / 2 * PI / 180);
 	aspect_ratio = (double)scene.reso.w / (double)scene.reso.h;
-	ray->dir.x = (2 * (px.x + 0.5) / (double)scene.reso.w - 1) * aspect_ratio * fov ;
+	ray->dir.x = (2 * (px.x + 0.5) / (double)scene.reso.w - 1) *
+	aspect_ratio * fov;
 	ray->dir.y = (1 - (2 * (px.y + 0.5) / scene.reso.h)) * fov;
 	return (ray->dir);
 }
 
-void	set_camera_pos(t_ray *ray, t_camera *camera, t_px px, t_scene scene)
+void		set_camera_pos(t_ray *ray, t_camera *camera, t_px px, t_scene scene)
 {
 	t_matrix	matrix;
 

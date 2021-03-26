@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:00:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/25 19:34:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:50:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		}
 	}
 }
-/*
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	if (!*lst)
-		return ;
-	if ((*lst)->next)
-	{
-		ft_lstclear(&((*lst)->next), del);
-		free((*lst)->next);
-	}
-	ft_lstdelone(*lst, del);
-	*lst = NULL;
-}
-*/
-int			lstsize(t_list **head)
+
+int		lstsize(t_list **head)
 {
 	t_list		*cursor;
 	int			count;

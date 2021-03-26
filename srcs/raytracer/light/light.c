@@ -6,13 +6,14 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/03/25 19:00:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:24:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minirt.h"
 
-double	get_intensity(t_scene scene, t_vector light_dir, t_vector normal, t_light light)
+double	get_intensity(t_scene scene, t_vector light_dir, t_vector normal,
+t_light light)
 {
 	double		intensity;
 	double		cos;
@@ -25,7 +26,8 @@ double	get_intensity(t_scene scene, t_vector light_dir, t_vector normal, t_light
 	return (intensity);
 }
 
-int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void *obj)
+int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord,
+void *obj)
 {
 	t_ray		ray;
 	double		length;
@@ -36,18 +38,19 @@ int		is_intersection(t_scene scene, t_vector ray_pos, t_vector light_cord, void 
 	length = vec_length(normalize(ray.dir));
 	if (sphere_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
-	if (triangle_intersec(scene, &ray, length)&& ray.obj != obj)
+	if (triangle_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
 	if (plane_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
-	if (square_intersec(scene, &ray, length)&& ray.obj != obj)
+	if (square_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
-	if (cylinder_intersec(scene, &ray, length)&& ray.obj != obj)
+	if (cylinder_intersec(scene, &ray, length) && ray.obj != obj)
 		return (1);
 	return (0);
 }
 
-t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene scene, void *obj)
+t_frgb	compute_light(t_vector ray_pos, t_vector normal, t_scene scene,
+void *obj)
 {
 	double		intensity;
 	t_rgb		light_color;

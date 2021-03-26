@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:19:34 by user42            #+#    #+#             */
-/*   Updated: 2021/03/23 15:09:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/26 18:30:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 	double			t_;
 	t_list			*triangle_list;
 	t_triangle		*triangle;
-	t_vector		normal;	
+	t_vector		normal;
 
 	triangle_list = scene.triangle;
 	while (triangle_list->next)
 	{
 		triangle = triangle_list->content;
 		t_ = triangle_intersec_equation(ray, triangle, &normal);
-		if (t_ > 0.00000001 && t_ <  length  && t_ < ray->ray_t)
+		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = triangle;
@@ -93,7 +93,7 @@ int	square_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		square = square_list->content;
 		t_ = square_intersec_equation(ray, square);
-		if (t_ > 0.00000001 && t_ < length  && t_ < ray->ray_t)
+		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = square;
@@ -116,8 +116,8 @@ int	cylinder_intersec(t_scene scene, t_ray *ray, double length)
 	while (cylinder_list->next)
 	{
 		cylinder = cylinder_list->content;
-		t_ = cylinder_intersec_equation(ray, cylinder, &q);
-		if (t_ > 0.00000001 && t_ < length  && t_ < ray->ray_t)
+		t_ = cylinder_inter_equation(ray, cylinder, &q);
+		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = cylinder;
