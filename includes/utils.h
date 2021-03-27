@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:28:10 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/23 11:47:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/27 20:57:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef	struct	s_quadric
 	double		c;
 	double		discriminant;
 	double		m_;
+	double		t[2];
+	double		m[2];
 }				t_quadric;
 
 typedef struct	s_motrum

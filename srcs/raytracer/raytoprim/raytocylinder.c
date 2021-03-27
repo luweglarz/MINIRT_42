@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:03:48 by user42            #+#    #+#             */
-/*   Updated: 2021/03/26 18:35:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/27 21:05:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ double	cylinder_inter_equation(t_ray *ray, t_cylinder *cylinder,
 t_quadric *q)
 {
 	t_vector	dist;
-	double		t[2];
-	double		m[2];
 
 	dist = vec_diff(ray->origin, cylinder->cord);
 	q->a = vec_dot(ray->dir, ray->dir) -
@@ -35,16 +33,16 @@ t_quadric *q)
 	q->discriminant = (q->b * q->b) - 4 * (q->a * q->c);
 	if (q->discriminant < 0)
 		return (INFINITY);
-	t[0] = (-q->b - sqrt(q->discriminant)) / (2 * q->a);
-	t[1] = (-q->b + sqrt(q->discriminant)) / (2 * q->a);
-	m[0] = vec_dot(ray->dir, cylinder->ori) *
-	t[0] + vec_dot(dist, cylinder->ori);
-	m[1] = vec_dot(ray->dir, cylinder->ori) *
-	t[1] + vec_dot(dist, cylinder->ori);
-	if (m[0] >= 0 && m[0] <= cylinder->height)
-		return (cylinder_res(q, m[0], t[0]));
-	if (m[1] >= 0 && m[1] <= cylinder->height)
-		return (cylinder_res(q, m[1], t[1]));
+	q->t[0] = (-q->b - sqrt(q->discriminant)) / (2 * q->a);
+	q->t[1] = (-q->b + sqrt(q->discriminant)) / (2 * q->a);
+	q->m[0] = vec_dot(ray->dir, cylinder->ori) *
+	q->t[0] + vec_dot(dist, cylinder->ori);
+	q->m[1] = vec_dot(ray->dir, cylinder->ori) *
+	q->t[1] + vec_dot(dist, cylinder->ori);
+	if (q->m[0] >= 0 && q->m[0] <= cylinder->height)
+		return (cylinder_res(q, q->m[0], q->t[0]));
+	if (q->m[1] >= 0 && q->m[1] <= cylinder->height)
+		return (cylinder_res(q, q->m[1], q->t[1]));
 	return (INFINITY);
 }
 
@@ -64,6 +62,8 @@ void	cylinder_intersec_color(t_cylinder *cylinder, t_ray *ray, t_scene scene)
 		normal = vec_diff(ray->ray_n_t, cylinder->cord);
 		normal = vec_diff(normal, vec_multipli_coeff(cylinder->ori, q.m_));
 		normal = normalize(normal);
+		if (q.m[0] < 0 && q.m[1] < 0)
+			normal = vec_multipli_coeff(normal, -1);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(*ray, normal, scene, ray->obj));
 	}

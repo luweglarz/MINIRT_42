@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:19:34 by user42            #+#    #+#             */
-/*   Updated: 2021/03/26 18:30:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/27 18:27:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int	sphere_intersec(t_scene scene, t_ray *ray, double length)
 	double			t_;
 	t_list			*sphere_list;
 	t_sphere		*sphere;
+	t_quadric		q;
 
 	sphere_list = scene.sphere;
 	while (sphere_list->next)
 	{
 		sphere = sphere_list->content;
-		t_ = sphere_intersec_equation(ray, sphere);
+		t_ = sphere_intersec_equation(ray, sphere, &q);
 		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;

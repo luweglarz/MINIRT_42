@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:58:49 by user42            #+#    #+#             */
-/*   Updated: 2021/03/26 18:34:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/27 17:26:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene scene)
 		if (vec_dot(ray->dir, normal) > 0)
 		{
 			normal = vec_multipli_coeff(normal, -1);
-			// refaire un compute light qui intersec
+			ray->ray_color = color_multipli(color_range1(ray->ray_color),
+			compute_light_other(*ray, normal, scene, ray->obj));
+			return ;
 		}
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(*ray, normal, scene, ray->obj));

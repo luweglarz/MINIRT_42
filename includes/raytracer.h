@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:14:56 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/03/26 18:29:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/27 21:07:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ void			cam_hook(int keycode, t_mlx *mlx_session);
 
 t_frgb			compute_light(t_ray ray, t_vector normal, t_scene scene,
 void *obj);
+t_frgb			compute_light_other(t_ray ray, t_vector normal, t_scene scene,
+void *obj);
 
 void			raytosphere(t_ray *ray, t_scene scene);
-double			sphere_intersec_equation(t_ray *ray, t_sphere *sphere);
+double			sphere_intersec_equation(t_ray *ray, t_sphere *sphere,
+t_quadric *q);
 
 void			raytoplane(t_ray *ray, t_scene scene);
 double			plane_intersec_equation(t_ray *ray, t_plane *plane);
