@@ -50,35 +50,6 @@ void	the_ray(t_scene scene, t_camera *camera, t_mlx mlx_session)
 	printf("\n");
 }
 
-void	cam_hook(int keycode, t_mlx *mlx_session)
-{
-	t_camera	*camera;
-
-	if (keycode == 100 && mlx_session->nb_cam > 2 &&
-	mlx_session->camera_list->next)
-	{
-		mlx_session->camera_list = mlx_session->camera_list->next;
-		camera = mlx_session->camera_list->content;
-		if (camera == NULL)
-		{
-			mlx_session->camera_list = mlx_session->camera_list->prev;
-			return ;
-		}
-		the_ray(mlx_session->scene, camera, *mlx_session);
-		mlx_put_image_to_window(mlx_session->mlx,
-		mlx_session->mlx_win, mlx_session->img.img, 0, 0);
-	}
-	if (keycode == 97 && mlx_session->nb_cam > 2 &&
-	mlx_session->camera_list->prev)
-	{
-		mlx_session->camera_list = mlx_session->camera_list->prev;
-		camera = mlx_session->camera_list->content;
-		the_ray(mlx_session->scene, camera, *mlx_session);
-		mlx_put_image_to_window(mlx_session->mlx,
-		mlx_session->mlx_win, mlx_session->img.img, 0, 0);
-	}
-}
-
 void	ray_tracer(t_scene scene, int save)
 {
 	t_mlx		mlx_session;

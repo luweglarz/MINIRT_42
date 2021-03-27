@@ -22,6 +22,8 @@ t_tab		g_tab[9] = {
 
 void	init_scene(t_scene *scene)
 {
+	scene->line = NULL;
+	scene->gnl = NULL;
 	scene->reso.h = 0;
 	scene->reso.w = 0;
 	scene->amli.ratio = 0;
@@ -71,16 +73,15 @@ void	append_data(t_scene *scene, char *line)
 
 t_scene	parsing_config(int fd, t_scene scene)
 {
-	char	*line;
 	int		ret;
 
-	while ((ret = get_next_line(fd, &line)) > 0)
+	while ((ret = get_next_line(fd, &scene.line, &scene)) > 0)
 	{
-		if (ret != 0 && ft_strlen(line) != 0)
-			append_data(&scene, line);
-		free(line);
-		line = NULL;
+		if (ret != 0 && ft_strlen(scene.line) != 0)
+			append_data(&scene, scene.line);
+		free(scene.line);
+		scene.line = NULL;
 	}
-	free(line);
+	free(scene.line);
 	return (scene);
 }

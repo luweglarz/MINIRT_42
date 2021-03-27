@@ -76,27 +76,26 @@ int			read_line(char **tmp, int fd)
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line, t_scene *scene)
 {
-	static char		*tmp;
 	int				ret;
 	int				line_n;
 	int				line_z;
 
 	ret = 1;
-	if (!tmp || ft_strlenc(tmp, '\n') == -1)
+	if (!scene->gnl || ft_strlenc(scene->gnl, '\n') == -1)
 	{
-		if (!tmp)
-			tmp = ft_strdup("");
-		if ((ret = read_line(&tmp, fd)) == -1)
-			return (free_error(ret, &tmp));
+		if (!scene->gnl)
+			scene->gnl = ft_strdup("");
+		if ((ret = read_line(&scene->gnl, fd)) == -1)
+			return (free_error(ret, &scene->gnl));
 	}
-	line_n = ft_strlenc(tmp, '\n');
-	line_z = ft_strlenc(tmp, '\0');
+	line_n = ft_strlenc(scene->gnl, '\n');
+	line_z = ft_strlenc(scene->gnl, '\0');
 	if (ret != 0)
-		*line = ft_substr(tmp, 0, line_n);
+		*line = ft_substr(scene->gnl, 0, line_n);
 	else
-		*line = ft_strdup(tmp);
-	tmp = savenfree(tmp, line_n, line_z);
-	return (free_error(ret, &tmp));
+		*line = ft_strdup(scene->gnl);
+	scene->gnl = savenfree(scene->gnl, line_n, line_z);
+	return (free_error(ret, &scene->gnl));
 }

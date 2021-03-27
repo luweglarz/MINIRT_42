@@ -33,6 +33,7 @@ t_rgb		get_color(char **rgbtab, t_scene *scene, char **data, void *elm)
 		free_data(rgbtab);
 		error(ERR_ELEMENT, scene);
 	}
+	free_data(rgbtab);
 	return (rgb);
 }
 
@@ -51,6 +52,7 @@ t_vector	get_orientation(char **ori, t_scene *scene, char **data, void *elm)
 		free_data(ori);
 		error(ERR_ELEMENT, scene);
 	}
+	free_data(ori);
 	return (vector);
 }
 
@@ -61,5 +63,6 @@ t_vector	get_cord(char **cord)
 	vector.x = ft_atof(cord[0]);
 	vector.y = ft_atof(cord[1]);
 	vector.z = ft_atof(cord[2]);
+	free_data(cord);
 	return (vector);
 }

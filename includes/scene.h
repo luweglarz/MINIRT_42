@@ -109,6 +109,7 @@ typedef struct		s_triangle
 
 typedef struct		s_scene
 {
+	char			*line;
 	char			*gnl;
 	t_reso			reso;
 	t_amli			amli;

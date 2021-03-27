@@ -20,7 +20,7 @@
 
 typedef	struct	s_matrix
 {
-				double	m[4][4];
+	double		m[4][4];
 }				t_matrix;
 
 typedef	struct	s_quadric
@@ -46,7 +46,7 @@ char			*ft_strdup(char *s);
 char			*ft_substr(char *s, int start, int len);
 char			*ft_strjoin(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
-int				get_next_line(int fd, char **line);
+int				get_next_line(int fd, char **line, t_scene *scene);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strlenc(char *str, char c);
 int				ft_atoi(const char *nptr);

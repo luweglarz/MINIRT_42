@@ -28,8 +28,10 @@ t_vector		ray_equation(t_ray *ray, double ray_t);
 
 void			ray_init(t_ray *ray);
 void			ray_tracer(t_scene scene, int save);
+void			the_ray(t_scene scene, t_camera *camera, t_mlx mlx_session);
 void			set_camera_pos(t_ray *ray, t_camera *camera, t_px px,
 t_scene scene);
+void			cam_hook(int keycode, t_mlx *mlx_session);
 
 t_frgb			compute_light(t_vector ray_pos, t_vector normal, t_scene scene,
 void *obj);

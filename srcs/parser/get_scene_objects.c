@@ -26,9 +26,7 @@ void	get_sphere(t_scene *scene, char **data)
 	cord = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
 	new_sphere->cord = get_cord(cord);
-	free_data(cord);
 	new_sphere->color = get_color(rgb, scene, data, new_sphere);
-	free_data(rgb);
 	new_sphere->radius = ft_atof(data[2]);
 	ft_lstadd_front(&scene->sphere, ft_lstnew(new_sphere));
 }
@@ -49,12 +47,9 @@ void	get_square(t_scene *scene, char **data)
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[4], ',');
 	new_square->cord = get_cord(cord);
-	free_data(cord);
 	new_square->ori = get_orientation(ori, scene, data, new_square);
-	free_data(ori);
 	new_square->ori = normalize(new_square->ori);
 	new_square->color = get_color(rgb, scene, data, new_square);
-	free_data(rgb);
 	new_square->height = ft_atoi(data[3]);
 	ft_lstadd_front(&scene->square, ft_lstnew(new_square));
 }
@@ -75,12 +70,9 @@ void	get_cylinder(t_scene *scene, char **data)
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[5], ',');
 	new_cylinder->cord = get_cord(cord);
-	free_data(cord);
 	new_cylinder->ori = get_orientation(ori, scene, data, new_cylinder);
-	free_data(ori);
 	new_cylinder->ori = normalize(new_cylinder->ori);
 	new_cylinder->color = get_color(rgb, scene, data, new_cylinder);
-	free_data(rgb);
 	new_cylinder->diameter = ft_atof(data[3]);
 	new_cylinder->height = ft_atof(data[4]);
 	ft_lstadd_front(&scene->cylinder, ft_lstnew(new_cylinder));
@@ -104,13 +96,9 @@ void	get_triangle(t_scene *scene, char **data)
 	cord3 = ft_split(data[3], ',');
 	rgb = ft_split(data[4], ',');
 	new_triangle->cord1 = get_cord(cord1);
-	free_data(cord1);
 	new_triangle->cord2 = get_cord(cord2);
-	free_data(cord2);
 	new_triangle->cord3 = get_cord(cord3);
-	free_data(cord3);
 	new_triangle->color = get_color(rgb, scene, data, new_triangle);
-	free_data(rgb);
 	ft_lstadd_front(&scene->triangle, ft_lstnew(new_triangle));
 }
 
@@ -130,11 +118,8 @@ void	get_plane(t_scene *scene, char **data)
 	ori = ft_split(data[2], ',');
 	rgb = ft_split(data[3], ',');
 	new_plane->cord = get_cord(cord);
-	free_data(cord);
 	new_plane->ori = get_orientation(ori, scene, data, new_plane);
-	free_data(ori);
 	new_plane->ori = normalize(new_plane->ori);
 	new_plane->color = get_color(rgb, scene, data, new_plane);
-	free_data(rgb);
 	ft_lstadd_front(&scene->plane, ft_lstnew(new_plane));
 }
