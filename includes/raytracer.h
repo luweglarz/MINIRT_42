@@ -20,6 +20,7 @@ typedef struct	s_ray
 	t_vector	origin;
 	t_vector	dir;
 	double		ray_t;
+	t_vector	ray_n_t;
 	t_rgb		ray_color;
 	void		*obj;
 }				t_ray;
@@ -33,7 +34,7 @@ void			set_camera_pos(t_ray *ray, t_camera *camera, t_px px,
 t_scene scene);
 void			cam_hook(int keycode, t_mlx *mlx_session);
 
-t_frgb			compute_light(t_vector ray_pos, t_vector normal, t_scene scene,
+t_frgb			compute_light(t_ray ray, t_vector normal, t_scene scene,
 void *obj);
 
 void			raytosphere(t_ray *ray, t_scene scene);

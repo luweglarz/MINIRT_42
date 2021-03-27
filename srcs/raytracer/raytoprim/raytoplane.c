@@ -23,12 +23,13 @@ double	plane_intersec_equation(t_ray *ray, t_plane *plane)
 		return (INFINITY);
 	dist = vec_diff(plane->cord, ray->origin);
 	t = vec_dot(dist, plane->ori) / a;
+	if (t < 0)
+		return (INFINITY);
 	return (t);
 }
 
 void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene scene)
 {
-	t_vector		ray_pos;
 	t_vector		normal;
 	double			t_;
 
@@ -38,12 +39,14 @@ void	plane_intersec_color(t_plane *plane, t_ray *ray, t_scene scene)
 		ray->ray_t = t_;
 		ray->obj = plane;
 		ray->ray_color = plane->color;
-		ray_pos = ray_equation(ray, ray->ray_t);
+		ray->ray_n_t = ray_equation(ray, ray->ray_t);
 		normal = plane->ori;
 		if (vec_dot(ray->dir, normal) > 0)
+		{
 			normal = vec_multipli_coeff(normal, -1);
+		}
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
-		compute_light(ray_pos, normal, scene, ray->obj));
+		compute_light(*ray, normal, scene, ray->obj));
 	}
 }
 

@@ -41,7 +41,6 @@ double	sphere_intersec_equation(t_ray *ray, t_sphere *sphere)
 void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene scene)
 {
 	double			t_;
-	t_vector		ray_pos;
 	t_vector		normal;
 
 	t_ = sphere_intersec_equation(ray, sphere);
@@ -50,11 +49,11 @@ void	sphere_intersec_color(t_sphere *sphere, t_ray *ray, t_scene scene)
 		ray->ray_t = t_;
 		ray->obj = sphere;
 		ray->ray_color = sphere->color;
-		ray_pos = ray_equation(ray, ray->ray_t);
-		normal = vec_diff(ray_pos, sphere->cord);
+		ray->ray_n_t = ray_equation(ray, ray->ray_t);
+		normal = vec_diff(ray->ray_n_t, sphere->cord);
 		normal = normalize(normal);
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
-		compute_light(ray_pos, normal, scene, ray->obj));
+		compute_light(*ray, normal, scene, ray->obj));
 	}
 }
 

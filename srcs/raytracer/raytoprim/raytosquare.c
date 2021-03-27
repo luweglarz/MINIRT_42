@@ -34,7 +34,6 @@ double	square_intersec_equation(t_ray *ray, t_square *square)
 
 void	square_intersec_color(t_square *square, t_ray *ray, t_scene scene)
 {
-	t_vector		ray_pos;
 	t_vector		normal;
 	double			t_;
 
@@ -44,12 +43,15 @@ void	square_intersec_color(t_square *square, t_ray *ray, t_scene scene)
 		ray->ray_t = t_;
 		ray->obj = square;
 		ray->ray_color = square->color;
-		ray_pos = ray_equation(ray, ray->ray_t);
+		ray->ray_n_t = ray_equation(ray, ray->ray_t);
 		normal = square->ori;
 		if (vec_dot(ray->dir, normal) > 0)
+		{
 			normal = vec_multipli_coeff(normal, -1);
+			// refaire un compute light qui intersec
+		}
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
-		compute_light(ray_pos, normal, scene, ray->obj));
+		compute_light(*ray, normal, scene, ray->obj));
 	}
 }
 
