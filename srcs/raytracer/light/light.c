@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:35 by user42            #+#    #+#             */
-/*   Updated: 2021/03/27 21:03:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/28 22:01:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void *obj)
 	{
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray.ray_n_t);
-		if (is_intersection(scene, ray.ray_n_t, light->cord, obj) ||
-		(vec_dot(normal, light_dir) < 0))
+		if (is_intersection(scene, ray.ray_n_t, light->cord, obj)||
+		(vec_dot(normal, light_dir) < 0.00000001))
 		{
 			lights = lights->next;
 			continue;

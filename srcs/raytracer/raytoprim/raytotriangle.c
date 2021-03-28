@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:46:13 by user42            #+#    #+#             */
-/*   Updated: 2021/03/27 21:07:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/28 17:10:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_vector *normal)
 	motrum_init(&motrum);
 	v1 = vec_diff(triangle->cord2, triangle->cord1);
 	v2 = vec_diff(triangle->cord3, triangle->cord1);
+	*normal = cross_product(v1, v2);
 	motrum.cross = cross_product(ray->dir, v2);
 	motrum.det = vec_dot(motrum.cross, v1);
 	if (motrum.det > -0.00000001 && motrum.det < 0.00000001)
@@ -48,7 +49,6 @@ t_vector *normal)
 	motrum.vbary = vec_dot(ray->dir, v) * motrum.inv_det;
 	if (motrum.vbary < 0.0 || motrum.vbary + motrum.ubary > 1.0)
 		return (INFINITY);
-	*normal = cross_product(v1, v2);
 	return (vec_dot(v2, v) * motrum.inv_det);
 }
 
