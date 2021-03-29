@@ -48,7 +48,7 @@ int	triangle_intersec(t_scene scene, t_ray *ray, double length)
 	{
 		triangle = triangle_list->content;
 		t_ = triangle_intersec_equation(ray, triangle, &normal);
-		if (t_ > 0.00000001 && t_ < length && t_ < ray->ray_t)
+		if (t_ > -0.00000001 && t_ < length && t_ < ray->ray_t)
 		{
 			ray->ray_t = t_;
 			ray->obj = triangle;

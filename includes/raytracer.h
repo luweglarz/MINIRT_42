@@ -36,8 +36,6 @@ void			cam_hook(int keycode, t_mlx *mlx_session);
 
 t_frgb			compute_light(t_ray ray, t_vector normal, t_scene scene,
 void *obj);
-t_frgb			compute_light_other(t_ray ray, t_vector normal, t_scene scene,
-void *obj);
 
 void			raytosphere(t_ray *ray, t_scene scene);
 double			sphere_intersec_equation(t_ray *ray, t_sphere *sphere,

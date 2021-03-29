@@ -49,36 +49,6 @@ void *obj)
 	return (0);
 }
 
-t_frgb	compute_light_other(t_ray ray, t_vector normal, t_scene scene,
-void *obj)
-{
-	t_rgb		light_color;
-	t_vector	light_dir;
-	t_list		*lights;
-	t_light		*light;
-
-	color_init(&light_color);
-	lights = scene.light;
-	while (lights->next)
-	{
-		light = lights->content;
-		light_dir = vec_diff(light->cord, ray.ray_n_t);
-		if (is_intersection(scene, ray.ray_n_t, light->cord, obj)||
-		(vec_dot(normal, light_dir) < 0.00000001))
-		{
-			lights = lights->next;
-			continue;
-		}
-		light_color = rgb_add(light_color,
-		rgb_multipli(light->color,
-		get_intensity(scene, normalize(light_dir), normal, *light)));
-		lights = lights->next;
-	}
-	light_color = rgb_add(light_color,
-	rgb_multipli(scene.amli.color, scene.amli.ratio));
-	return (color_range1(light_color));
-}
-
 t_frgb	compute_light(t_ray ray, t_vector normal, t_scene scene,
 void *obj)
 {
@@ -94,7 +64,7 @@ void *obj)
 		light = lights->content;
 		light_dir = vec_diff(light->cord, ray.ray_n_t);
 		if (is_intersection(scene, ray.ray_n_t, light->cord, obj) ||
-		(vec_dot(normal, light_dir) < 0))
+		(vec_dot(normal, light_dir) < 0.00000001))
 		{
 			lights = lights->next;
 			continue;

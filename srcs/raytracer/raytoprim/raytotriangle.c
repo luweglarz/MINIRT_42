@@ -66,12 +66,7 @@ void	triangle_intersec_color(t_triangle *triangle, t_ray *ray, t_scene scene)
 		ray->ray_n_t = ray_equation(ray, ray->ray_t);
 		normal = normalize(normal);
 		if (vec_dot(ray->dir, normal) > 0)
-		{
 			normal = vec_multipli_coeff(normal, -1);
-			ray->ray_color = color_multipli(color_range1(ray->ray_color),
-			compute_light_other(*ray, normal, scene, ray->obj));
-			return ;
-		}
 		ray->ray_color = color_multipli(color_range1(ray->ray_color),
 		compute_light(*ray, normal, scene, ray->obj));
 	}
