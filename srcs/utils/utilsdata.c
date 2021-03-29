@@ -78,7 +78,6 @@ t_vector	get_cord(char **cord, t_scene *scene, char **data, void *elm)
 	vector.x = ft_atof(cord[0]);
 	vector.y = ft_atof(cord[1]);
 	vector.z = ft_atof(cord[2]);
-	// free erreur de parsing
 	free_data(cord);
 	return (vector);
 }
