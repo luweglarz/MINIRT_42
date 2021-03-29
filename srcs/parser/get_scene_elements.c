@@ -52,7 +52,7 @@ void	get_camera(t_scene *scene, char **data)
 	}
 	cord = ft_split(data[1], ',');
 	ori = ft_split(data[2], ',');
-	new_cam->cord = get_cord(cord);
+	new_cam->cord = get_cord(cord, scene, data, new_cam);
 	new_cam->ori = get_orientation(ori, scene, data, new_cam);
 	new_cam->ori = normalize(new_cam->ori);
 	new_cam->fov = ft_atoi(data[3]);
@@ -79,7 +79,7 @@ void	get_light(t_scene *scene, char **data)
 	}
 	cord = ft_split(data[1], ',');
 	rgb = ft_split(data[3], ',');
-	new_light->cord = get_cord(cord);
+	new_light->cord = get_cord(cord, scene, data, new_light);
 	new_light->color = get_color(rgb, scene, data, new_light);
 	new_light->ratio = ft_atof(data[2]);
 	if (new_light->ratio < 0.0 || new_light->ratio > 1.0)

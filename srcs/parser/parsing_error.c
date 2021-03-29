@@ -25,6 +25,8 @@ void	error(int errorcode, t_scene *scene)
 		write(STDERR_FILENO, "Malloc failed\n", 14);
 	if (errorcode == ERR_ELEMENT)
 		write(STDERR_FILENO, "Wrong element value\n", 20);
+	if (errorcode == ERR_ELEMENT_FORMAT)
+		write(STDERR_FILENO, "Wrong element format\n", 22);
 	free(scene->line);
 	free(scene->gnl);
 	ft_lstclear(&scene->sphere, free);

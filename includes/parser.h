@@ -30,6 +30,7 @@
 # define ERR_SAVE -3
 # define ERR_MALLOC -4
 # define ERR_ELEMENT -5
+# define ERR_ELEMENT_FORMAT -6
 
 typedef struct	s_tab
 {
@@ -58,7 +59,7 @@ t_rgb			get_color(char **rgbtab, t_scene *scene, char **data,
 void *elm);
 t_vector		get_orientation(char **ori, t_scene *scene, char **data,
 void *elm);
-t_vector		get_cord(char	**cord);
+t_vector		get_cord(char **cord, t_scene *scene, char **data, void *elm);
 
 void			error(int errorcode, t_scene *scene);
 #endif
