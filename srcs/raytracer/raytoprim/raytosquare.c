@@ -11,27 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../../includes/minirt.h"
-/*
-double	square_intersec_equation(t_ray *ray, t_square *square)
-{
-	double		a;
-	double		b;
-	double		t;
-	t_vector	dist;
-
-	a = vec_dot(vec_diff(ray->origin, square->cord), square->ori);
-	b = vec_dot(ray->dir, square->ori);
-	if (b == 0 || (a < 0 && b < 0) || (a > 0 && b > 0))
-		return ;
-	t = -a / s.b;
-	dist = vec_sub(vec_add(vec_multipli_coeff(ray->dir, s.t1), ray->origin), square->cord);
-	s.t2 = square->height / 2;
-	if (fabs(dist.x) > s.t2 || fabs(dist.y) > s.t2 || fabs(dist.z) > s.t2)
-		return ;
-	if (s.t1 > 0)
-		rt->t = s.t1;
-}
-*/
 
 double	square_intersec_equation(t_ray *ray, t_square *square)
 {
