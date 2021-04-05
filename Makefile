@@ -33,7 +33,7 @@ all: $(NAME)
 $(NAME): $(OBJS) includes/minirt.h
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	$(CC) -g -fsanitize=address main.c -o minirt minirt.a minilibx/libmlx.a -lm -lXext -lX11
+	$(CC) main.c -o minirt minirt.a minilibx/libmlx.a -lm -lXext -lX11
 clean:
 	$(RM) $(OBJS)
 fclean:	clean
